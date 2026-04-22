@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Configurations>Debug;Release;Test</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Repositories.Infrastructure\Common.Repositories.Infrastructure.csproj" />
+    <ProjectReference Include="..\Common\Common.DataAccess.EFCore\Common.DataAccess.EFCore.csproj" />
+    <ProjectReference Include="..\Common\Common.Entities\Common.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

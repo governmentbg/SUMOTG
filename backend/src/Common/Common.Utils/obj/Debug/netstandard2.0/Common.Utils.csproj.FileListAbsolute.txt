@@ -1,0 +1,13 @@
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\bin\Debug\netstandard2.0\Common.Utils.deps.json
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\bin\Debug\netstandard2.0\Common.Utils.dll
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\bin\Debug\netstandard2.0\Common.Utils.pdb
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\bin\Debug\netstandard2.0\Common.Entities.dll
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\bin\Debug\netstandard2.0\Common.Entities.pdb
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\obj\Debug\netstandard2.0\Common.Utils.csproj.AssemblyReference.cache
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\obj\Debug\netstandard2.0\Common.Utils.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\obj\Debug\netstandard2.0\Common.Utils.AssemblyInfoInputs.cache
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\obj\Debug\netstandard2.0\Common.Utils.AssemblyInfo.cs
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\obj\Debug\netstandard2.0\Common.Utils.csproj.CoreCompileInputs.cache
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\obj\Debug\netstandard2.0\Common.Utils.csproj.CopyComplete
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\obj\Debug\netstandard2.0\Common.Utils.dll
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.Utils\obj\Debug\netstandard2.0\Common.Utils.pdb

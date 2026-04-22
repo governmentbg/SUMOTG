@@ -1,0 +1,24 @@
+<form [formGroup]="form">
+        <ng-template [ngIf]="isNumberOnly" [ngIfElse]="text">
+                <input  nbInput 
+                        NgxNumbersOnly
+                        type="text" 
+                        fieldSize="small"
+                        fullWidth ="true" 
+                        [maxlength]="maxlength"            
+                        [formControl]="control"
+                        [placeholder]="placeholder"
+                        onClick="this.select();">
+        </ng-template>
+              
+        <ng-template #text>
+                <input  nbInput 
+                        type="text" 
+                        fieldSize="small"
+                        fullWidth ="true" 
+                        [maxlength]="maxlength"            
+                        [formControl]="control"
+                        (keypress)="onKeyPress($event)"
+                        [placeholder]="placeholder">
+        </ng-template>
+</form>

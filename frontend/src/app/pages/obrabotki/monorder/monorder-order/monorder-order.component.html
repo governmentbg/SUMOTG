@@ -1,0 +1,85 @@
+
+<div class="row">
+    <div class="col-10">
+        Номер поръчка: {{form.get('idporychkamain').value}}
+    </div>
+    <div *ngIf="form.get('status_pm').value < 2 && iddogovorfirma > 0" 
+         class="col-2" align ="right">
+        <a href="javascript:void(0)" 
+                class="text-link" 
+                (click)="addPersPersDogUred()">
+            Добави
+        </a>
+    </div>        
+</div>
+<div>
+    <table  class="page1">
+        <colgroup>
+            <col span="1" style="width: 90%;">
+            <col span="1" style="width: 5%;">
+        </colgroup>
+
+        <tbody>
+            <tr *ngFor="let u of uredi;">
+                <td>                     
+                    <div class="ured-header">                        
+                        {{u.name}} [по договор: {{u.broi}} бр., остават: {{u.maxbroi}} бр.]
+                    </div>
+
+                    <div class="ured-header">
+                        <table  class="page1">
+                            <colgroup>
+                                <col span="1" style="width: 2%;">
+                                <col span="1" style="width: 10%;">
+                                <col span="1" style="width: 25%;">
+                                <col span="1" style="width: 5%;">
+                                <col span="1" style="width: 15%;">
+                                <col span="1" style="width: 35%;">
+                                <col span="1" style="width: 7%;">
+                                <col span="1" style="width: 2%;">
+                            </colgroup>
+                        
+                            <thead>
+                                <tr>
+                                    <th> №</th>    
+                                    <th> ОПОС </th>    
+                                    <th> Три имена</th>    
+                                    <th> Брой</th>    
+                                    <th> Вид имот</th>    
+                                    <th> Адрес</th>    
+                                    <th> Телефон</th>    
+                                    <th *ngIf="form.get('status_pm').value < 2"> </th>    
+                                </tr>
+                            </thead>        
+                        
+                            <tbody>
+                                <tr *ngFor="let item of porychkaitems?.controls | porychkiFilterPipe: u.id; let i = index;">
+                                    <td> {{i+1}}</td>
+                                    <td> {{item.get('unom').value}}</td>
+                                    <td> {{item.get('ime').value}}</td>
+                                    <td> {{item.get('broi').value}}</td>
+                                    <td> {{item.get('vidimot').value}}</td>
+                                    <td> {{item.get('adres').value}}</td>
+                                    <td> {{item.get('telefon').value}}</td>
+                                    <td *ngIf="form.get('status_pm').value < 2" 
+                                        class="tdcenter">
+                                        <nb-icon 
+                                            icon="trash-outline" 
+                                            (click)="removeItem(item)">
+                                        </nb-icon>
+                                    </td>                
+                                </tr>
+                            </tbody>  
+                        </table>
+                    </div>                        
+                </td>    
+
+                <td>
+                    <div align ="right">
+                        {{u.currentbroi}}
+                    </div>        
+                </td>    
+            </tr>
+        </tbody>
+    </table>            
+</div>   

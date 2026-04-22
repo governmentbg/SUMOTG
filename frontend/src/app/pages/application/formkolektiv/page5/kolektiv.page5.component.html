@@ -1,0 +1,90 @@
+
+<div class="add-ured-link" align="right">
+  <div class="btn-holder">
+      <button nbButton status="basic" 
+          [disabled] = "disabled"
+          (click)="addItem()">
+          <nb-icon 
+              icon="file-add-outline" 
+              [options]="{ animation: { type: 'zoom' } }">
+          </nb-icon>
+            Добави
+      </button>
+  </div>
+</div>
+
+<table  class="page1">
+  <colgroup>
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 15%;">
+    <col span="1" style="width: 25%;">
+    <col span="1" style="width: 40%;">
+    <col span="1" style="width: 20%;">
+    <!-- <col span="1" style="width: 5%;"> -->
+    <col span="1" style="width: 5%;">
+  </colgroup>
+
+  <tbody>
+    <tr  *ngFor = "let item of systav.controls; let i = index;">
+      <td class="tdcenter">
+          {{i+1}}
+      </td>
+
+      <td class="tdright">
+        <ngx-ctllist
+          [items] = vidIdent
+          [formGroup]="item" 
+          [disable] = "disabled"                    
+          placeholder="ЕГН/ЛНЧ"
+          controlName="vidIdent">
+        </ngx-ctllist>
+      </td>
+
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="item" 
+          controlName="ident"
+          isNumberOnly="true"
+          [disable] = "disabled"                    
+          placeholder=""
+          maxlength="10">
+        </ngx-ctltextbox>            
+      </td>      
+
+      <td>
+        <ngx-ctltextbox
+          placeholder="Трите имена"
+          [formGroup]="item" 
+          [disable] = "disabled"                    
+          controlName="ime">
+        </ngx-ctltextbox>
+      </td>
+
+      <td>
+        <ngx-ctltextbox
+          placeholder="Телефон"
+          [formGroup]="item" 
+          [disable] = "disabled"                    
+          controlName="telefon">
+        </ngx-ctltextbox>
+      </td>  
+
+      <!-- <td class="tdcenter">
+          <nb-icon 
+            nbTooltip="Преглед" 
+            nbTooltipPlacement="bottom"
+            icon="attach-outline">
+          </nb-icon>
+      </td> -->
+
+      <td class="tdcenter" (click)="removeItem(i)">
+          <nb-icon 
+              nbTooltip="Изтриване" 
+              nbTooltipPlacement="bottom"
+              icon="trash-outline">
+            </nb-icon>
+      </td>
+    </tr>  
+  </tbody>  
+</table>
+

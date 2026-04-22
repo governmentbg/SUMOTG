@@ -1,0 +1,419 @@
+<nb-card class="card-container">
+  <nb-card-header> 
+    <div class="row">
+      <label for="select-raion" class="col-sm-6 col-form-label">
+        Филтър - {{settings.title }}
+      </label>
+      
+      <div class="col-sm-4 clear-div-link" align="right">  
+        <p><a href="javascript:void(0)" 
+              class="clear-text-link" 
+              (click)="clearFilter()">
+              Изчисти филтъра
+        </a></p>
+      </div>      
+    </div>      
+  </nb-card-header>
+  
+  <nb-card-body>  
+    <div [formGroup]="userForm" class="container-fluid ">
+
+        <div *ngIf = "settings.filters.faza" 
+             class="row row-height  justify-content-md-center form-group">
+          <label for="select-raion" class="col-sm-3 col-form-label">
+              Фаза:
+          </label>
+
+          <div class="col-sm-6"> 
+            <ngx-ctllist
+                  [items] = vlistfaza
+                  [formGroup]="userForm" 
+                  [showclear]="false"
+                  controlName="faza">
+            </ngx-ctllist>
+          </div>
+        </div>
+
+        <div *ngIf = "settings.filters.raion" 
+             class="row row-height  justify-content-md-center form-group">
+          <label for="select-raion" class="col-sm-3 col-form-label">
+              Район:
+          </label>
+
+          <div class="col-sm-6"> 
+              <ngx-ctllist
+                    [items] = raioni
+                    [formGroup]="userForm" 
+                    [showclear]="canClearRaion()"
+                    controlName="raionid">
+               </ngx-ctllist>
+          </div>
+        </div>
+
+        <div *ngIf = "settings.filters.tipuredi" 
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Тип уреди:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vlistvtipuredi
+                  [formGroup]="userForm" 
+                  controlName="tipuredi">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div *ngIf = "settings.filters.tipuredi1" 
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Тип уреди:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vlistvtipuredi1
+                  [formGroup]="userForm" 
+                  controlName="tipuredi">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div *ngIf = "settings.filters.tipuredi2" 
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Тип уреди:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vlistvtipuredi2
+                  [formGroup]="userForm" 
+                  controlName="tipuredi">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div *ngIf = "settings.filters.tipuredi3" 
+                class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                    Тип уреди:
+            </label>
+            <div class="col-sm-6">  
+                <ngx-ctllist
+                    [items] = vlistvtipuredi3
+                    [formGroup]="userForm" 
+                    controlName="tipuredi">
+                </ngx-ctllist>
+            </div>    
+        </div>
+
+
+        <div *ngIf = "settings.filters.uredi" 
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Уреди за монтаж:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vlistv43
+                  [formGroup]="userForm" 
+                  controlName="uredi">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.olduredi"
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Уреди за демонтаж:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vlistv18
+                  [formGroup]="userForm" 
+                  controlName="olduredi">
+              </ngx-ctllist>
+          </div>    
+        </div>
+ 
+        <div  *ngIf = "settings.filters.statusL"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус лице:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusL
+                  [formGroup]="userForm" 
+                  controlName="statusL">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.statusF"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус формуляр:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusF
+                  [formGroup]="userForm" 
+                  controlName="statusF">
+              </ngx-ctllist>
+          </div>    
+        </div>
+        
+        <div  *ngIf = "settings.filters.statusDL"
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус договор:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusDL
+                  [formGroup]="userForm" 
+                  controlName="statusDL">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.statusU"
+               class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус уред:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusU
+                  [formGroup]="userForm" 
+                  controlName="statusU">
+              </ngx-ctllist>
+          </div>    
+        </div>
+ 
+        <div  *ngIf = "settings.filters.statusDU"
+               class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус уред (демонтаж):
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusDU
+                  [formGroup]="userForm" 
+                  controlName="statusDU">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div *ngIf = "settings.filters.regnom"
+            class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                № на договор
+            </label>           
+
+            <div class="col-sm-6">  
+              <ngx-ctltextbox
+                [formGroup]="userForm" 
+                controlName="regnom">
+              </ngx-ctltextbox>        
+            </div>        
+        </div>        
+
+        <div *ngIf = "settings.filters.adres"
+            class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                Част от адрес
+            </label>           
+
+            <div class="col-sm-6">  
+              <ngx-ctltextbox
+                [formGroup]="userForm" 
+                controlName="adres">
+              </ngx-ctltextbox>        
+            </div>        
+        </div>            
+    
+        <div  *ngIf = "settings.filters.unomer"
+              class="row row-height justify-content-md-center form-group">
+              <label for="input-ident" class="col-sm-3 col-form-label">
+                  № по ОПОС (цифрова част)
+              </label>           
+
+              <div class="col-sm-6">  
+                <ngx-ctltextbox
+                    [formGroup]="userForm"
+                    controlName="unomer"
+                    isNumberOnly="true"
+                    maxlength="5">
+                </ngx-ctltextbox>  
+              </div>        
+        </div>        
+
+        <div  *ngIf = "settings.filters.vid"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Вид формуляр:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vlistvid
+                  [formGroup]="userForm" 
+                  controlName="vid">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.firma"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Фирма изпълнител:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vmonfirmi
+                  [formGroup]="userForm" 
+                  (selectionChanged)="onFirmItemSelected($event)"                  
+                  controlName="firma">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.dogovor"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Договор:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vmonfirmidogovor
+                  [formGroup]="userForm" 
+                  controlName="dogovor">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.demfirma"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Фирма изпълнител:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vdemfirmi
+                  [formGroup]="userForm" 
+                  (selectionChanged)="onDemFirmItemSelected($event)"                  
+                  controlName="demfirma">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div *ngIf = "settings.filters.dpregnom"
+            class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                ДСп/Заявление №
+            </label>           
+
+            <div class="col-sm-6">  
+              <ngx-ctltextbox
+                [formGroup]="userForm" 
+                controlName="dpregnom">
+              </ngx-ctltextbox>        
+            </div>        
+        </div>        
+
+        <div  *ngIf = "settings.filters.viddpspor"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Вид доп.споразумение:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vdopspor
+                  [formGroup]="userForm" 
+                  controlName="viddpspor">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.demdogovor"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Договор:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vdemfirmidogovor
+                  [formGroup]="userForm" 
+                  controlName="demdogovor">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.limit"
+              class="row row-height justify-content-md-center form-group">
+              <label for="input-ident" class="col-sm-3 col-form-label">
+                  % на достигнат усвоен бюджет
+              </label>           
+
+              <div class="col-sm-6">  
+                <ngx-ctltextbox
+                    [formGroup]="userForm"
+                    controlName="limit"
+                    isNumberOnly="true"
+                    maxlength="2">
+                </ngx-ctltextbox>  
+              </div>        
+        </div>        
+
+        <div  *ngIf = "settings.filters.vidformulqr"
+              class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                    Тип формуляр:
+            </label>
+            <div class="col-sm-6">  
+                <ngx-ctllist
+                    [items] = vlisttipformulqr
+                    [formGroup]="userForm" 
+                    controlName="vidformulqr">
+                </ngx-ctllist>
+            </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.vidportret"
+              class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                    Макет:
+            </label>
+            <div class="col-sm-6">  
+                <ngx-ctllist
+                    [items] = vlisttipportret
+                    [formGroup]="userForm" 
+                    controlName="vidportret">
+                </ngx-ctllist>
+            </div>    
+        </div>
+
+      </div>
+  </nb-card-body>
+
+  <nb-card-footer>   
+    <div class="row row-height  justify-content-md-center form-group">
+      <div class="col-sm-2" >  
+        <p><a href="javascript:void(0)" 
+              class="text-link" (click)="back()">Назад
+        </a></p>
+      </div>      
+
+      <div class="offset-md-4 col-sm-3 btnSave" align="right">
+        <button nbButton 
+                status="primary"
+                fullWidth = "true"  
+                [disabled]="!userForm.valid"
+                (click)="exec()">
+          Изпълни
+        </button>
+      </div>    
+    </div>      
+  </nb-card-footer>
+</nb-card>
+  

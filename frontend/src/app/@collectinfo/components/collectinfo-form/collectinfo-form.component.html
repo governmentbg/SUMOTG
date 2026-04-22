@@ -1,0 +1,314 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+
+<div style="overflow-x:auto; padding-bottom: 5px;">
+    <div style="text-align: center;">
+        <span style="text-align: center;">
+            Предварително заявление за участие в програма на Столична община за подмяна на старите уреди на дърва и/или въглища с нови екологични алтернативи
+        </span>
+    </div>
+    
+    <div style="float: right; padding-top: 5px;">
+        <button nbButton
+                [disabled]="click || !form.valid"
+                status="primary" 
+                (click)="save()" >
+            <nb-icon 
+                icon="save-outline" 
+                [options]="{ animation: { type: 'zoom' } }">
+            </nb-icon>
+            Запис
+        </button>
+        <button nbButton class="button-next" (click)="back()">
+            Изход
+        </button>            
+    </div>
+</div>
+
+<div style="overflow-y: auto; height: 57vh;">
+    <table class="page1">
+        <colgroup>
+            <col span="1" style="width: 5%" />
+            <col span="1" style="width: 45%" />
+            <col span="1" style="width: 50%" />
+        </colgroup>
+        
+        <tbody>
+            <tr>
+                <td class="tdcenter">1.</td>
+                <td class="tdright">Име</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form"
+                        placeholder="* Въведете задължителна стойност на кирилица"
+                        [оnlyCyrillic] = "true" 
+                        controlName="ime"> 
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="tdcenter">2.</td>
+                <td class="tdright">Презиме</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        placeholder="Въведете стойност на кирилица" 
+                        [оnlyCyrillic] = "true" 
+                        controlName="prezime"> 
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="tdcenter">3.</td>
+                <td class="tdright">Фамилия</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        placeholder="* Въведете задължителна стойност на кирилица" 
+                        [оnlyCyrillic] = "true" 
+                        controlName="familiq"> 
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="tdcenter">4.</td>
+                <td colspan="2" class="tdright">
+                Адрес на имота (по документ за собственост)
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="tdcenter">4.1.</td>
+                <td class="tdright">Район</td>
+                <td>
+                <ngx-ctllist 
+                    [items]="raioni" 
+                    [formGroup]="form" 
+                    placeholder="* Изберете задължителна стойност..."                 
+                    controlName="raionid">
+                </ngx-ctllist>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="tdcenter">4.2.</td>
+                <td class="tdright">Населено място (гр./с.)</td>
+                <td>
+                    <ngx-ctllist
+                        [items]="nasmesta"                
+                        [formGroup]="form"
+                        placeholder="* Изберете задължителна стойност..."                 
+                        controlName="nm">
+                    </ngx-ctllist>
+                </td>
+            </tr>
+    
+            <tr>
+                <td class="tdcenter">4.3.</td>
+                <td class="tdright">Квартал/ж.к./в.з./м.</td>
+                <td>
+                <ngx-ctllist
+                    [items]="kvartali"
+                    [formGroup]="form"
+                    controlName="jk"
+                >
+                </ngx-ctllist>
+                </td>
+            </tr>
+
+            <tr>        
+                <td class="tdcenter">4.4.</td>
+                <td class="tdright">Улица/булевард</td>
+                <td>
+                <ngx-ctllist 
+                    [items]="ulici" 
+                    [formGroup]="form" 
+                    placeholder="Въведете и изберете…" 
+                    controlName="ul">
+                </ngx-ctllist>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="tdcenter">4.5.</td>
+                <td class="tdright">Номер</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        controlName="nomer">
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+
+            <tr>        
+                <td class="tdcenter">4.6.</td>
+                <td class="tdright">Блок</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        controlName="blok"> 
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="tdcenter">4.7.</td>
+                <td class="tdright">Вход</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        controlName="vh"> 
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+
+            <tr>        
+                <td class="tdcenter">4.8.</td>
+                <td class="tdright">Етаж</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        controlName="etaj"> 
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="tdcenter">4.9.</td>
+                <td class="tdright">Апартамент</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        controlName="ap">
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+
+            <!-- <tr>        
+                <td class="tdcenter">4.10.</td>
+                <td class="tdright">Пощенски код</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        controlName="pk">
+                    </ngx-ctltextbox>
+                </td>
+            </tr> -->
+        
+            <tr>
+                <td class="tdcenter">5.</td>
+                <td class="tdright">Електронен адрес (email)</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        placeholder="Въведете стойност" 
+                        controlName="email">
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+
+            <tr>        
+                <td class="tdcenter">6.</td>
+                <td class="tdright">Телефон</td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        placeholder="* Въведете задължителна стойност" 
+                        controlName="tel">
+                    </ngx-ctltextbox>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="tdcenter"></td>
+                <td colspan="2" class="tdright">
+                </td>
+            </tr>
+        
+ 
+            <tr>
+                <td class="tdcenter">7.</td>
+                <td class="tdright">
+                    Искам да сменя:
+                </td>
+                <td>
+                    <ngx-ctllist 
+                        [items]="vlistv7" 
+                        [formGroup]="form"
+                        placeholder="* Изберете задължителна стойност..." 
+                        [showabove]="true"
+                        controlName="v1">
+                    </ngx-ctllist>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="tdcenter">7.1.</td>
+                <td class="tdright">
+                    Брой уреди за смяна:
+                </td>  
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        placeholder="* Въведете задължителна стойност > 0" 
+                        controlName="v101">
+                    </ngx-ctltextbox>
+                    <!-- <ngx-ctlnumber
+                        class="leftinput"
+                        [formGroup]="form" 
+                        placeholder="* Въведете задължителна стойност" 
+                        maxlength="1"
+                        controlName="v101">
+                    </ngx-ctlnumber>   -->
+                </td>
+            </tr>
+
+            <tr>
+                <td class="tdcenter">8.</td>
+                <td class="tdright">
+                    Искам да заменя отоплителните си уреди с:
+                </td>
+                <td>
+                    <ngx-ctllist 
+                        [items]="vlistv8" 
+                        [formGroup]="form" 
+                        placeholder="* Изберете задължителна стойност..." 
+                        [showabove]="true"
+                        controlName="v2">
+                    </ngx-ctllist>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdcenter">8.1.</td>
+                <td class="tdright">
+                    Брой уреди за монтаж:
+                </td>
+                <td>
+                    <ngx-ctltextbox 
+                        [formGroup]="form" 
+                        placeholder="* Въведете задължителна стойност > 0" 
+                        controlName="v201">
+                    </ngx-ctltextbox>
+                    <!-- <ngx-ctlnumber
+                         class="leftinput"
+                       [formGroup]="form" 
+                        placeholder="* Въведете задължителна стойност" 
+                        maxlength="1"
+                        controlName="v201">
+                    </ngx-ctlnumber>         -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

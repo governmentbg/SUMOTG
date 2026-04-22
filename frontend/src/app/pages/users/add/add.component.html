@@ -1,0 +1,187 @@
+<nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
+  <ul class="alert-message-list">
+    <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
+  </ul>
+</nb-alert>
+
+<nb-alert *ngIf="showMessages.success && messages?.length && !submitted" outline="success" role="alert">
+  <ul class="alert-message-list">
+    <li *ngFor="let message of messages" class="alert-message">{{ message }}</li>
+  </ul>
+</nb-alert>
+
+<nb-card >
+  <nb-card-header>Добавянe на потребител</nb-card-header>
+  <nb-card-body>  
+    <div [formGroup]="registerForm"  class="container-fluid " aria-labelledby="title">
+      <div class="row row-height  justify-content-md-center form-group">
+        <label for="input-name" class="col-sm-2 col-form-label">Потребител:</label>
+        <div class="col-sm-6">  
+          <input  nbInput fullWidth
+                autofocus
+                fieldSize="small"
+                id="input-name"
+                formControlName="login"
+                [status]="login.dirty ? (login.invalid  ? 'danger' : 'success') : ''"
+                [attr.aria-invalid]="login.invalid && login.touched ? true : null"
+                placeholder="">
+          <ngx-validation-message label="Login"
+                [showMinLength]="login?.hasError('minlength') && login.touched"
+                [showMaxLength]="login?.hasError('maxlength') && login.touched"
+                [minLength]="minLoginLength"
+                [maxLength]="maxLoginLength"
+                [showRequired]="login?.errors?.required && login.touched">
+          </ngx-validation-message>
+        </div>
+      </div>
+
+      <div class="row row-height  justify-content-md-center form-group">
+        <label for="input-email" class="col-sm-2 col-form-label">Имейл адрес:</label>
+        <div class="col-sm-6">  
+          <input  nbInput fullWidth
+                fieldSize="small"
+                id="input-email"
+                formControlName="email"
+                [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : ''"
+                [attr.aria-invalid]="email.invalid && email.touched ? true : null"
+                placeholder="">
+          <ngx-validation-message label="Email address" 
+              [showPattern]="email?.hasError('pattern') && email.touched"
+              [showRequired]="email?.errors?.required && email.touched">
+          </ngx-validation-message>
+        </div>
+      </div>
+
+      <div class="row row-height  justify-content-md-center form-group">
+        <label for="input-email" class="col-sm-2 col-form-label">Телефон:</label>
+        <div class="col-sm-6">  
+          <input  nbInput fullWidth
+                fieldSize="small"
+                id="input-email"
+                formControlName="telefon"
+                [status]="telefon.dirty ? (telefon.invalid  ? 'danger' : 'success') : ''"
+                [attr.aria-invalid]="telefon.invalid && telefon.touched ? true : null"
+                placeholder="">
+        </div>
+      </div>
+
+      <div class="row row-height  justify-content-md-center form-group">
+        <label for="input-password" class="col-sm-2 col-form-label">Парола:</label>
+        <div class="col-sm-6">  
+          <input  nbInput fullWidth
+                fieldSize="small"
+                id="input-password"
+                formControlName="password"
+                type="password"
+                [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : ''"
+                placeholder="">
+          <ngx-validation-message label="Password" [showMinLength]="password?.hasError('minlength') && password.touched"
+            [showMaxLength]="password?.hasError('maxlength') && password.touched"
+            [showRequired]="password?.errors?.required && password.touched"
+            [minLength]="minLength"
+            [maxLength]="maxLength"></ngx-validation-message>
+        </div>
+      </div> 
+
+      <div class="row row-height  justify-content-md-center form-group">
+        <label for="input-re-password" class="col-sm-2 col-form-label">Потвърди паролата:</label>
+        <div class="col-sm-6">  
+          <input  nbInput fullWidth
+                fieldSize="small"
+                id="input-re-password"
+                formControlName="confirmPassword"
+                type="password"
+                [status]="confirmPassword.dirty ? (confirmPassword.invalid || password.value !== confirmPassword.value  ? 'danger' : 'success') : ''"
+                placeholder="">
+          <ngx-validation-message label="Confirm Password"
+            [showMinLength]="confirmPassword?.hasError('minlength') && confirmPassword.touched"
+            [showMaxLength]="confirmPassword?.hasError('maxlength') && confirmPassword.touched"
+            [showRequired]="confirmPassword?.errors?.required && confirmPassword.touched"
+            [minLength]="minLength"
+            [maxLength]="maxLength"></ngx-validation-message>
+          <p class="caption status-danger" *ngIf="password.value !== confirmPassword.value">
+              Не съвпадат паролите!
+          </p>
+        </div>
+      </div>  
+
+      <div class="row justify-content-md-center">
+      </div>  
+
+      <div class="row row-height  justify-content-md-center form-group">
+        <label for="select-role" class="col-sm-2 col-form-label">Роля:</label>
+        <div class="col-sm-6">  
+          <nb-select #select1
+            id="select-role"
+            size="small"
+            shape="rectangle"
+            fullWidth="true"
+            placeholder="Изберете..." 
+            formControlName="roleid">
+                <nb-option *ngFor="let r of roles" 
+                            value="{{r.id}}">
+                        {{r.name}}
+                </nb-option>
+          </nb-select>
+        </div>
+      </div>
+
+      <div class="row row-height  justify-content-md-center form-group">
+        <label for="select-scope" class="col-sm-2 col-form-label">Обхват:</label>
+        <div class="col-sm-6">  
+          <nb-select #select2
+            id="select-scope"
+            size="small"
+            shape="rectangle"
+            fullWidth="true"
+            formControlName="scopeid"
+            placeholder="Изберете..." >
+                <nb-option *ngFor="let r of scopes" 
+                            value="{{r.id}}">
+                        {{r.name}}
+                </nb-option>
+          </nb-select>
+        </div>
+      </div>
+      
+      <div [hidden]="registerForm.get('scopeid').value === '2'"  class="row row-height  justify-content-md-center form-group">
+        <label for="select-raion" class="col-sm-2 col-form-label">Район</label>
+        <div class="col-sm-6">  
+          <nb-select #select2
+              id="select-raion"
+              size="small"
+              shape="rectangle"
+              fullWidth="true"
+              formControlName="raionid"
+              placeholder="Изберете..." >
+                  <nb-option *ngFor="let r of raioni" 
+                              value="{{r.nkod}}">
+                          {{r.name}}
+                  </nb-option>
+          </nb-select>
+        </div>
+      </div>  
+    </div>
+  </nb-card-body>
+
+  <nb-card-footer>   
+    <div class="offset-md-7 col-sm-3 offset-md-2" align="right">
+      <button nbButton fullWidth 
+          status="primary" 
+          [disabled]="submitted 
+              || !registerForm.valid 
+              || roleid.value ==='0' 
+              || scopeid.value === '0'
+              || scopeid.value === '1' && raionid.value === '0'
+              || password.value !== confirmPassword.value"
+          [class.btn-pulse]="submitted" 
+          (click)="register()">
+            Добави
+      </button>
+    </div>    
+  </nb-card-footer>
+</nb-card>
+
+<section class="sign-in-or-up" aria-label="Sign in or sign up">
+  <p><a href="javascript:void(0)" class="text-link" (click)="back()">Назад</a></p>
+</section>

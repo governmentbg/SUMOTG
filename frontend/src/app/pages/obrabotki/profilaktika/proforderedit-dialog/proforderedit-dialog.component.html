@@ -1,0 +1,115 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+
+<nb-card>
+    <nb-card-header>
+        {{item.unom}} - {{item.ime}}
+    </nb-card-header>
+    
+    <nb-card-body>
+        <div class="dialog-container">
+            <table  class="page1">
+                <colgroup>
+                    <col span="1" style="width: 40%;">
+                    <col span="1" style="width: 60%;">
+                </colgroup>
+            
+                <tbody>
+                    <tr>
+                        <td class="tdright">
+                            Уред
+                        </td>
+                        <td>
+                            {{item.ured}}    
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tdright">
+                            Модел
+                        </td>
+                        <td>
+                            {{item.model}}    
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tdright">
+                                Статус
+                            </td>
+                            <td>
+                            <ngx-ctllist
+                                [items] = vliststatus
+                                [formGroup]="form" 
+                                controlName="statusPF">
+                            </ngx-ctllist>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tdright">
+                            Брой
+                        </td>
+                        <td>
+                            <ngx-ctltextbox
+                                [formGroup]="form"
+                                controlName="broi"
+                                isNumberOnly="true"
+                                maxlength="10">
+                            </ngx-ctltextbox>  
+                        </td>
+                    </tr>                                       
+
+                    <tr>
+                        <td class="tdright">
+                            Отчетна дата
+                        </td>
+                        <td>
+                            <ngx-ctldatepicker
+                                [formGroup]="form" 
+                                controlName="otchdata">
+                            </ngx-ctldatepicker>                               
+                        </td>
+                    </tr>                                       
+
+                    <tr>
+                        <td class="tdright">
+                            Коментар
+                        </td>
+                        <td>
+                            <ngx-ctltextarea
+                                [formGroup]="form" 
+                                rows = "5" 
+                                controlName="note">
+                            </ngx-ctltextarea>        
+                        </td>
+                    </tr>                                       
+            
+
+                </tbody>  
+            </table>
+        </div>
+    </nb-card-body>
+
+    <nb-card-footer>
+        <div  align="end">
+            <button nbButton 
+                    type="button"
+                    status="primary"  
+                    [disabled]="!form.valid"
+                    (click) = "save()">
+                Запис
+            </button>
+            <button nbButton class="btn-close" status="info" (click)="dismiss()" hero>
+                Затвори
+            </button>
+        </div>
+    </nb-card-footer>    
+</nb-card>

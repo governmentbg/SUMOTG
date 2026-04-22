@@ -1,0 +1,21 @@
+<form [formGroup]="form">
+        <nb-form-field>
+                <input
+                        nbInput
+                        type="text" 
+                        fieldSize="small"
+                        [disabled]="disable"
+                        [matDatepicker]="formpicker"
+                        [formControl]="control"
+                        [placeholder]="placeholder"/>
+                
+                <mat-datepicker-toggle
+                        nbSuffix
+                        nbButton
+                        ghost
+                        [disabled]="disable"
+                        [for]="formpicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #formpicker></mat-datepicker>
+        </nb-form-field>
+</form>

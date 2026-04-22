@@ -1,0 +1,21 @@
+<h6 class="content">Номенклатури</h6>
+
+<div class="content" fxLayout="row wrap" fxLayoutGap="10px grid">
+    <div class="content" 
+        fxFlex.md="25%" 
+        fxFlex.sm="33%" 
+        fxFlex.xs="100%" 
+        fxFlex ="20%" 
+
+        *ngFor="let item of items; let num = index">
+            <ngx-card 
+                [name] = ""
+                [descript] = "item.ime"
+                [nomcode] = "item.kodNmn"
+                [nomtype] = "item.tablicaVBazata"
+                [disable] = "isDisabled"
+            ></ngx-card>
+    </div>  
+</div>
+
+<router-outlet></router-outlet>

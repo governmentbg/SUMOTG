@@ -1,0 +1,46 @@
+
+<div class="add-ured-link" align="right">
+  <div class="btn-holder">
+      <button nbButton 
+            status="basic" 
+            [disabled] = "disabled"
+            (click)="addItem()">
+          <nb-icon 
+              icon="file-add-outline" 
+              [options]="{ animation: { type: 'zoom' } }">
+          </nb-icon>
+          Добави
+      </button>
+  </div>
+</div>
+
+<table  class="page4">
+    <colgroup>
+      <col span="1" style="width: 5%;">
+      <col span="1" style="width: 90%;">
+      <col span="1" style="width: 5%;">
+    </colgroup>
+
+    <tbody>
+      <tr  *ngFor = "let item of documenti.controls; let i = index;">
+        <td class="tdcenter">
+            {{i+1}}
+        </td>
+        <td>
+          <ngx-ctllist
+              [items] = vlistdocs
+              [formGroup]="item" 
+              [disable] = "disabled"   
+              controlName="id">
+          </ngx-ctllist>
+        </td>
+        <td class="tdcenter" (click)="removeItem(i)">
+            <nb-icon 
+                nbTooltip="Изтриване" 
+                nbTooltipPlacement="bottom"
+                icon="trash-outline">
+              </nb-icon>
+        </td>
+      </tr>  
+    </tbody>  
+</table>

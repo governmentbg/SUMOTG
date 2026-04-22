@@ -1,0 +1,140 @@
+<div>
+    <div class="row">
+        <div class="col-1">
+        </div>
+        <div class="col-2">
+            <img class="logoimg" src="assets/img/logo1.jpg"/>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2">
+            <img class="logoimg1" src="assets/img/logo2.jpg"/>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2">
+            <img class="logoimg" src="assets/img/logo3.jpg"/>
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-11 offset-1">
+            <div class="title-row">
+                Проект № BG16M1ОP002-5.003.0001-C01 „Подобряване качеството на атмосферния въздух 
+                в Столична община чрез подмяна на отоплителни устройства на твърдо гориво с 
+                екологични алтернативи”.
+            </div>
+        </div>
+    </div>    
+
+    <nb-card class="card-container">
+        <nb-card-body>
+            <div class="row" style="margin-bottom: 5px;">
+                <div class="col-2 offset-10">
+                    <nb-select
+                            #select
+                            size="small"
+                            shape="rectangle"
+                            fullWidth
+                            placeholder="Изберете..."
+                            [(selected)]="selectedPhase"
+                            (selectedChange)="changePhaseSelection($event)">
+                        <nb-select-label> Фаза: {{ selectedPhase }} </nb-select-label>
+                        <nb-option value="0"> Всички фази</nb-option>
+                        <nb-option value="1"> Фаза 1</nb-option>
+                        <nb-option value="2"> Фаза 2</nb-option>
+                    </nb-select> 
+                </div>    
+            </div>    
+
+            <div class="row" >
+                <div class="col-6">
+                    <table class="page1" 
+                        style='font-family:"Verdana", Courier, monospace; font-size:70%' >
+                        <colgroup>
+                            <col span="1" style="width: 3%;">
+                            <col span="1" style="width: 30%;">
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 10%;">
+                        </colgroup>
+
+                        <thead>
+                            <tr>
+                                <th> No </th>    
+                                <th> Район</th>    
+                                <th> Кандидати</th>    
+                                <th> Сключени договори</th>    
+                                <th> Монтирани уреди</th>    
+                            </tr>
+                        </thead>   
+
+                        <tbody>
+                            <tr *ngFor="let item of items1; let i =index">
+                                <td>
+                                    {{item.nkod}}
+                                </td>
+                                <td>
+                                    {{item.raion}}
+                                </td>
+                                <td class="tdright"> 
+                                    {{item.formulqri}}
+                                </td>
+                                <td class="tdright">
+                                    {{item.dogovori}}
+                                </td>
+                                <td class="tdright">
+                                    {{item.uredi}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-6">
+                    <table class="page1" 
+                        style='font-family:"Verdana", Courier, monospace; font-size:70%' >
+                        <colgroup>
+                            <col span="1" style="width: 3%;">
+                            <col span="1" style="width: 30%;">
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 10%;">
+                        </colgroup>
+
+                        <thead>
+                            <tr>
+                                <th> No </th>    
+                                <th> Район</th>    
+                                <th> Кандидати</th>    
+                                <th> Сключени договори</th>    
+                                <th> Монтирани уреди</th>    
+                            </tr>
+                        </thead>   
+
+                        <tbody>
+                            <tr *ngFor="let item of items2; let i =index"
+                                [ngClass]="{'title-row-bold' : item.nkod.length===0}">
+                                <td>
+                                    {{item.nkod}}
+                                </td>
+                                <td>
+                                    {{item.raion}}
+                                </td>
+                                <td class="tdright"> 
+                                    {{item.formulqri}}
+                                </td>
+                                <td class="tdright">
+                                    {{item.dogovori}}
+                                </td>
+                                <td class="tdright">
+                                    {{item.uredi}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>    
+        </nb-card-body>
+    </nb-card>
+</div>    

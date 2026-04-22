@@ -1,0 +1,29 @@
+@import 'src/app/@theme/styles/my.step-container';
+@import 'src/app/@theme/styles/my.accordion.tables';
+
+
+table.cell-header td { border: none; width:50%; padding: 0px;}
+
+table.cell-header td.tdcenter {
+    text-align: center;
+    vertical-align: middle;
+}  
+  
+
+.leftinput {
+    text-align: left !important;
+} 
+
+::ng-deep .swal2-container.swal2-center>.swal2-popup{
+    background-color: #a695ac !important;
+}
+
+::ng-deep .swal2-html-container {
+    color: white !important;
+}
+
+::ng-deep .swal2-title{
+    color: white !important;
+    size: 24px
+}
+

@@ -1,0 +1,8 @@
+<form>
+    <nb-radio-group 
+            [formControl]="control">
+            <nb-radio [value]="1"  class = "inline-radio" [disabled] ="control.disabled"> Да </nb-radio>
+            <nb-radio [value]="2"  class = "inline-radio" [disabled] ="control.disabled"> Не </nb-radio>
+            <nb-radio [value]="0"  class = "inline-radio" [disabled] ="control.disabled"> Без отговор </nb-radio>
+    </nb-radio-group>
+</form>

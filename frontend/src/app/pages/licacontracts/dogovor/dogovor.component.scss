@@ -1,0 +1,10 @@
+@import 'src/app/@theme/styles/my.accordion.tables';
+
+
+::ng-deep .swal2-container.swal2-center>.swal2-popup{
+    background-color: #a695ac !important;
+}
+
+::ng-deep .swal2-html-container, .swal2-title{
+    color: white !important;
+}

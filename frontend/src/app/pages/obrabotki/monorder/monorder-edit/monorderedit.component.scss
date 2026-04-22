@@ -1,0 +1,9 @@
+@import 'src/app/@theme/styles/my.accordion.tables';
+@import 'src/app/@theme/styles/my.accordion.step-container';
+
+::ng-deep .nb-theme-cosmic nb-stepper .step-content {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-bottom: 0px !important;
+  padding-top: 10px !important;
+}  

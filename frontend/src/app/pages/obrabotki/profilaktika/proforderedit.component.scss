@@ -1,0 +1,13 @@
+@import 'src/app/@theme/styles/my.tables';
+@import 'src/app/@theme/styles/my.host';
+
+::ng-deep .nb-theme-cosmic nb-stepper .step-content {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-bottom: 0px !important;
+  padding-top: 10px !important;
+}  
+
+nb-card {
+  margin-bottom: 0;
+}

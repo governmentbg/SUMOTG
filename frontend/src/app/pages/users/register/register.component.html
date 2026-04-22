@@ -1,0 +1,105 @@
+<div class="form-header-container">
+    <div fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex="85" fxLayoutAlign="start center">
+            <h6>Потребители</h6>
+        </div>
+        <div fxFlex="5" fxLayoutAlign="end center">
+            <nb-search 
+                type="rotate-layout"
+                hint="За търсене натиснете 'ENTER'"
+                placeholder="Търсене ...">
+            </nb-search>
+        </div>
+        <div fxFlex="10" fxLayoutAlign="end center">
+            <button nbButton 
+                    status="primary"
+                    (click)="addItem()"
+            >
+                <nb-icon 
+                    icon="plus-outline" 
+                    [options]="{ animation: { type: 'zoom' } }">
+                </nb-icon>
+                    Добави
+            </button>
+        </div>
+    </div>
+</div>
+
+<nb-card class="card-container">
+    <nb-card-body>
+        <table  class="page1">
+            <colgroup>
+                <col span="1" style="width: 5%;">
+                <col span="1" style="width: 25%;">
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 15%;">
+                <col span="1" style="width: 20%;">
+                <col span="1" style="width: 5%;">
+                <col span="1" style="width: 5%;">
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th> № </th>    
+                    <th> Потребител </th>    
+                    <th> Имейл адрес </th>
+                    <th> Телефон </th>
+                    <th> Район </th>
+                    <th> </th>    
+                    <th> </th>    
+                </tr>
+            </thead>        
+            <tbody>
+                <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                    <td class="tdright" [ngClass]="{'disabledRow' : item.status===0}">
+                        {{item.id}}
+                    </td>
+                    <td [ngClass]="{'disabledRow' : item.status===0}">
+                        {{item.login}}
+                    </td>
+                    <td [ngClass]="{'disabledRow' : item.status===0}">
+                        {{item.email}}
+                    </td>
+                    <td [ngClass]="{'disabledRow' : item.status===0}">
+                        {{item.telefon}}
+                    </td>
+                    <td [ngClass]="{'disabledRow' : item.status===0}">
+                        {{findRaionName(item.raionid)}}
+                    </td>                    
+                    <td class="tdcenter">
+                        <nb-icon icon="edit-outline" (click)="editItem(item)"></nb-icon>
+                    </td>
+                    <td class="tdcenter">
+                        <nb-icon icon="trash-outline" (click)="removeItem(item)">
+                    </nb-icon></td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-card-body>
+  </nb-card>
+  <div class="row" >
+    <div class="col-sm-2">  
+        <button nbButton 
+                (click)="exportexcel()"
+                status="primary">
+                <i class="far fa-file-excel" 
+                    style="font-size:16px;color:white;margin-right:3px;">
+                </i>
+                Експорт
+        </button>
+    </div>
+
+    <div class="col-sm-10" >  
+        <ngb-pagination 
+            class="d-flex justify-content-end ngb-pagination-custom" 
+            [collectionSize]="items.length" 
+            [(page)]="page" 
+            [maxSize]="5" 
+            [pageSize]="pageSize"
+            [rotate]="true" 
+            [ellipses]="false" 
+            [boundaryLinks]="true">
+        </ngb-pagination>
+    </div>
+</div>
+

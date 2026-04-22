@@ -1,0 +1,64 @@
+<div class="div-container">
+    <table  class="page1">
+        <colgroup>
+            <col span="1" style="width: 2%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 3%;">
+            <col span="1" style="width: 8%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+            <!-- <col span="1" style="width: 10%;"> -->
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 10%;">
+        </colgroup>
+    
+        <thead>
+            <tr>
+                <th> №</th>    
+                <th> Ид. № по ОПОС</th>    
+                <th> ЕИК на изпълнител </th>    
+                <th> Имена</th>    
+                <th> Уред</th>    
+                <th> Брой</th>    
+                <th> Монтиран на дата</th>    
+                <th> Модел</th>    
+                <th> Сериен №</th>    
+                <th> Гар. карта №</th>    
+                <th> Дата гар. карта</th>    
+                <!-- <th> Прокол №</th>     -->
+                <th> Дата на протокола</th>    
+                <th> Бележка</th>    
+                <th> Статус монтаж</th>    
+                <th> Забележка 2</th>    
+            </tr>
+        </thead>        
+    
+        <tbody>
+            <tr *ngFor="let item of porychkaitems?.controls; let i = index;">
+                <td> {{i+1}}</td>
+                <td> {{item.get('unom').value}}</td>
+                <td> {{item.get('ident').value}}</td>
+                <td> {{item.get('ime').value}}</td>
+                <td> {{item.get('uredname').value}}</td>                                    
+                <td> {{item.get('broi').value}}</td>
+                <td> {{item.get('mondata').value | dateFormatPipe}}</td>
+                <td> {{item.get('model').value}}</td>
+                <td> {{item.get('fabrnomer').value}}</td>
+                <td> {{item.get('garkarta').value}}</td>
+                <td> {{item.get('gardata').value | dateFormatPipe}}</td>
+                <!-- <td> {{item.get('protnomer').value}}</td> -->
+                <td> {{item.get('protdata').value | dateFormatPipe}}</td>
+                <td> {{item.get('note2').value}}</td>
+                <td> {{getStatusMontazjName(item.get('status_m').value)}}</td>
+                <td> {{item.get('note3').value}}</td>
+            </tr>
+        </tbody>  
+    </table>
+</div>   

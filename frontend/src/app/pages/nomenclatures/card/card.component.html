@@ -1,0 +1,19 @@
+<nb-card size="tiny"        
+    class = "card-container">
+    <nb-card-header>
+      <nb-icon icon="file-text-outline"></nb-icon>
+    </nb-card-header>
+
+    <nb-card-body>
+      {{descript}}
+    </nb-card-body>
+    
+    <nb-card-footer>
+      <div card-actions align="end">
+        <button nbButton  status="basic" (click)="editCard()">
+          <nb-icon icon="edit-outline"></nb-icon>
+          Преглед
+        </button>
+      </div>        
+    </nb-card-footer>
+</nb-card>

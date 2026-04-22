@@ -1,0 +1,175 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+    <div class="row" style="width: 99%;">
+        <div class="col-sm-5">  
+            <h6>{{filter.descript}}</h6>
+        </div>
+
+        <div class="col-sm-6">
+            <p style="line-height: 10px;"><small>Резултат от търсенето за:</small></p> 
+            <div class="row">
+                <div class="col-sm-12">
+                    <p style="line-height: 10px;"><small>{{filter.txtfilter}}</small></p>                
+                </div>
+            </div>
+        </div>
+
+        <div align="right" class="col-sm-1 counter">
+            <h3 class="counter">{{countItems}}</h3>
+        </div>
+    </div>
+
+
+    <nb-card class="card-container">
+        <nb-card-body>
+            <div class="row">
+                <table class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 15%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 15%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th rowspan="2"> Име на фирма </th>    
+                            <th rowspan="2"> Договор</th>    
+                            <th rowspan="2"> Код на уред</th>    
+                            <th rowspan="2"> Уред</th>    
+                            <th rowspan="1"> Средно тегло</th>    
+                            <th colspan=2> Включени в Техн. спец.</th>    
+                            <th> Включени в поръчка</th>    
+                            <th> Изключени от поръчка чрез График/Отчет</th>    
+                            <th> Остатък за поръчка</th>    
+                            <th colspan=2> Демонтирани</th>    
+                            <th colspan=2> Остатък за демонтаж по договор</th>    
+                        </tr>
+                        <tr>
+                            <th> кг </th>    
+                            <th> Брой </th>    
+                            <th> Общо тегло</th>    
+                            <th> Брой </th>    
+                            <th> Брой </th>    
+                            <th> Брой </th>    
+                            <th> Брой </th>    
+                            <th> Общо тегло</th>    
+                            <th> Брой </th>    
+                            <th> Общо тегло</th>    
+                        </tr>
+                    </thead>   
+
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                            <td>{{item.ime}}</td>
+                            <td class="link">
+                                <p>
+                                    <a href="javascript:void(0)" 
+                                        class="text-link" 
+                                        (click)="editDogovor(item)">
+                                            {{item.dogovor}}
+                                    </a>
+                                </p>
+                            </td>
+                            <td>
+                                {{item.kodured}}
+                            </td>
+                            <td>
+                                {{item.imeured}}
+                            </td>
+                            <td class="tdright">
+                                {{item.edcena | number : '1.2-2'}}
+                            </td>
+                            <td class="tdright">
+                                {{item.tspbroi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.tsptotal | number : '1.2-2'}}
+                            </td>
+                            <td class="tdright">
+                                {{item.ordbroi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.rembroi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.tspbroi - item.ordbroi + item.rembroi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.monbroi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.montotal | number : '1.2-2'}}
+                            </td>
+                            <td class="tdright">
+                                {{item.restbroi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.resttotal | number : '1.2-2'}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
+        </nb-card-body>        
+    </nb-card>    
+  
+    <div class="row" >
+        <div class="col-sm-4">  
+            <button nbButton 
+                (click)="back()"
+                style="margin-right: 5px;"              
+                status="primary">
+                <nb-icon icon="funnel-outline"></nb-icon>                
+                    Филтър
+            </button>
+
+
+            <button nbButton 
+                    (click)="exportexcel()"
+                    status="primary">
+                    <i class="far fa-file-excel" 
+                        style="font-size:16px;color:white;margin-right:3px;">
+                    </i>
+                    Експорт
+            </button>
+
+        </div>
+        <div class="col-sm-8" >  
+            <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="items.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+            </ngb-pagination>
+        </div>
+    </div>
+
+    <!-- <div id="print-section" [style.display]="'none'"> 
+        <ngx-print-spravka2
+            [items] ="realItems"
+            [descript] = "filter.descript">
+        </ngx-print-spravka2>
+    </div> -->

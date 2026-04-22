@@ -1,0 +1,143 @@
+
+.nb-theme-cosmic nb-stepper .step-content {
+  padding: 1.25rem;
+  width: 100% !important;
+}
+
+.button-next {
+  margin-left :5px; 
+  margin-right:5px 
+}
+
+
+//razmer na step conteinera
+/* For 1024 Resolution */  
+@media only screen   
+and (min-device-width : 768px)   
+and (max-device-width : 1024px)  {
+  .step-container {
+    height: 35vw;
+    overflow-x:hidden;
+    overflow-y:auto
+  }
+
+  //next/prev butoni
+  .btn-container {
+    width: 74vw;
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+  }
+
+}
+
+/* For 1366/768 Resolution */  
+@media only screen   
+and (min-width: 1050px) and (max-width: 1280px) {
+  .step-container {
+    height: 36vw;
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+
+  //next/prev butoni
+  .btn-container {
+    width: 75vw;
+    position: fixed;
+    bottom: 70px;
+    right: 40px;
+  }
+
+}
+
+/* For 1366/1040 Resolution */  
+@media only screen  and (min-width: 1300px) and (max-width: 1366px) {
+  .step-container {
+    height: 22vw;
+    padding: 0px;
+    overflow-x:hidden;
+    overflow-y:auto
+  }
+
+  //next/prev butoni
+  .btn-container {
+    width: 74.7vw;
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+  }
+
+}
+
+
+@media only screen  and (min-width: 1400px) and (max-width: 1450px) 
+{ 
+  .step-container {
+    height: 35vw;
+    overflow-x:hidden;
+    overflow-y:auto
+  }
+
+  //next/prev butoni
+  .btn-container {
+    width: 77vw;
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+  }
+
+}
+
+//1600x1050
+@media only screen and (min-width: 1500px) and (max-width: 1680px) 
+{ 
+  .step-container {
+    height: 31vw;
+    overflow-x:hidden;
+    overflow-y:auto
+  }
+
+  //next/prev butoni
+  .btn-container {
+    width: 81vw;
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+  }
+
+}
+
+@media (min-width: 1700px) {
+    .step-container {
+      height: 29vw;
+      overflow-x:hidden;
+      overflow-y:auto
+    }
+
+  //next/prev butoni
+  .btn-container {
+    width: 83vw;
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+  }
+}
+
+
+  // scrollbar style
+/* width */
+.step-container ::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.step-container ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.step-container ::-webkit-scrollbar-thumb {
+  background: rgb(137, 99, 202);
+  border-radius: 10px;
+}

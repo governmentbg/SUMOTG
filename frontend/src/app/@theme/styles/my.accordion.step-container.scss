@@ -1,0 +1,140 @@
+//razmer na step conteinera
+/* For 1024 Resolution */  
+@media only screen   
+and (min-device-width : 768px)   
+and (max-device-width : 1280px)  {
+  .step-container {
+    height: 36.5vw;
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
+
+  .step-container-1 {
+    height: 33vw;
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
+
+  //next/prev butoni
+  .btn-container {
+    width: 74vw;
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+  }
+
+}
+
+/* For 1366 Resolution */  
+@media only screen  and (min-width: 1300px) and (max-width: 1366px) {
+  .step-container {
+    height: 20vw;
+    overflow-x: hidden;
+    overflow-y:auto
+  }
+
+  .step-container-1 {
+    height: 17vw;
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
+
+  //next/prev butoni
+  .btn-container {
+    width: 74vw;
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+  }
+
+}
+
+@media only screen  and (min-width: 1400px) and (max-width: 1450px) 
+{ 
+  .step-container {
+    height: 28vw;
+    padding: 0px;
+    overflow-x: hidden;
+    overflow-y:auto
+  }
+
+  .step-container-1 {
+    height: 25vw;
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
+
+  //next/prev butoni
+  .btn-container {
+    width: 72vw;
+    position: fixed;
+    bottom: 70px;
+    right: 34px;
+  }
+
+}
+
+
+//1600x1050
+@media only screen and (min-width: 1500px) and (max-width: 1680px) 
+{ 
+  .step-container {
+    height: 29vw;
+    overflow-x: hidden;
+    overflow-y:auto
+  }
+
+  .step-container-1 {
+    height: 26vw;
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
+
+  //next/prev butoni
+  .btn-container {
+    width: 70vw;
+    position: fixed;
+    bottom: 120px;
+    right: 50px;
+  }
+
+}
+
+@media (min-width: 1700px) {
+    .step-container {
+      height: 27vw;
+      overflow-x: hidden;
+      overflow-y:auto
+    }
+
+    .step-container-1 {
+      height: 24vw;
+      overflow-y:auto;
+      overflow-x: hidden;
+    }
+  
+  //next/prev butoni
+  .btn-container {
+    width: 70vw;
+    position: fixed;
+    bottom: 120px;
+    right: 50px;
+  }
+}
+
+  /* width */
+  .step-container ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  .step-container ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  .step-container ::-webkit-scrollbar-thumb {
+    background: rgb(137, 99, 202);
+    border-radius: 10px;
+  }

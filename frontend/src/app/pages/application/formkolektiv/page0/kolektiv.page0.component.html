@@ -1,0 +1,62 @@
+<div class="row status">
+  <label  align="right" for="input-name" 
+        class="offset-md-4 col-sm-4" style="margin-top:5px">
+        Статус формуляр:
+  </label>
+  <div class="col-sm-4">               
+    <ngx-ctllist
+        [items] = vliststatus
+        [formGroup]="form" 
+        (selectionChanged)="onStatusChanged($event)" 
+        controlName="statusF">
+    </ngx-ctllist>
+  </div>
+</div>
+
+<table  class="page1">
+    <colgroup>
+      <col span="1" style="width: 60%;">
+      <col span="1" style="width: 40%;">
+    </colgroup>
+
+    <tbody>
+      <tr>
+        <td class="tdright">
+              Индивидуален регистрационен номер при входирането и завеждането 
+              в общината на всеки отделен формуляр за кандидатстване
+          </td>
+          <td>
+            {{form.get('unom').value}}
+          </td>
+      </tr>
+      <tr>
+        <td class="tdright">
+            Коментар
+        </td>
+        <td>
+            <ngx-ctltextarea
+                [formGroup]="form" 
+                rows = "5" 
+                controlName="comentar">
+            </ngx-ctltextarea>        
+        </td>
+      </tr>                                       
+
+    </tbody>  
+</table>
+
+
+<div *ngIf="form.get('statusF').value  === '2'" 
+    class="row btn-spravka">
+    <div  align="right" class="col-12">
+        <button nbButton 
+            status="basic" 
+            (click)="printSpravkaKandidat()">
+            <nb-icon 
+                icon="file-outline" 
+                [options]="{ animation: { type: 'zoom' } }">
+            </nb-icon>
+              Бланка за Кандидата
+        </button>
+    </div>
+</div>     

@@ -1,0 +1,37 @@
+@import 'src/app/@theme/styles/my.host';
+@import 'src/app/@theme/styles/my.tables';
+@import 'src/app/@theme/styles/my.step-container';
+
+:host {
+  display: block;
+  max-height: 47rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.tdright {
+  text-align: right !important;
+  padding-right: 10px !important;
+}
+
+.title-row {
+  padding-top:10px;
+  padding-right: 60px;
+  font-family: "Open Sans", sans-serif; 
+  font-size:80%;
+  text-align: center;
+}
+
+.title-row-bold {
+  font-weight:bold;
+}
+
+.logoimg {
+  max-width: 100%;
+  height: auto;
+}
+
+.logoimg1 {
+  width: auto;
+  max-height: 100%;
+}

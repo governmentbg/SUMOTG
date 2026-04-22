@@ -1,0 +1,30 @@
+﻿@media print {
+    .noPrint {
+        display: none;
+    }
+
+    @page {
+        size: A4 landscape !important;
+    }
+
+    body {
+        color: #000;
+        background-color: #fff;
+    }
+
+    header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
+        display: none;
+    }
+}
+
+.container-landscape {
+    position: relative;
+    margin: 5px auto;
+    background-color: white;
+    padding: 20px;
+    width: 1200px;
+    min-height: 750px;
+}
+
+
+

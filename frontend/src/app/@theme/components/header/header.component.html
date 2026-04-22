@@ -1,0 +1,113 @@
+<div class="header-container">
+  <div class="logo-container">
+    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+      <nb-icon icon="menu-2-outline"></nb-icon>
+    </a>
+    <a class="logo" routerLink="/" (click)="navigateHome()">ЕкоУРЕДИ</a>
+    <a class="text-link">{{dbname}}</a>
+  </div>
+</div>
+
+<div class="header-container">
+  <nb-actions size="medium">
+    <nb-action class="control-item" title="Формуляри - физ.лица">
+      <a routerLink="register/regfilter/1">
+        <nb-icon
+          pack="far"
+          icon="file"
+          style="font-size: 30px; color: rgb(191, 197, 216); margin-right: 3px"
+        ></nb-icon>
+      </a>
+    </nb-action>
+
+    <nb-action class="control-item" title="Формуляр - колективи">
+      <a routerLink="register/regfilter/2">
+        <nb-icon
+          pack="far"
+          icon="copy"
+          style="font-size: 30px; color: rgb(191, 197, 216); margin-right: 3px"
+        ></nb-icon>
+      </a>
+    </nb-action>
+
+   <nb-action class="control-item" title="Формуляр - юрид.лица">
+      <a routerLink="register/regfilter/3">
+        <nb-icon
+          pack="far"
+          icon="file-alt"
+          style="font-size: 30px; color: rgb(191, 197, 216); margin-right: 3px"
+        ></nb-icon>
+      </a>
+    </nb-action>
+
+    <nb-action class="control-item" title="Договори лица">
+      <a routerLink="register/regfilter/4">
+        <nb-icon
+          pack="fas"
+          icon="file-contract"
+          style="font-size: 30px; color: rgb(191, 197, 216); margin-right: 3px"
+        ></nb-icon>
+      </a>
+    </nb-action>
+
+    <nb-action *ngIf="canShowItem" class="control-item" title="Поръчки - монтаж">
+      <a routerLink="obrabotki/monorder">
+        <nb-icon icon= 'repeat-outline'></nb-icon>
+      </a>
+    </nb-action>
+
+    <nb-action *ngIf="canShowItem" class="control-item" title="Поръчки - демонтаж">
+      <a routerLink="obrabotki/demorder">
+        <nb-icon icon="menu1" pack="tbsoft"></nb-icon>    
+      </a>
+    </nb-action>
+
+    <nb-action class="control-item" title="Справки">
+      <a routerLink="spravki">
+        <nb-icon
+          pack="fas"
+          icon="chart-line"
+          style="font-size: 30px; color: rgb(191, 197, 216); margin-right: 3px"
+        ></nb-icon>
+      </a>
+    </nb-action>
+  </nb-actions>
+</div>
+
+<div class="header-container" align="right">
+
+   <label> Избрана фаза: {{ faza }} </label>
+ <!--
+   <nb-select
+    #select
+    size="small"
+    shape="rectangle"
+    fullWidth
+    placeholder="Изберете..."
+    [(selected)]="selectedPhase"
+    (selectedChange)="changePhaseSelection($event)"
+  >
+    <nb-select-label> Избрана фаза: {{ selectedPhase }} </nb-select-label>
+
+    <nb-option value="1"> Фаза 1</nb-option>
+    <nb-option value="2"> Фаза 2</nb-option>
+  </nb-select> -->
+</div>
+
+<div class="header-container">
+  <nb-user
+    class="user-action"
+    [name]="user?.login"
+    [title]="user?.email"
+    [onlyPicture]="userPictureOnly"
+    [showInitials]="userShowInitials"
+    size="large"
+    shape="round"
+    [badgeText]="userTasks"
+    badgeStatus="success"
+    badgePosition="bottom right"
+    [nbContextMenu]="userMenu"
+    nbContextMenuTag="bottom"
+  >
+  </nb-user>
+</div>

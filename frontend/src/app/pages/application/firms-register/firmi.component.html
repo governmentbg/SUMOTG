@@ -1,0 +1,99 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+<div class="form-header-container">
+    <div class="row col-nopadding justify-content-md-center">
+        <div class="col-sm-9">
+            <h6>Списък юридически лица</h6>
+        </div>
+        
+        <div class="col-sm-1">
+            <nb-search 
+                type="rotate-layout"
+                hint="За търсене натиснете 'ENTER'"
+                placeholder="Търсене ...">
+            </nb-search>
+        </div>
+
+        <div align="right" class="col-sm-1 counter">
+            <h3 class="counter">{{countItems}}</h3>
+        </div>        
+    </div>
+</div>
+
+<nb-card class="card-container">
+    <nb-card-body>
+        <table  class="page1">
+            <colgroup>
+                <col span="1" style="width: 15%;">
+                <col span="1" style="width: 10%;">
+                <col span="1" style="width: 40%;">
+                <col span="1" style="width: 10%;">
+                <col span="1" style="width: 10%;">
+                <col span="1" style="width: 5%;">
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th> Уник.рег.No</th>    
+                    <th> БУЛСТАТ</th>    
+                    <th> Наименование</th>    
+                    <th> Статус на формуляр</th>    
+                    <th> Договор</th>    
+                    <th> </th>    
+                </tr>
+            </thead>       
+            <tbody>
+                <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                    <td>{{item.unom}}</td>
+                    <td>{{item.ident}}</td>
+                    <td>{{item.ime}}</td>
+                    <td>{{item.statusF}}</td>
+                    <td>{{item.statusDL}}</td>
+                    
+                    <td class="tdcenter">
+                        <nb-icon icon="edit-outline" (click)="editItem(item)"></nb-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-card-body>
+  </nb-card>
+  
+  <div class="row col-nopadding justify-content-md-center">
+    <div class="col-sm-2 col-nopadding" >  
+        <p class="link">
+            <a href="javascript:void(0)" class="text-link" (click)="back()">
+                    Назад
+            </a>
+        </p>
+    </div>      
+    
+    <div class="col-sm-7">
+        <p *ngIf = "filter.txtfilter.length>0" style="line-height: 10px;"><small>Резултат от търсенето за:</small></p> 
+        <div class="row">
+            <div class="col-sm-12">
+                <p style="line-height: 10px;"><small>{{filter.txtfilter}}</small></p>                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-nopadding" align="right">      
+        <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="items.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+        </ngb-pagination>
+    </div>      
+</div>      

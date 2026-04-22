@@ -1,0 +1,48 @@
+<div class="div-container">
+    <table  class="page1">
+        <colgroup>
+            <col span="1" style="width: 2%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 3%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 8%;">
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 3%;">
+        </colgroup>
+    
+        <thead>
+            <tr>
+                <th> №</th>    
+                <th> Ид. № по ОПОС</th>    
+                <th> ЕИК на изпълнител </th>    
+                <th> Имена</th>    
+                <th> Уред</th>    
+                <th> Брой</th>    
+                <th> Статус демонтаж</th>    
+                <th> Демонтиран на дата</th>    
+                <th> Забележка</th>    
+                <th> Снимка</th>    
+            </tr>
+        </thead>        
+    
+        <tbody>
+            <tr *ngFor="let item of porychkaitems?.controls; let i = index;">
+                <td> {{i+1}}</td>
+                <td> {{item.get('unom').value}}</td>
+                <td> {{item.get('ident').value}}</td>
+                <td> {{item.get('ime').value}}</td>
+                <td> {{item.get('uredname').value}}</td>                                    
+                <td> {{item.get('broi').value}}</td>
+                <td> {{getStatusMontazjName(item.get('status_m').value)}}</td>
+                <td> {{item.get('mondata').value | dateFormatPipe}}</td>
+                <td> {{item.get('note2').value}}</td>
+                <td>
+                    <img *ngIf="item.get('safeurl')" [src]="item.get('safeurl').value" alt="" class="fit-picture">
+                </td>
+            </tr>
+        </tbody>  
+    </table>
+</div>   

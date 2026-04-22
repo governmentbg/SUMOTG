@@ -1,0 +1,199 @@
+
+<div class="form-header-container">
+  <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex="90" fxLayoutAlign="start center">
+        <h6>Физически лица - {{name}} [{{realunom}}]</h6>
+      </div>
+      <div fxFlex="10" fxLayoutAlign="end center" style="padding-bottom: 5px;">
+          <button nbButton
+                  [disabled]="click"
+                  status="primary" 
+                  (click)="save()" >
+            <nb-icon 
+                icon="save-outline" 
+                [options]="{ animation: { type: 'zoom' } }">
+            </nb-icon>
+              Запис
+          </button>
+      </div>
+  </div>
+</div>
+
+<form [formGroup]="mainForm" >
+  <nb-card class="card-container" style="height: 95%;">
+    <nb-card-body>
+        <nb-stepper #stepper orientation="vertical">
+          <nb-step label="Номер" >
+            <h6 class="h6-header">Индивидуален регистрационен номер</h6>
+            <div class="step-container">
+                <ngx-page0  
+                    [formGroup]="mainForm"
+                    [vliststatus]="vliststatus"
+                    (statusChanged)="statusChange($event)" 
+                    [raioni]="raioni">                  
+                </ngx-page0>
+                
+                <div class="btn-container" fxLayout="row" fxLayoutGap="20px">
+                  <div fxFlex="20" fxLayoutAlign="start left">
+                    <p><a href="javascript:void(0)" class="text-link" (click)="back()">Назад</a></p>
+                  </div>
+              
+                  <div fxFlex="80" fxLayoutAlign="end center">
+                      <button nbButton disabled nbStepperNext>Назад</button>
+                      <button nbButton nbStepperNext class="button-next">
+                          Напред
+                      </button>
+                  </div>                  
+                </div> 
+              </div>
+          </nb-step>
+
+          <nb-step label="Кандидат" >
+            <h6 class="h6-header">Лични данни</h6>
+            <div class="step-container">
+                <ngx-page1                  
+                    [raioni]="raioni"                 
+                    [statusF]="mainForm.get('statusF').value"
+                    [formGroup]="mainForm.get('lice')">
+                </ngx-page1>
+
+                <div class="btn-container" fxLayout="row" fxLayoutGap="20px">
+                  <div fxFlex="20" fxLayoutAlign="start left">
+                    <p><a href="javascript:void(0)" class="text-link" (click)="back()">Назад</a></p>
+                  </div>
+              
+                  <div fxFlex="80" fxLayoutAlign="end center">
+                    <button nbButton nbStepperPrevious>Назад</button>
+                    <button  nbButton nbStepperNext class="button-next">
+                        Напред
+                    </button>
+                  </div>                  
+                </div> 
+              </div>
+          </nb-step>
+      
+          <nb-step label="Жилище">
+            <h6 class="h6-header">Параметри на жилището, за което ще се заменя отоплителен уред</h6>
+            <div class="step-container">
+                <ngx-page2 
+                    [disabled] = "isDisabled"     
+                    [formGroup]="mainForm">
+                </ngx-page2>
+  
+                <div class="btn-container" fxLayout="row" fxLayoutGap="20px">
+                  <div fxFlex="20" fxLayoutAlign="start left">
+                    <p><a href="javascript:void(0)" class="text-link" (click)="back()">Назад</a></p>
+                  </div>
+              
+                  <div fxFlex="80" fxLayoutAlign="end center">
+                    <button nbButton nbStepperPrevious>Назад</button>
+                    <button  nbButton nbStepperNext class="button-next">
+                        Напред
+                    </button>
+                  </div>                  
+                </div> 
+              </div>
+          </nb-step>
+
+          <nb-step label="Домакинство">
+            <h6 class="h6-header">Въпроси за домакинството</h6>
+
+            <div class="step-container">
+                <ngx-page3 
+                    [disabled] = "isDisabled"     
+                    [formGroup]="mainForm">
+                </ngx-page3>
+
+                <div class="btn-container" fxLayout="row" fxLayoutGap="20px">
+                  <div fxFlex="20" fxLayoutAlign="start left">
+                    <p><a href="javascript:void(0)" class="text-link" (click)="back()">Назад</a></p>
+                  </div>
+              
+                  <div fxFlex="80" fxLayoutAlign="end center">
+                    <button nbButton nbStepperPrevious>Назад</button>
+                    <button nbButton nbStepperNext class="button-next">
+                        Напред
+                    </button>
+                  </div>                  
+                </div> 
+              </div>
+          </nb-step>
+
+          <nb-step label="Отоплителни у-ва">
+            <h6 class="h6-header">Отоплителни устройства, за които се кандидатства</h6>
+
+            <div class="step-container">
+                <ngx-page4 
+                    [disabled] = "isDisabled"     
+                    [formGroup]="mainForm">
+                </ngx-page4>
+
+                <div class="btn-container" fxLayout="row" fxLayoutGap="20px">
+                  <div fxFlex="20" fxLayoutAlign="start left">
+                    <p><a href="javascript:void(0)" class="text-link" (click)="back()">Назад</a></p>
+                  </div>
+              
+                  <div fxFlex="80" fxLayoutAlign="end center">
+                    <button nbButton nbStepperPrevious>Назад</button>
+                    <button nbButton nbStepperNext class="button-next">
+                        Напред
+                    </button>
+                  </div>                  
+               </div> 
+              </div>
+          </nb-step>
+
+          <nb-step label="Документи">
+            <h6 class="h6-header">Приложени документи към Формуляра за кандидатстване</h6>
+
+            <div class="step-container">
+              <ngx-page9 
+                  [disabled] = "isDisabled"     
+                  [formGroup]= "mainForm">
+              </ngx-page9>
+
+              <div class="btn-container" fxLayout="row" fxLayoutGap="20px">
+                <div fxFlex="20" fxLayoutAlign="start left">
+                  <p><a href="javascript:void(0)" class="text-link" (click)="back()">Назад</a></p>
+                </div>
+            
+                <div fxFlex="80" fxLayoutAlign="end center">
+                  <button nbButton nbStepperPrevious>Назад</button>
+                  <button nbButton nbStepperNext class="button-next">
+                    Напред
+                  </button>
+                </div>                  
+              </div> 
+            </div>
+          </nb-step>
+
+          <nb-step label="История">
+            <h6 class="h6-header">История</h6>
+
+            <div class="step-container">
+              <ngx-history 
+                  [items] = "historyItems"     
+                  [disabled] = "isDisabled"     
+                  [formGroup]="mainForm">
+              </ngx-history>
+
+              <div class="btn-container" fxLayout="row" fxLayoutGap="20px">
+                <div fxFlex="20" fxLayoutAlign="start left">
+                  <p><a href="javascript:void(0)" class="text-link" (click)="back()">Назад</a></p>
+                </div>
+            
+                <div fxFlex="80" fxLayoutAlign="end center">
+                  <button nbButton nbStepperPrevious>Назад</button>
+                  <button nbButton disabled nbStepperNext class="button-next">
+                      Напред
+                  </button>
+                </div>                  
+              </div> 
+            </div>
+          </nb-step>
+
+        </nb-stepper>
+      </nb-card-body>
+    </nb-card>
+    
+</form>    

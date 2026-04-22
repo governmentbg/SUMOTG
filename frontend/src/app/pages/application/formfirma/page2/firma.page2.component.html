@@ -1,0 +1,493 @@
+
+<table  class="page1">
+  <colgroup>
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 55%;">
+    <col span="1" style="width: 40%;">
+  </colgroup>
+
+  <tbody>
+    <tr>
+      <td class="tdcenter"> 9. </td>
+      <td class="tdalign">
+        Имотът, в който желая да земеня отоплителния уред на дърва и/или въглища, е:
+        </td>
+        <td colspan="2">   
+          <ngx-ctllist
+              [items] = vlistv9
+              [formGroup]="form"
+              controlName="nv9">
+          </ngx-ctllist>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 10. </td>
+      <td class="tdalign">
+          Сградата в която се намира имота, е:
+      </td>
+      <td colspan="2">   
+        <ngx-ctllist
+            [items] = vlistv10
+            [formGroup]="form" 
+            controlName="nv10">
+        </ngx-ctllist>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 11. </td>
+      <td class="tdalign">
+          Брой помещения в имота
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v11">
+        </ngx-ctlnumber>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 12. </td>
+      <td class="tdalign">
+        Брой помещения в имота, които ще се отопляват с новия отоплителен уред
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v12">
+        </ngx-ctlnumber>
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 13. </td>
+      <td class="tdalign">
+        Площ на имота (кв.метри)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          allowDecimals="true" 
+          controlName="v13">
+        </ngx-ctlnumber>
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 14. </td>
+      <td class="tdalign">
+        Площ на помещенията в имота, които ще се отопляват с 
+        новия отоплителен уред (кв.метри)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          allowDecimals="true" 
+          controlName="v14">
+        </ngx-ctlnumber>
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 15. </td>
+      <td class="tdalign">
+          Височина на таваните (сантиметри)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          allowDecimals="true" 
+          controlName="v15">
+        </ngx-ctlnumber>
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 16. </td>
+      <td class="tdalign">
+            Наличие на топлоизолация на стените на помещението, които ще се отопляват с новия отоплителен уред
+        </td>
+        <td colspan="2">   
+          <ngx-ctlyesno
+              [formGroup]="form" 
+              controlName="v16">
+          </ngx-ctlyesno>
+        </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 17. </td>
+      <td class="tdalign">
+         Наличие на дограма с добри топлотехнически характеристики в помещенията, които ще се отопляват с новия отоплителен уред
+      </td>
+      <td colspan="2">   
+        <ngx-ctlyesno
+              [formGroup]="form" 
+              controlName="v17">
+          </ngx-ctlyesno>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 18. </td>
+      <td class="tdalign">
+        Имотът се отоплява с:
+      </td>
+      <td colspan="2">   
+          <div align ="right" class="add-ured-link">
+            <p>
+                <a href="javascript:void(0)" 
+                  class="text-link" 
+                  (click)="addItem18()">
+                    Добави
+                </a>
+            </p>
+          </div>            
+      </td>
+    </tr>
+
+    <tr  *ngFor = "let item of olduredi.controls; let i = index;">
+      <td class="tdcenter">
+          18.{{i+1}}.
+      </td>
+      <td>
+        <ngx-ctllist
+            [items] = vlistv18            
+            [formGroup]="item"
+            [disable] = "disabled"     
+            controlName="id">
+        </ngx-ctllist>
+      </td>
+      <td>
+        <ngx-ctlnumber
+          [formGroup]="item" 
+          [disable] = "disabled"     
+          controlName="broi">
+        </ngx-ctlnumber>        
+      </td>
+      <td class="tdcenter">
+        <nb-icon 
+            nbTooltip="Изтриване" 
+            nbTooltipPlacement="bottom"
+            icon="trash-outline"
+            [options]="{ animation: { type: 'zoom' } }"
+            (click) ="removeItem18(i)">
+        </nb-icon>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 19. </td>
+      <td class="tdalign">
+          Как оценявате комфорта в отопляваните помещения според температурата, която сте подържали в тях?
+      </td>
+      <td colspan="2">   
+        <ngx-ctllist
+            [items] = vlistv19
+            [formGroup]="form" 
+            controlName="nv19">
+        </ngx-ctllist>
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 20. </td>
+      <td class="tdalign">
+        Какво е приблизителното тегло на отоплителния уред на дърва и/или въглища, с който се отоплява имотът? (кг)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v20">
+        </ngx-ctlnumber>        
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 21. </td>
+      <td class="tdalign" colspan="3">
+          Какъв е приблизителния размер на отоплителния уред на дърва и/или въглища, с който се отоплявате?
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter">  </td>
+      <td class="tdright">
+          Височина (см)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v211">
+        </ngx-ctlnumber>
+      </td>
+    </tr>  
+
+    <tr>
+      <td class="tdcenter">  </td>
+      <td class="tdright">
+          Ширина (см)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v212">
+        </ngx-ctlnumber>
+      </td>
+    </tr>  
+
+    <tr>
+      <td class="tdcenter">  </td>
+      <td class="tdright">
+          Дълбочина (см)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v213">
+        </ngx-ctlnumber>
+      </td>
+    </tr>  
+
+    <tr>
+      <td class="tdcenter"> 22. </td>
+      <td class="tdalign">
+          Какъв е диаметърът (ф) на комина (розетката), към който е включен уредът на 
+          дърва и/или въглища, с който се отоплява имотът? (мм)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v22">
+        </ngx-ctlnumber>
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 23. </td>
+      <td class="tdalign">
+            Има ли изградени въздушни топлопроводи към помещенията?
+        </td>
+        <td colspan="2">   
+          <ngx-ctlyesno
+              [formGroup]="form" 
+              controlName="v23">
+          </ngx-ctlyesno>
+        </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 24. </td>
+      <td class="tdalign">
+          Брой помещения с въздушни топлопроводи 
+          <p class="txtitalic">
+            (попълва се, когато в имота има изградени въздушни топлопроводи)
+          </p>
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v24">
+        </ngx-ctlnumber>
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 25. </td>
+      <td class="tdalign">
+        В случай че няма изградени въздушни топлопроводи към помещенията, 
+        планира ли се да бъдат изградени такива преди монтажа на новия отоплителен уред?
+        <p class="txtitalic">
+          Моля, отбележете вярното със знак "x"
+        </p>
+      </td>
+      <td colspan="2">   
+        <ngx-ctlyesno
+            [formGroup]="form" 
+            controlName="v25">
+        </ngx-ctlyesno>
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 26. </td>
+      <td class="tdalign">
+        Брой помещения, в които се планира да бъдат изградени въздушни топлопроводи
+        <p class="txtitalic">
+          (попълва се, когато се планира изграждане на въздушни топлопроводи 
+          преди монтажа на новия отоплителен уред)
+        </p>
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v26">
+        </ngx-ctlnumber>
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 27. </td>
+      <td class="tdalign">
+            Има ли изградена отоплителна инсталация с радиатори ?
+            <p class="txtitalic">
+              Моля, отбележете вярното със знак "x"
+            </p>
+        </td>
+        <td colspan="2">   
+          <ngx-ctlyesno
+              [formGroup]="form" 
+              controlName="v27">
+          </ngx-ctlyesno>
+        </td>
+    </tr>            
+
+    <tr>
+      <td class="tdcenter"> 28. </td>
+      <td class="tdalign">
+          Брой помещения с поставени радиатори
+          <p class="txtitalic">
+            (попълва се, когато в имота има изградена отоплителна инсталация с радиатори)
+          </p>
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v28">
+        </ngx-ctlnumber>
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 29. </td>
+      <td class="tdalign">
+            Какъв е видът на изградената отоплителна инсталация с радиатори
+            <p class="txtitalic">
+              (попълва се, когато в имота има изградена отоплителна инсталация с радиатори)
+            </p>
+      </td>
+      <td colspan="2">   
+            <ngx-ctllist
+              [items] = vlistv29
+              [formGroup]="form" 
+              controlName="nv29">
+          </ngx-ctllist>
+        </td>
+    </tr>            
+
+    <tr>
+      <td class="tdcenter"> 30. </td>
+      <td class="tdalign">
+        В случай че няма изградена отоплителна инсталация с радиатори, 
+        планира ли се да бъде изградена такава преди монтажа на новия отоплителен уред?
+      </td>
+      <td colspan="2">   
+          <ngx-ctlyesno
+              [formGroup]="form" 
+              controlName="v30">
+          </ngx-ctlyesno>
+        </td>
+    </tr>        
+    
+    <tr>
+      <td class="tdcenter"> 31. </td>
+      <td class="tdalign">
+          Брой помещения, в които се планира да бъдат поставени радиатори
+          <p class="txtitalic">
+            (попълва се, когато се планира изграждане на отоплителна инсталация 
+            с радиатори преди монтажа на новия отоплителен уред)
+          </p>
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v31">
+        </ngx-ctlnumber>
+      </td>
+    </tr>    
+
+    <tr>
+      <td class="tdcenter">32. </td>
+      <td class="tdalign" colspan="3">
+        Колко часа обичайно се отоплява имота?
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> </td>
+      <td class="tdright">
+        В работни дни
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v391">
+        </ngx-ctlnumber>        
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> </td>
+      <td class="tdright">
+        В почивни дни
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v392">
+        </ngx-ctlnumber>        
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter">33. </td>
+      <td class="tdalign" colspan="3">
+        Какви количества гориво се използват средно месечно през зимните периоди? 
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> </td>
+      <td class="tdright">
+        Дърва	(куб. м)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          allowDecimals="true" 
+          controlName="v401">
+        </ngx-ctlnumber>        
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> </td>
+      <td class="tdright">
+        Въглища (кг)
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          allowDecimals="true" 
+          controlName="v402">
+        </ngx-ctlnumber>        
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter">34. </td>
+      <td class="tdalign">
+        Моля, посочете приблизително заплатената сума за отопление с 
+        твърдо гориво на имота за отоплителен сезон 2018-2019 в лв.
+      </td>
+      <td colspan="2">   
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v41">
+        </ngx-ctlnumber>        
+      </td>        
+    </tr>    
+  </tbody>  
+</table>

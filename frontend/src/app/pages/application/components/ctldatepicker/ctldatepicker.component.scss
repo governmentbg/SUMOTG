@@ -1,0 +1,38 @@
+::ng-deep {
+    .mat-calendar-header {
+        background-color: rgb(137, 99, 202);
+    }
+
+    .mat-calendar-body {
+        background-color: #252547;
+    }
+
+    .mat-calendar-body-cell-content {
+        color: white;
+    }
+
+    .mat-calendar-period-button  {
+        color: white;
+    }
+
+
+    .mat-calendar-body-label {
+        color: lightgray;
+    }
+
+    .mat-datepicker-toggle-default-icon {
+        color: rgb(137, 99, 202);
+    }
+
+    .mat-calendar-table-header {
+        color: lightgray;
+    }
+
+    .mat-calendar-body-disable {
+        color: gray;
+    }
+
+    .mat-calendar {
+        background-color: #252547;
+    }
+}

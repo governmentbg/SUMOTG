@@ -1,0 +1,132 @@
+<div class="form-header-container">
+    <div fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex="80" fxLayoutAlign="start center">
+            <h6>{{name}}</h6>
+        </div>
+
+        <div fxFlex="5" fxLayoutAlign="end center">
+            <nb-search 
+                type="rotate-layout"
+                hint="За търсене натиснете 'ENTER'"
+                placeholder="Търсене ...">
+            </nb-search>
+        </div>
+    </div>
+</div>
+
+<nb-card class="card-container">
+    <nb-card-body>
+        <div [hidden]="disable">
+            <table  class="page1">
+                <colgroup>
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 65%;">
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 5%;">
+                </colgroup>
+
+                <thead>
+                    <tr>
+                        <th> Код </th>    
+                        <th> Фаза </th>    
+                        <th> Наименование </th>    
+                        <th> Количество </th>    
+                        <th> Цена (евро) </th>    
+                        <th> Статус </th>    
+                        <th> </th>    
+                    </tr>
+                </thead>   
+                
+                <tbody>
+                    <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                        <td class="tdright" [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.nkod}}
+                        </td>
+                        <td [ngClass]="{'disabledRow' : item.status===0}">
+                            {{getFaza(item.faza)}}
+                        </td>                        
+                        <td [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.nime}}
+                        </td>
+                        <td class="tdright" [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.quantity}}
+                        </td>
+                        <td class="tdright" [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.price}}
+                        </td>
+                        <td class="tdcenter" [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.status === 1 ? 'Активен' : 'Неактивен'}}
+                        </td>
+                        <td class="tdcenter">
+                            <nb-icon *ngIf="item.nkod.substring(2,4)!=='00'"
+                                icon="edit-outline" (click)="editItem(item)">
+                            </nb-icon>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div [hidden]="!disable">
+            <table  class="page1">
+                <colgroup>
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 60%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                </colgroup>
+
+                <thead>
+                    <tr>
+                        <th> Код </th>    
+                        <th> Наименование </th>    
+                        <th> Количество </th>    
+                        <th> Цена (евро) </th>    
+                        <th> Статус </th>    
+                    </tr>
+                </thead>        
+
+                <tbody>
+                    <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                        <td class="tdright" [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.nkod}}
+                        </td>
+                        <td [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.nime}}
+                        </td>
+                        <td class="tdright" [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.quantity}}
+                        </td>
+                        <td class="tdright" [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.price}}
+                        </td>
+                        <td [ngClass]="{'disabledRow' : item.status===0}">
+                            {{item.status === 1 ? 'Активен' : 'Неактивен'}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>        
+    </nb-card-body>
+  </nb-card>
+
+  <div fxLayout="row" fxLayoutGap="20px">
+    <div fxFlex="20" fxLayoutAlign="start center">
+        <p><a href="javascript:void(0)" class="text-link" (click)="back()">Назад</a></p>
+    </div>
+
+    <div fxFlex="80" fxLayoutAlign="end center">
+        <ngb-pagination 
+            class="d-flex justify-content-end ngb-pagination-custom" 
+            [collectionSize]="items.length" 
+            [(page)]="page" 
+            [pageSize]="pageSize"
+            [rotate]="true" 
+            [ellipses]="false" 
+            [boundaryLinks]="true">
+        </ngb-pagination>
+    </div>    
+  </div> 

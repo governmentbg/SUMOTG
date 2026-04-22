@@ -1,0 +1,104 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+    <div class="row" style="width: 99%;">
+        <div class="col-sm-11">  
+        </div>
+
+        <div align="right" class="col-sm-1 counter">
+            <h3 class="counter">{{countItems}}</h3>
+        </div>
+    </div>
+
+
+    <nb-card class="card-container">
+        <nb-card-body>
+            <div class="row">
+                <table class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 3%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 15%;">
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 40%;">
+                        <col span="1" style="width: 10%;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th> No</th>    
+                            <th> Id_L</th>    
+                            <th> № ОПОС</th>    
+                            <th> Имена</th>    
+                            <th> Адрес</th>    
+                            <th> Статус на договора</th>    
+                        </tr>
+                    </thead>   
+
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                            <td class="tdright">
+                                {{(i+1)+(page-1)*pageSize }}
+                            </td>
+                            <td>{{item.idl}}</td>
+                            <td>{{item.opos}}</td>
+                            <td class="link">
+                                <p>
+                                    <a href="javascript:void(0)" 
+                                        class="text-link" 
+                                        (click)="editLice(item)">
+                                            {{item.ime}}
+                                    </a>
+                                </p>
+                            </td>
+                            <td>
+                                {{item.adres}}
+                            </td>
+                            <td>
+                                {{item.status_dl}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
+        </nb-card-body>        
+    </nb-card>    
+  
+    <div class="row" >
+        <div class="col-sm-4">  
+            <button nbButton 
+                    (click)="exportexcel()"
+                    status="primary">
+                    <i class="far fa-file-excel" 
+                        style="font-size:16px;color:white;margin-right:3px;">
+                    </i>
+                    Експорт
+            </button>
+
+        </div>
+        <div class="col-sm-8" >  
+            <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="items.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+            </ngb-pagination>
+        </div>
+    </div>
+
+    <!-- <div id="print-section" [style.display]="'none'"> 
+        <ngx-print-spravka2
+            [items] ="realItems"
+            [descript] = "filter.descript">
+        </ngx-print-spravka2>
+    </div> -->

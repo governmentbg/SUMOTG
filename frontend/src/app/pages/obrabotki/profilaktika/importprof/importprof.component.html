@@ -1,0 +1,99 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+
+<h6 class="content">Импорт на отчет от профилактика</h6>
+
+<div class="row">
+    <div style="margin-top: 5px; margin-bottom: 5px;">                    
+        <input nbInput outline  status="primary"
+            id="uploadBtn"
+            type = "file" 
+            style="margin-top: 5px;"
+            (change)="importexcel($event)" required >
+    </div>   
+
+    <div class="col-sm-8" align = "right" style="padding: 0px;">
+        <div fxFlex="100" fxLayoutAlign="end center">
+            <button nbButton 
+                [disabled]="click"
+                (click)="save()">
+                Запис
+            </button>
+            <button nbButton 
+                class="button-next" 
+                (click)="back()">
+                Назад
+            </button>
+        </div>                  
+    </div>   
+</div>   
+
+<div class="div-container">
+    <table  class="page1">
+        <colgroup>
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 35%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 1%;">
+        </colgroup>
+    
+        <thead>
+            <tr>
+                <th> ОПОС </th>    
+                <th> Код уред</th>    
+                <th> Уред</th>    
+                <th class="tdright"> Брой</th>    
+                <th> Три имена</th>    
+                <th> Планова дата</th>    
+                <th> Отчетна дата</th>    
+                <th> Статус</th>    
+                <th> Коментар</th>    
+                <th> </th>    
+            </tr>
+        </thead>        
+    
+        <tbody>
+            <tr *ngFor="let item of proforderitems | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                <td> {{item.unom}}</td>
+                <td> {{item.nkod}}</td>
+                <td> {{item.ured}}</td>
+                <td> {{item.broi}}</td>
+                <td> {{item.ime}}</td>
+                <td> {{item.plandata | date: 'dd.MM.yyyy' }}</td>
+                <td> {{item.otchdata | date: 'dd.MM.yyyy'}}</td>
+                <td> {{item.status_pfstr}}</td>
+                <td> {{item.note}}</td>
+            </tr>
+        </tbody>  
+    </table>
+</div>   
+
+
+<div class="row" *ngIf="dataImport.length > pageSize"  
+     style="margin-top: 5px;">
+    <div class="col-sm-12" >  
+        <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="dataImport.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+        </ngb-pagination>
+    </div>
+</div>

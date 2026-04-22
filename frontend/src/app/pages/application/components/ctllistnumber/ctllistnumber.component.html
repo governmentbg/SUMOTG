@@ -1,0 +1,33 @@
+<div [formGroup]="form">
+    <ng-select #select
+            class="custom"
+            [items]="items"
+            bindValue="nkod" 
+            bindLabel="name" 
+            [formControl]="lcontrol"            
+            [virtualScroll]="true"
+            [searchable]="true"
+            [selectOnTab]="true"
+            [placeholder]="placeholder" 
+            (change)="onSelectionChange($event)"
+            (clear)="onSelectionChange(undefined)"
+            [class.disable-arrow]="form.disabled"
+            [class.disabled-background]="form.disabled">
+
+            <ng-template ng-option-tmp let-item="item">
+                <div [title]="item.name">{{item.name}}</div>
+            </ng-template>            
+    </ng-select>    
+        
+    <input  nbInput 
+            NgxNumbersOnly                
+            class ="rightinpput"
+            type="text" 
+            fieldSize="small"
+            [maxlength]="maxlength"            
+            [allowDecimals]="allowDecimals"
+            [formControl]="ncontrol"
+            [placeholder]="placeholder"
+            onClick="this.select();">
+</div>
+

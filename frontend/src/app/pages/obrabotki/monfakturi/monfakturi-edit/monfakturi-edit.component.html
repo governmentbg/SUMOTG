@@ -1,0 +1,291 @@
+<h6 class="content">Фактура - {{name}}</h6>
+
+<div class="row status">
+    <div class="col-sm-12" align = "right">
+        <div fxFlex="100" fxLayoutAlign="end center">
+            <button nbButton 
+                [disabled]="click"
+                (click)="save()">
+                    Запис
+            </button>
+            <button nbButton class="button-next" (click)="back()">
+                Изход
+            </button>
+        </div>                  
+    </div>   
+</div>
+
+<nb-card class="card-container" style="height: 95%;">
+  <nb-card-body>
+      <form [formGroup]="mainForm">
+          <nb-tabset>
+              <nb-tab tabTitle="Параметри">
+                  <div class="step-container">
+                      <table  class="page1">
+                          <colgroup>
+                              <col span="1" style="width: 40%;">
+                              <col span="1" style="width: 60%;">
+                          </colgroup>
+
+                          <tbody>
+                              <tr>
+                                  <td class="tdright">
+                                      Номер на фактурата
+                                  </td>
+                                  <td>
+                                      <ngx-ctltextbox
+                                          [formGroup]="mainForm" 
+                                          controlName="facnomer"
+                                          isNumberOnly="true"
+                                          maxlength="10">
+                                      </ngx-ctltextbox>            
+                                  </td>
+                              </tr>    
+
+                              <tr>
+                                  <td class="tdright">
+                                      Дата на фактурата
+                                  </td>
+                                  <td>
+                                      <ngx-ctldatepicker
+                                          [formGroup]="mainForm" 
+                                          controlName="facdata">
+                                      </ngx-ctldatepicker>                               
+                                  </td>
+                              </tr>    
+
+                              <tr>
+                                  <td class="tdright">
+                                      Фирма изпълнител
+                                  </td>
+                                  <td>
+                                      <ngx-ctllist
+                                          [items] = vmonfirmi
+                                          [formGroup]="mainForm" 
+                                          (selectionChanged)="onFirmItemSelected($event)"
+                                          controlName="idfirma">
+                                      </ngx-ctllist>
+                                  </td>
+                              </tr>
+                  
+                              <tr>
+                                  <td class="tdright">
+                                      Договор
+                                  </td>
+                                  <td>
+                                      <ngx-ctllist
+                                          [items] = vmonfirmidogovor
+                                          [formGroup]="mainForm" 
+                                          (selectionChanged)="onDogovorItemSelected($event)"
+                                          controlName="iddogovorfirma">
+                                      </ngx-ctllist>
+                                  </td>
+                              </tr>                
+
+                              <tr>
+                                    <td class="tdright">
+                                        Данъчна основа
+                                    </td>
+                                    <td>
+                                        <ngx-ctlcurrency
+                                            [formGroup]="mainForm" 
+                                            controlName="suma">
+                                        </ngx-ctlcurrency>                        
+                                    </td>
+                              </tr>        
+                              
+                              <tr>
+                                    <td class="tdright">
+                                        Размер на данъка
+                                    </td>
+                                    <td>
+                                        <ngx-ctlcurrency
+                                            [formGroup]="mainForm" 
+                                            controlName="dds">
+                                        </ngx-ctlcurrency>                        
+                                    </td>
+                              </tr>    
+
+                              <tr>
+                                  <td class="tdright">
+                                      Сума заплащане
+                                  </td>
+                                  <td>
+                                    <ngx-ctlcurrency
+                                        [formGroup]="mainForm" 
+                                        controlName="total">
+                                    </ngx-ctlcurrency>                        
+                                  </td>
+                              </tr>                                  
+
+                              <tr>
+                                <td class="tdright">
+                                    Вид плащане
+                                </td>
+                                <td>
+                                    <ngx-ctltextbox
+                                        [formGroup]="mainForm" 
+                                        controlName="vidpayment">
+                                    </ngx-ctltextbox>            
+                                </td>
+                              </tr>    
+
+                              <tr>
+                                <td class="tdright">
+                                    За период
+                                </td>
+                                <td>
+                                    <ngx-ctltextbox
+                                        [formGroup]="mainForm" 
+                                        controlName="forperiod">
+                                    </ngx-ctltextbox>            
+                                </td>
+                            </tr>    
+
+                         </tbody>  
+                      </table>
+                  </div>                  
+              </nb-tab>
+
+          <nb-tab tabTitle="Съдържание">
+              <div class="step-container-1">                    
+                <div class="add-ured-link" align="right">
+                    <div class="btn-holder">
+                        <button nbButton 
+                              status="basic" 
+                              (click)="addItem()">
+                            <nb-icon 
+                                icon="file-add-outline" 
+                                [options]="{ animation: { type: 'zoom' } }">
+                            </nb-icon>
+                            Добави
+                        </button>
+                    </div>
+                  </div>
+                  
+                  <table  class="page4">
+                    <colgroup>
+                        <col span="1" style="width: 3%;">
+                        <col span="1" style="width: 50%;">
+                        <col span="1" style="width: 7%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 3%;">
+                    </colgroup>
+
+                    <tr>
+                        <th> № </th>    
+                        <th> Уред за монтаж</th>    
+                        <th> Количество брой </th>    
+                        <th> Ед. цена без ДДС</th>    
+                        <th> Обща цена без ДДС</th>    
+                        <th> </th>    
+                    </tr>
+              
+                      <tbody>
+                        <tr  *ngFor = "let item of fakturaitems.controls; let i = index;">
+                          <td class="tdcenter">
+                              {{i+1}}
+                          </td>
+                          <td>
+                            <ngx-ctllist
+                                [items] = vdoguredi
+                                [formGroup]="item" 
+                                controlName="id">
+                            </ngx-ctllist>
+                          </td>
+
+                          <td>
+                                <ngx-ctlnumber
+                                    [formGroup]="item" 
+                                    (change) ="calculatePrice(item)"
+                                    controlName="broi">
+                                </ngx-ctlnumber>        
+                            </td>
+
+                            <td>
+                                <ngx-ctlcurrency
+                                    [formGroup]="item" 
+                                    (change) ="calculatePrice(item)"
+                                    controlName="edcena">
+                                </ngx-ctlcurrency>        
+                            </td>
+                    
+                            <td>
+                                <ngx-ctlcurrency
+                                    [formGroup]="item" 
+                                    controlName="total">
+                                </ngx-ctlcurrency>        
+                            </td>
+
+                          <td class="tdcenter" (click)="removeDokumentItem(i)">
+                              <nb-icon 
+                                  nbTooltip="Изтриване" 
+                                  nbTooltipPlacement="bottom"
+                                  icon="trash-outline">
+                                </nb-icon>
+                          </td>
+                        </tr>  
+                      </tbody>  
+                  </table>
+              </div>                                
+          </nb-tab>
+          <nb-tab tabTitle="Прикачени документи"  [disabled]="mainForm.get('idfactura').value === 0">
+            <div class="step-container">
+                <div class="btn-holder" align="right">
+                  <button nbButton 
+                        status="basic" 
+                        (click)="addDokumentItem()">
+                      <nb-icon 
+                          icon="file-add-outline" 
+                          [options]="{ animation: { type: 'zoom' } }">
+                      </nb-icon>
+                      Добави
+                  </button>
+                </div>
+          
+                <table  class="page1">
+                  <colgroup>
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 55%;">
+                    <col span="1" style="width: 30%;">
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 5%;">
+                  </colgroup>
+          
+                  <tbody>
+                    <tr  *ngFor = "let item of dokumenti; let i = index;">
+                      <td class="tdcenter">
+                          {{i+1}}
+                      </td>
+                      <td> {{item.description}}</td>
+                      <td> {{item.filename}}</td>
+                      <td class="tdcenter" (click)="downloadItem(item)">
+                          <nb-icon 
+                            nbTooltip="Преглед" 
+                            nbTooltipPlacement="bottom"
+                            icon="attach-outline">
+                          </nb-icon>
+                      </td>
+                      <td class="tdcenter" (click)="removeDokumentItem(item)">
+                            <nb-icon 
+                              nbTooltip="Изтриване" 
+                              nbTooltipPlacement="bottom"
+                              icon="trash-outline">
+                            </nb-icon>
+                      </td>
+                    </tr>  
+                  </tbody>  
+                </table>
+            </div>        
+          </nb-tab>             
+        </nb-tabset>
+      </form>                    
+  </nb-card-body>
+</nb-card> 
+      
+<div id="print-section" [style.display]="'none'"> 
+  <ngx-monorder-excel 
+      [formGroup]= "mainForm">
+  </ngx-monorder-excel>
+</div>

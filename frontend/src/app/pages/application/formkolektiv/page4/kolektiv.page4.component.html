@@ -1,0 +1,119 @@
+
+<table  class="page1">
+    <colgroup>
+      <col span="1" style="width: 5%;">
+      <col span="1" style="width: 60%;">
+      <col span="1" style="width: 30%;">
+      <col span="1" style="width: 5%;">
+    </colgroup>
+
+    <tbody>
+      <tr>
+        <td class="tdcenter"> 42. </td>
+        <td class="tdalign" colspan="3">
+          Ако желаете да се отоплявате на климатик/газов конвектор, посочете площта на всяко от помещенията, които ще се отопляват. 
+          <p class="txtitalic">
+            Забележка: Максималният брой климатици, предоставени безвъзмездно по проекта, е три (по един уред на помещение). 
+            Максималният брой на газови конвектори, предоставени безвъзмездно по проекта, е три (по един уред на помещение).
+          </p> 
+        </td>
+      </tr>
+  
+      <tr>
+        <td class="tdcenter"> </td>
+        <td class="tdright">
+          Помещение 1 (кв. м.)
+        </td>
+        <td colspan="2">
+          НЕ СЕ ПОПЪЛВА
+<!--
+          <ngx-ctlnumber
+            [formGroup]="form" 
+            controlName="v421">
+          </ngx-ctlnumber>        
+-->                  
+        </td>
+      </tr>      
+  
+      <tr>
+        <td class="tdcenter"> </td>
+        <td class="tdright">
+            Помещение 2 (кв. м.)
+        </td>
+        <td colspan="2">
+            НЕ СЕ ПОПЪЛВА
+<!--
+          <ngx-ctlnumber
+            [formGroup]="form" 
+            controlName="v422">
+          </ngx-ctlnumber>        
+-->                  
+        </td>
+      </tr>      
+      
+      <tr>
+        <td class="tdcenter"> </td>
+        <td class="tdright">
+            Помещение 3 (кв. м.)
+        </td>
+        <td colspan="2">
+          НЕ СЕ ПОПЪЛВА
+<!--
+          <ngx-ctlnumber
+            [formGroup]="form" 
+            controlName="v423">
+          </ngx-ctlnumber>        
+-->                  
+        </td>
+      </tr>  
+
+      <tr>
+        <td class="tdcenter"> 43. </td>
+        <td class="tdalign" colspan="3">
+          ВАЖНО! Указания за попълване:
+          <p class="txtitalic">При самостоятелно кандидатстване, кандидатът отбелязва отоплителното устройство, което желае да получи. 
+            Може да се посочи: едно отоплително устройство от изброените с номера от 1 до 17 или до три газови конвектора общо (18 и 19) 
+            или до три климатика общо (20-25). Радиатори до три броя общо са допустими само за: Пелетни камини с водна риза, 
+            Пелетни котли и Газови котли (5-17, вкл.), както и при повторно включване на абонати към Топлофикация - София.
+          </p>
+
+          <div class="add-ured-link" align ="right">
+            <p><a href="javascript:void(0)" class="text-link" (click)="addItem()">Добави</a></p>
+          </div>          
+        </td>
+      </tr>
+
+      <tr  *ngFor = "let item of uredi.controls; let i = index;">
+        <td class="tdcenter">
+            {{i+1}}
+        </td>
+        <td>
+          <ngx-ctllist
+              [items] = vlistv43
+              [formGroup]="item" 
+              [disable] = "disabled"                    
+              controlName="id">
+          </ngx-ctllist>
+        </td>
+        <td>
+          <ngx-ctlnumber
+            [formGroup]="item" 
+            [disable] = "disabled"                    
+            controlName="broi">
+          </ngx-ctlnumber>        
+        </td>
+
+        <td class="tdcenter">
+            <nb-icon 
+                nbTooltip="Изтриване" 
+                nbTooltipPlacement="bottom"
+                icon="trash-outline"
+                [options]="{ animation: { type: 'zoom' } }"
+                (click) ="removeItem(i)">
+            </nb-icon>
+        </td>
+      </tr>  
+    </tbody>  
+</table>  
+
+

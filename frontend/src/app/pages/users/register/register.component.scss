@@ -1,0 +1,8 @@
+@import 'src/app/@theme/styles/my.tables';
+@import 'src/app/@theme/styles/my.host';
+
+.disabledRow {
+    font-style: italic;
+    color: grey !important;
+}
+

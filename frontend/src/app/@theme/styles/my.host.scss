@@ -1,0 +1,218 @@
+//razmer na step conteinera
+/* For Tablets */
+@media screen and (max-width:1280px) {
+    :host {
+      display: block;
+      height: 45rem;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .card-container {
+      height: 45vw;
+      overflow-x: hidden;
+    }
+    
+    .card-container-1 {
+      height: 45vw;
+      overflow-x: hidden;
+    }
+
+    .card-container-2 {
+      height: 35vw;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }    
+}
+ 
+/* For 1366 Resolution */  
+@media only screen   
+and (min-width: 1300px) and (max-width: 1366px) 
+{
+  :host {
+    display: block;
+    height: 30rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .card-container {
+    height: 25vw;
+    overflow-x: hidden;
+  }
+
+  .card-container-1 {
+    height: 21vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .card-container-2 {
+    height: 12vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+  
+@media only screen   
+and (min-width: 1400px) and (max-width: 1450px) 
+{
+  :host {
+    display: block;
+    height: 44rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .card-container {
+    height: 41vw;
+  }
+
+  .card-container-1 {
+    height: 39vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .card-container-2 {
+    height: 34vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+  //1600x1050
+  @media only screen and (min-width: 1500px) and (max-width: 1680px) 
+  {
+      :host {
+        display: block;
+        height: 45rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+  
+      .card-container {
+        height: 35vw;
+      }
+
+      .card-container-1 {
+        height: 33vw;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      .card-container-2 {
+        height: 25vw;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+  }
+  
+
+  @media (min-width: 1700px) {
+    :host {
+      display: block;
+      max-height: 47rem;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .card-container {
+      height: 32vw;
+    }
+
+    .card-container-1 {
+      height: 30.5vw;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .card-container-2 {
+      height: 22vw;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+  }
+
+  ::ng-deep nb-search button {
+    padding: 0!important;
+    margin-right: 20px!important;
+    outline:0!important;
+    box-shadow: none!important;
+    height: 40px!important;
+    width: 40px!important;
+  }
+
+  ::ng-deep nb-search nb-icon {
+    height: 30px!important;
+    width: 30px!important;
+  }
+
+  ::ng-deep nb-stepper .step-content {
+    width: -webkit-fill-available !important;
+  }
+
+
+  @media print{
+    .doNotPrint{display:none !important;}
+  }
+
+  // scrollbar style
+  /* width */
+  .card-container ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  .card-container ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  .card-container ::-webkit-scrollbar-thumb {
+    background: rgb(137, 99, 202);
+    border-radius: 10px;
+  }
+
+
+   // scrollbar style
+  /* width */
+  .card-container-1 ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  .card-container-1 ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  .card-container-1 ::-webkit-scrollbar-thumb {
+    background: rgb(137, 99, 202);
+    border-radius: 10px;
+  }
+
+   // scrollbar style
+  /* width */
+  .card-container-2 ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  .card-container-2 ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  .card-container-2 ::-webkit-scrollbar-thumb {
+    background: rgb(137, 99, 202);
+    border-radius: 10px;
+  }
+
+  nb-icon:hover {
+    cursor: pointer;
+  }

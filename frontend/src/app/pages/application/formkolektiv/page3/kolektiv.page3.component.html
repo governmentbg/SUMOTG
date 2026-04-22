@@ -1,0 +1,200 @@
+
+<table  class="page1">
+  <colgroup>
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 55%;">
+    <col span="1" style="width: 40%;">
+  </colgroup>
+
+  <tbody>
+    <tr>
+      <td class="tdcenter">32. </td>
+      <td class="tdalign">
+        Брой лица, които живеят в имота, за който кандидатствате за смяна на отоплителен уред?
+      </td>
+      <td>
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v32">
+        </ngx-ctlnumber>      
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">33. </td>
+      <td class="tdalign">
+        Колко семейства живеят в имота, за който кандидатствате за смяна на отоплителен уред? 
+        <p class="txtitalic">
+          По реда на Правилника на СО за предоставяне на общински жилища за семейство се приемат съпрузите (родителят), 
+          ненавършилите пълнолетие деца, както и навършилите пълнолетие, ако продължават да учат, 
+          до завършване на средното им образование, но не по-късно от 20-годишна възраст.
+        </p>
+      </td>
+      <td>
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v33">
+        </ngx-ctlnumber>      
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">34. </td>
+      <td class="tdalign">
+        Живее ли дете/деца до две годишна възраст в имота, за който кандидатствате за смяна на отоплителен уред?
+      </td>
+      <td>
+        <ngx-ctlyesno
+            [formGroup]="form" 
+            controlName="v34">
+        </ngx-ctlyesno>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 35. </td>
+      <td class="tdalign">
+        Живее ли лице с увреждания с валидно към настоящия момент решение от ТЕЛК/НЕЛК в имота, за който кандидатствате за смяна на отоплителен уред? 
+      </td>
+      <td>
+        <ngx-ctlyesno
+          [formGroup]="form" 
+          controlName="v35">
+        </ngx-ctlyesno>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 36. </td>
+      <td class="tdalign">
+        Живее ли лице над 70-годишна възраст в имота, за който кандидатствате за смяна на отоплителен уред?
+      </td>
+      <td>
+        <ngx-ctlyesno
+          [formGroup]="form" 
+          controlName="v36">
+        </ngx-ctlyesno>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 37. </td>
+      <td class="tdalign">
+        Живее ли лице, което е получило целева помощ за отопление съгласно Закона за социалното подпомагане през последния отоплителен сезон, в имота, за който кандидатствате за смяна на отоплителен уред?
+      </td>
+      <td>
+        <ngx-ctlyesno
+          [formGroup]="form" 
+          controlName="v37">
+        </ngx-ctlyesno>
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 38. </td>
+      <td class="tdalign">
+        Живее ли лице, което за предходния месец е получило месечна социална помощ по реда на Закона за социалното подпомагане, в имота, за който кандидатствате за смяна на отоплителен уред
+      </td>
+      <td>
+        <ngx-ctlyesno
+          [formGroup]="form" 
+          controlName="v38">
+        </ngx-ctlyesno>
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 39. </td>
+      <td class="tdalign" colspan="2">
+        Колко часа обичайно отоплявате жилището си?
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> </td>
+      <td class="tdright">
+        В работни дни
+      </td>
+      <td>
+        НЕ СЕ ПОПЪЛВА
+<!--
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v391">
+        </ngx-ctlnumber>        
+-->        
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> </td>
+      <td class="tdright">
+        В почивни дни
+      </td>
+      <td>
+        НЕ СЕ ПОПЪЛВА
+<!--
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v392">
+        </ngx-ctlnumber>        
+-->
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 40. </td>
+      <td class="tdalign" colspan="2">
+        Какви количества гориво използвате средно месечно през зимните месеци?
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> </td>
+      <td class="tdright">
+        Дърва	(куб. м)
+      </td>
+      <td>
+        НЕ СЕ ПОПЪЛВА
+<!--
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v401">
+        </ngx-ctlnumber>        
+-->        
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> </td>
+      <td class="tdright">
+        Въглища (кг)
+      </td>
+      <td>
+        НЕ СЕ ПОПЪЛВА
+<!--
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v402">
+        </ngx-ctlnumber>        
+-->
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 41. </td>
+      <td class="tdalign">
+        Моля, посочете приблизително заплатената сума за отопление с твърдо гориво за отоплителен сезон 2018-2019 в лв.          
+      </td>
+      <td>
+        НЕ СЕ ПОПЪЛВА
+<!--
+        <ngx-ctlnumber
+          [formGroup]="form" 
+          controlName="v41">
+        </ngx-ctlnumber>        
+-->        
+      </td>
+    </tr>          
+  </tbody>  
+</table>

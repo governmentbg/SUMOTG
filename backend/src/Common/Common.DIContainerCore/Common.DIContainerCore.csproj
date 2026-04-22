@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Configurations>Debug;Release;Test</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common.Repositories.Infrastructure\Common.Repositories.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Common.Repositories\Common.Repositories.csproj" />
+    <ProjectReference Include="..\..\Common.Services\Common.Services.csproj" />
+    <ProjectReference Include="..\Common.DataAccess.EFCore\Common.DataAccess.EFCore.csproj" />
+    <ProjectReference Include="..\Common.Services.Infrastructure\Common.Services.Infrastructure.csproj" />
+    <ProjectReference Include="..\Common.Entities\Common.Entities.csproj" />
+  </ItemGroup>
+</Project>

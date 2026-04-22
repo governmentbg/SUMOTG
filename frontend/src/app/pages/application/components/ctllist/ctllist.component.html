@@ -1,0 +1,23 @@
+<div [formGroup]="form">
+    <ng-select #select
+            [items]="items"
+            bindValue="nkod" 
+            bindLabel="name" 
+            [formControl]="control"            
+            [virtualScroll]="true"
+            [searchable]="true"
+            [selectOnTab]="true"
+            [placeholder]="placeholder" 
+            [clearable]="showclear"
+            (change)="onSelectionChange($event)"
+            (clear)="onSelectionChange(undefined)"
+            (blur)="onBlur($event)"
+            [class.disable-arrow]="form.disabled"
+            [class.disabled-background]="form.disabled">
+
+            <ng-template ng-option-tmp let-item="item">
+                <div [title]="item.name">{{item.name}}</div>
+            </ng-template>            
+    </ng-select>    
+</div>
+

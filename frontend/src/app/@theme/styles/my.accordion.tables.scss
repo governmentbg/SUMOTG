@@ -1,0 +1,59 @@
+
+table {
+    width: 100%;  
+   }
+  
+  
+   th {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid rgb(92, 91, 91);
+    border-collapse: collapse;
+    height: 40px;
+  }
+  
+  td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid rgb(92, 91, 91);
+    border-collapse: collapse;
+  }
+  
+  table.page1 td.tdright {
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  table.page1 td.tdcenter {
+    text-align: center;
+    vertical-align: middle;
+  }  
+  
+  .button-next {
+    margin-left :5px 
+  }
+  
+
+  .rightinpput {
+    text-align: right;
+    width: 100%;
+  }
+  
+  .status {
+    margin-bottom: 10px;
+  }
+
+  .add-ured-link {
+    margin-right: 5px;
+    margin-bottom: 2px;
+  }
+
+  .lbl {
+    vertical-align: sub;
+    height: 100%;
+  }
+
+  
+  nb-icon:hover {
+    cursor: pointer;  
+  }

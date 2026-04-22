@@ -1,0 +1,91 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+
+<h6 class="content">Импорт на отчет от "СОФЕКОСТРОЙ"</h6>
+
+<div class="row">
+    <div style="margin-top: 5px; margin-bottom: 5px;">                    
+        <input nbInput outline  status="primary"
+            id="uploadBtn"
+            type = "file" 
+            style="margin-top: 5px;"
+            (change)="importexcel($event)" required >
+    </div>   
+
+    <div class="col-sm-8" align = "right" style="padding: 0px;">
+        <div fxFlex="100" fxLayoutAlign="end center">
+            <button nbButton 
+                [disabled]="click"
+                (click)="save()">
+                Импорт
+            </button>
+            <button nbButton 
+                class="button-next" 
+                (click)="back()">
+                Назад
+            </button>
+        </div>                  
+    </div>   
+</div>   
+
+<div class="div-container">
+    <table class="page1">
+        <colgroup>
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+        </colgroup>
+    
+        <thead>
+            <tr>
+                <th> Номер по ОПОС</th>    
+                <th> Номер на договор</th>    
+                <th> Име по възлагателно писмо</th>    
+                <th> Адрес за монтаж</th>    
+                <th> Вид и брой уред за демонтиране</th>    
+                <th> Дата на демонтаж</th>    
+                <th> Забележка</th>    
+            </tr>
+        </thead>        
+    
+        <tbody>
+            <tr *ngFor="let item of dataImport | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                <td> {{item.opos}}</td>
+                <td> {{item.dogovor}}</td>
+                <td> {{item.ime}}</td>
+                <td> {{item.adres}}</td>
+                <td> {{item.ured}}</td>
+                <td> {{item.data}}</td>
+                <td> {{item.note}}</td>                                    
+            </tr>
+        </tbody>  
+    </table>
+</div>   
+
+
+<div class="row" *ngIf="dataImport.length > pageSize"  
+     style="margin-top: 5px;">
+    <div class="col-sm-12" >  
+        <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="dataImport.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+        </ngb-pagination>
+    </div>
+</div>
