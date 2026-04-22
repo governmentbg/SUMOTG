@@ -1,0 +1,27 @@
+.container {
+    width: 40vw;
+}
+
+.codecontainer {
+    width : 10vw;
+}
+
+.rowItems {
+    height: 60px;
+}
+
+.errorTxt {
+    color:red;
+}
+
+.btn-close {
+    margin-left: 5px;
+}
+
+::ng-deep .nb-theme-cosmic [nbInput].size-medium:not(.input-full-width) {
+    max-width: 100% !important; 
+}
+
+textarea {
+    resize: none;
+}

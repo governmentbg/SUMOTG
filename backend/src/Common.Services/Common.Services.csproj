@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Configurations>Debug;Release;Test</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="5.7.4" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Repositories.Infrastructure\Common.Repositories.Infrastructure.csproj" />
+    <ProjectReference Include="..\Common\Common.Services.Infrastructure\Common.Services.Infrastructure.csproj" />
+    <ProjectReference Include="..\Common\Common.Utils\Common.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

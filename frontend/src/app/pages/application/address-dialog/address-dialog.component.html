@@ -1,0 +1,117 @@
+<nb-card>
+  <nb-card-header>
+    <span >Дублиране на адрес- {{opos}}</span>        
+  </nb-card-header>
+  
+  <nb-card-body>
+      <form [formGroup]="EditForm" class="container">      
+  
+        <div class="form-group rowItems">
+          <label for="code">Район</label>
+          <ngx-ctllist
+            [items] = raioni
+            [formGroup]="EditForm" 
+            controlName="raionid">
+          </ngx-ctllist>
+        </div>
+  
+        <div class="form-group rowItems">
+          <label for="code">Населено място (гр./с.)</label>
+          <ngx-ctllist
+              [items] = nasmesta
+              [formGroup]="EditForm" 
+              controlName="nm">
+          </ngx-ctllist>
+       </div>
+  
+       <div class="form-group rowItems">
+          <label for="name">Квартал/ж.к.</label>
+          <ngx-ctllist
+            [items] = kvartali
+            [formGroup]="EditForm" 
+            controlName="jk">
+          </ngx-ctllist>
+        </div>
+  
+        <div class="form-group">
+          <label for="name">Улица/булевард</label>
+          <ngx-ctllist
+            [items] = ulici
+            [formGroup]="EditForm" 
+            controlName="ul">
+          </ngx-ctllist>
+        </div>
+  
+        <div class="form-group rowItems">
+              <label for="drad">Номер</label>
+              <ngx-ctltextbox
+                [formGroup]="EditForm" 
+               controlName="nomer">
+              </ngx-ctltextbox>
+        </div>
+  
+        <div class="row ">      
+          <div class="col-6 form-group rowItems">
+            <label for="code2">Блок</label>
+            <ngx-ctltextbox
+                [formGroup]="EditForm" 
+                controlName="blok">
+              </ngx-ctltextbox>
+          </div>
+  
+          <div class="col-6 form-group rowItems">
+            <label for="name2">Вход</label>
+            <ngx-ctltextbox
+              [formGroup]="EditForm" 
+              controlName="vh">
+            </ngx-ctltextbox>
+          </div>
+        </div>      
+  
+        <div class="row ">      
+            <div class="col-6 form-group rowItems">
+              <label for="vid">Етаж</label>
+              <ngx-ctltextbox
+                [formGroup]="EditForm" 
+                controlName="etaj">
+              </ngx-ctltextbox>
+            </div>
+  
+            <div class="col-6 form-group rowItems">
+              <label for="vid">Апартамент</label>
+              <ngx-ctltextbox
+                [formGroup]="EditForm" 
+                controlName="ap">
+              </ngx-ctltextbox>
+            </div>      
+        </div>      
+  
+        <!-- <div class="form-group rowItems">
+          <label for="vid">Пощенски код</label>
+          <ngx-ctltextbox
+            [formGroup]="EditForm" 
+            controlName="postKode">
+          </ngx-ctltextbox>
+        </div>       -->
+  
+        <div align="right" class="form-group">
+          <nb-toggle labelPosition="start" formControlName="status">Активен</nb-toggle>
+        </div>      
+      </form>
+    </nb-card-body>
+  
+    <nb-card-footer>
+      <div  align="end">
+        <button nbButton 
+                type="submit"
+                status="primary"  
+                [disabled]="!EditForm.valid"
+                (click) = "save()">
+            Запис
+        </button>
+        <button nbButton class="btn-close" status="info" (click)="dismiss()" hero>
+            Затвори
+        </button>
+      </div>
+    </nb-card-footer>  
+</nb-card>

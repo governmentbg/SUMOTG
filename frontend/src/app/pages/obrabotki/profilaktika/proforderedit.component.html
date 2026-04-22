@@ -1,0 +1,139 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+  <h6 class="content">Профилактика на монтирани уреди [поръчка {{filter.porychkanom}}]</h6>
+
+  <div *ngIf ="proforderitems.length > 0" class="row mt-1 mb-1 status">
+        <div class="col-sm-2">
+            <h2 style="pading:0px; margin:0px;">{{countItems}}</h2>
+        </div>        
+
+        <div class="col-sm-10" align = "right">
+            <button *ngIf ="filter.statusPF === '0'" 
+                nbButton outline
+                status ="primary"
+                (click) = "exportexcel()">
+                <i class="far fa-file-excel" 
+                    style="font-size:16px;color:white;margin-right:3px;">
+                </i>
+                    Експорт
+            </button>    
+            
+            <button nbButton 
+                class="button-next" 
+                (click)="back()">
+                Назад
+            </button>
+      </div>   
+  </div>
+  
+  <nb-card  *ngIf ="proforderitems.length > 0"  class="card-container">
+    <nb-card-body>
+        <div class="step-container-1">                    
+            <table  class="page1">
+                <colgroup>
+                    <col span="1" style="width: 1%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 25%;">
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 35%;">
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 1%;">
+                </colgroup>
+            
+                <thead>
+                    <tr>
+                        <th> </th>    
+                        <th> ОПОС </th>    
+                        <th> Код уред</th>    
+                        <th> Уред</th>    
+                        <th class="tdright"> Брой</th>    
+                        <th> Три имена</th>    
+                        <th> Планова дата</th>    
+                        <th> Отчетна дата</th>    
+                        <th> Статус</th>    
+                        <th> Име на фирма</th>    
+                        <th> Договор с изпълнител</th>    
+                        <th> Коментар</th>    
+                        <th> </th>    
+                    </tr>
+                </thead>        
+            
+                <tbody>
+                    <tr *ngFor="let item of proforderitems | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                        <td>
+                            <nb-checkbox *ngIf ="filter.statusPF === '0'" 
+                                #checkbox 
+                                status  ="basic" 
+                                (change)="onItemClick(item)">
+                            </nb-checkbox>
+                        </td>            
+                        <td> {{item.unom}}</td>
+                        <td> {{item.nkod}}</td>
+                        <td> {{item.ured}}</td>
+                        <td> {{item.broi}}</td>
+                        <td> {{item.ime}}</td>
+                        <td> {{item.plandata | date: 'dd.MM.yyyy' }}</td>
+                        <td> {{item.otchdata | date: 'dd.MM.yyyy'}}</td>
+                        <td> {{item.status_pfstr}}</td>
+                        <td> {{item.namefirma}}</td>
+                        <td> {{item.dogfirma}}</td>
+                        <td> {{item.note}}</td>
+
+                        <td *ngIf="item.status_pf < 2" 
+                            class="tdcenter">
+                            <nb-icon 
+                                icon="edit-outline" 
+                                (click)="editItem(item)">
+                            </nb-icon>
+                        </td>                
+                    </tr>
+                </tbody>  
+            </table>
+        </div>     
+    </nb-card-body>
+</nb-card>
+
+<div *ngIf ="proforderitems.length === 0" class="step-container" style="height: 60vh;"> 
+    <p>Няма уреди</p>
+</div>
+
+<div class="row mt-1" >
+    <div class="col-sm-4">  
+
+        <button nbButton 
+                (click)="back()"
+                style="margin-right: 5px;"              
+                status="primary">
+                <nb-icon icon="funnel-outline"></nb-icon>                
+                    Филтър
+        </button>
+    </div>
+
+    <div class="col-sm-8" >  
+        <ngb-pagination 
+            class="d-flex justify-content-end ngb-pagination-custom mt-1" 
+            [collectionSize]="proforderitems.length" 
+            [(page)]="page" 
+            [pageSize]="pageSize"
+            [maxSize]="5" 
+            [rotate]="true" 
+            [ellipses]="false" 
+            [boundaryLinks]="true">
+        </ngb-pagination>                     
+    </div>
+</div>
+
+    

@@ -1,0 +1,42 @@
+
+  table {
+    width: 100%;  
+  }
+  
+  th {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid rgb(0,0,0);
+    border-collapse: collapse;
+    height: 50px;
+  }
+  
+  td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid rgb(0,0,0);
+    border-collapse: collapse;
+  }
+  
+  table thead td {
+      color: black;
+      font-weight: bold;
+      font-size: 13px;
+  }
+  
+  table tbody td {
+      color: black;
+  }
+  
+  table.page1 td.tdright {
+    text-align: left;
+  }
+  
+  table.page1 td.tdcenter {
+    text-align: center;
+    cursor: pointer;
+  }  
+      
+  .cellright {
+    text-align: right;
+  }

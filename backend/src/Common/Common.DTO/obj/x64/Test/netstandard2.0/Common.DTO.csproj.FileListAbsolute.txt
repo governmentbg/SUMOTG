@@ -1,0 +1,9 @@
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.DTO\bin\x64\Test\netstandard2.0\Common.DTO.deps.json
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.DTO\bin\x64\Test\netstandard2.0\Common.DTO.dll
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.DTO\bin\x64\Test\netstandard2.0\Common.DTO.pdb
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.DTO\obj\x64\Test\netstandard2.0\Common.DTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.DTO\obj\x64\Test\netstandard2.0\Common.DTO.AssemblyInfoInputs.cache
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.DTO\obj\x64\Test\netstandard2.0\Common.DTO.AssemblyInfo.cs
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.DTO\obj\x64\Test\netstandard2.0\Common.DTO.csproj.CoreCompileInputs.cache
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.DTO\obj\x64\Test\netstandard2.0\Common.DTO.dll
+C:\Projects\HeatersProject\Heaters\backend\src\Common\Common.DTO\obj\x64\Test\netstandard2.0\Common.DTO.pdb

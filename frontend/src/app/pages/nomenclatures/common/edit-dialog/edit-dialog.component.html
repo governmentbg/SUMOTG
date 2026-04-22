@@ -1,0 +1,59 @@
+<nb-card>
+  <nb-card-header>
+    <span >{{isnewItem ? "Добавяне" : "Редактиране"}}</span>        
+  </nb-card-header>
+  
+  <nb-card-body>
+    <form [formGroup]="EditForm" class="container">      
+      <div class="form-group rowItems">
+        <label for="code">Код</label>
+        <input id ="code"
+              type="text" 
+              class="form-control codecontainer"
+              formControlName = "kodpos"
+              fieldSize="small"
+              fullWidth ="false"
+              nbInput placeholder="">
+
+        <span class="help-block" *ngIf="!EditForm.get('kodpos')?.valid && EditForm.get('kodpos')?.touched">
+          <span *ngIf = "EditForm.get('kodpos')?.hasError('required')" class="errorTxt">полето е задължително</span>
+        </span>
+     </div>
+
+     <div class="form-group rowItems">
+        <label for="name">Наименование:</label>
+        <input id="name"
+          type="text" 
+          class="form-control"
+          formControlName = "text"
+          fieldSize="small"
+          fullWidth ="true"
+          nbInput placeholder="Въведете стойност">
+
+        <span class="help-block" *ngIf="!EditForm.get('text')?.valid && EditForm.get('text')?.touched">
+          <span *ngIf = "EditForm.get('text')?.hasError('required')" class="errorTxt">полето е задължително</span>
+        </span>              
+      </div>
+
+      <div align="right" class="form-group rowItems">
+        <nb-toggle labelPosition="start" formControlName="status">Активен</nb-toggle>
+      </div>
+    </form>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <div  align="end">
+      <button nbButton 
+              type="submit"
+              status="primary"  
+              [disabled]="!EditForm.valid"
+              (click) = "save()">
+          Запис
+      </button>
+      <button nbButton class="btn-close" status="info" (click)="dismiss()" hero>
+          Затвори
+      </button>
+    </div>
+</nb-card-footer>
+
+</nb-card>

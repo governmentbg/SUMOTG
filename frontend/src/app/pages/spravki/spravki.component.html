@@ -1,0 +1,132 @@
+<h6 class="content">Справки</h6>
+
+<nb-tabset>
+    <nb-tab tabTitle="Кандидати">
+        <div class="content" fxLayout="row wrap" fxLayoutGap="10px grid">
+            <div class="content" 
+                    fxFlex.md="25%" 
+                    fxFlex.sm="33%" 
+                    fxFlex.xs="100%" 
+                    fxFlex ="20%" 
+                *ngFor="let item of filterSpravki(items,0); let num = index">                    
+                    <ngx-card
+                        [name] = ""
+                        [descript] = "item.ime"
+                        [nomcode] = "item.id"
+                        [nomtype] = "item.tip"
+                        [disable] ="isDisabled"
+                        [nkod] = "item.nkod"
+                    ></ngx-card>
+            </div>  
+        </div>
+    </nb-tab>
+   
+    <nb-tab tabTitle="Монтаж">
+        <div class="content" fxLayout="row wrap" fxLayoutGap="10px grid">
+            <div class="content" 
+                    fxFlex.md="25%" 
+                    fxFlex.sm="33%" 
+                    fxFlex.xs="100%" 
+                    fxFlex ="20%"         
+                *ngFor="let item of filterSpravki(items,1); let num = index">                    
+                    <ngx-card 
+                        [name] = ""
+                        [descript] = "item.ime"
+                        [nomcode] = "item.id"
+                        [nomtype] = "item.tip"
+                        [disable] ="isDisabled"
+                        [nkod] = "item.nkod"
+                    ></ngx-card>
+            </div>  
+        </div>
+    </nb-tab>
+
+    <nb-tab tabTitle="Демонтаж">
+        <div class="content" fxLayout="row wrap" fxLayoutGap="10px grid">
+            <div class="content" 
+                    fxFlex.md="25%" 
+                    fxFlex.sm="33%" 
+                    fxFlex.xs="100%" 
+                    fxFlex ="20%" 
+        
+                *ngFor="let item of filterSpravki(items,2); let num = index">                    
+                    <ngx-card
+                        [name] = ""
+                        [descript] = "item.ime"
+                        [nomcode] = "item.id"
+                        [nomtype] = "item.tip"
+                        [disable] ="isDisabled"
+                        [nkod] = "item.nkod"
+                    ></ngx-card>
+            </div>  
+        </div>
+    </nb-tab>
+
+    <nb-tab tabTitle="Индикатори ФПЧ">
+        <div class="content" fxLayout="row wrap" fxLayoutGap="10px grid">
+            <div class="content" 
+                    fxFlex.md="25%" 
+                    fxFlex.sm="33%" 
+                    fxFlex.xs="100%" 
+                    fxFlex ="20%" 
+        
+                *ngFor="let item of filterSpravki(items,3); let num = index">                    
+                    <ngx-card
+                        [name] = ""
+                        [descript] = "item.ime"
+                        [nomcode] = "item.id"
+                        [nomtype] = "item.tip"
+                        [disable] ="isDisabled"
+                        [nkod] = "item.nkod"
+                    ></ngx-card>
+            </div>  
+        </div>
+    </nb-tab>
+    
+    <nb-tab tabTitle="Профилактика">
+        <div class="content" fxLayout="row wrap" fxLayoutGap="10px grid">
+            <div class="content" 
+                    fxFlex.md="25%" 
+                    fxFlex.sm="33%" 
+                    fxFlex.xs="100%" 
+                    fxFlex ="20%" 
+        
+                *ngFor="let item of filterSpravki(items,4); let num = index">                    
+                    <ngx-card
+                        [name] = ""
+                        [descript] = "item.ime"
+                        [nomcode] = "item.id"
+                        [nomtype] = "item.tip"
+                        [disable] ="isDisabled"
+                        [nkod] = "item.nkod"
+                    ></ngx-card>
+            </div>  
+        </div>
+    </nb-tab>
+      
+    <nb-tab tabTitle="Отчисляване">
+        <div class="content" fxLayout="row wrap" fxLayoutGap="10px grid">
+            <div class="content" 
+                    fxFlex.md="25%" 
+                    fxFlex.sm="33%" 
+                    fxFlex.xs="100%" 
+                    fxFlex ="20%" 
+        
+                *ngFor="let item of filterSpravki(items,5); let num = index">                    
+                    <ngx-card
+                        [name] = ""
+                        [descript] = "item.ime"
+                        [nomcode] = "item.id"
+                        [nomtype] = "item.tip"
+                        [disable] ="isDisabled"
+                        [nkod] = "item.nkod"
+                    ></ngx-card>
+            </div>  
+        </div>
+    </nb-tab>
+
+</nb-tabset>
+
+
+
+<router-outlet></router-outlet>

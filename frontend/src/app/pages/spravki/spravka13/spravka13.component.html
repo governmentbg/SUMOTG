@@ -1,0 +1,146 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+    <div class="row" style="width: 99%;">
+        <div class="col-sm-5">  
+            <h6>{{filter.descript}}</h6>
+        </div>
+
+        <div class="col-sm-6">
+            <p style="line-height: 10px;"><small>Резултат от търсенето за:</small></p> 
+            <div class="row">
+                <div class="col-sm-12">
+                    <p style="line-height: 10px;"><small>{{filter.txtfilter}}</small></p>                
+                </div>
+            </div>
+        </div>
+
+        <div align="right" class="col-sm-1 counter">
+            <h3 class="counter">{{countItems}}</h3>
+        </div>
+    </div>
+
+
+    <nb-card class="card-container">
+        <nb-card-body>
+            <div class="row">
+                <table class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 30%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th> Код</th>    
+                            <th> Уред</th>    
+                            <th> Заявени за сключване на дог. с кандидати</th>    
+                            <th> За поръчки (със сключени дог. с кандидати) </th>    
+                            <th> Включени в поръчки</th>    
+                            <th> Включени в график</th>    
+                            <th> Включени в отчет</th>    
+                            <th> Монтирани</th>    
+                            <th> Отказани ОБЩО</th>    
+                            <th> в т.ч. Отказани чрез График/Отчет </th>    
+                            <th> Изключени чрез График/Отчет (Отложени+ Ненамерени+ За замяна) </th>    
+                        </tr>
+                    </thead>   
+
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                            <td>
+                                {{item.kodured}}
+                            </td>
+                            <td>
+                                {{item.imeured}}
+                            </td>
+                            <td class="tdright">
+                                {{item.l_dogbroi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.l_ordbroi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.l_inordbroi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.p_ingrafik}}
+                            </td>
+                            <td class="tdright">
+                                {{item.p_inotchet}}
+                            </td>
+                            <td class="tdright">
+                                {{item.p_montirani}}
+                            </td>
+                            <td class="tdright">
+                                {{item.l_otkazani}}
+                            </td>
+                            <td class="tdright">
+                                {{item.p_otkazani}}
+                            </td>
+                            <td class="tdright">
+                                {{item.p_izklucheni}}
+                            </td>                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
+        </nb-card-body>        
+    </nb-card>    
+  
+    <div class="row" >
+        <div class="col-sm-4">  
+            <button nbButton 
+                (click)="back()"
+                style="margin-right: 5px;"              
+                status="primary">
+                <nb-icon icon="funnel-outline"></nb-icon>                
+                    Филтър
+            </button>
+
+
+            <button nbButton 
+                    (click)="exportexcel()"
+                    status="primary">
+                    <i class="far fa-file-excel" 
+                        style="font-size:16px;color:white;margin-right:3px;">
+                    </i>
+                    Експорт
+            </button>
+
+        </div>
+        <div class="col-sm-8" >  
+            <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="items.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+            </ngb-pagination>
+        </div>
+    </div>
+
+    <!-- <div id="print-section" [style.display]="'none'"> 
+        <ngx-print-spravka2
+            [items] ="realItems"
+            [descript] = "filter.descript">
+        </ngx-print-spravka2>
+    </div> -->

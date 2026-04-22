@@ -1,0 +1,125 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+    <div class="row" style="width: 99%;">
+    </div>
+
+
+    <div class="row status">
+        <div class="col-sm-5">  
+            <h6>{{filter.descript}} към дата:  {{filter.kymdata | date: 'dd.MM.yyyy'}} </h6>
+        </div>
+        
+        <div class="col-sm-5" align = "right">
+            <h3 class="counter">{{countItems}}</h3>
+        </div>        
+
+        <div class="col-sm-2" align = "right">  
+            <div fxFlex="100" fxLayoutAlign="end center">
+                <button nbButton 
+                    style="margin-left: 5px; margin-bottom: 2px;"
+                    [disabled]="click"
+                    (click)="save()">
+                    Запис
+                </button>
+            </div>                  
+          </div>           
+    </div>
+  
+    <nb-card class="card-container">
+        <nb-card-body>
+            <div class="row" style="width: 1500px;">
+                <table class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                    </colgroup>
+                    
+                    <thead>
+                        <tr>
+                            <th> Район</th>    
+                            <th> ОПОС</th>    
+                            <th> Лице</th>    
+                            <th> Адрес</th>    
+                            <th> Договор</th>    
+                            <th> Срок (мес.)</th>    
+                            <th> На дата</th>    
+                        </tr>
+                    </thead>   
+
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                            <td >
+                                {{item.raion}}
+                            </td>
+                            <td>
+                                {{item.unom}}
+                            </td>
+                            <td>
+                                {{item.ime}}
+                            </td>
+                            <td>
+                                {{item.adres}}
+                            </td>
+                            <td>
+                                {{item.dogovor}}
+                            </td>
+                            <td class="tdright">
+                                {{item.srok}}
+                            </td>
+                            <td>
+                                {{item.data | date: 'dd.MM.yyyy' }}
+                            </td>
+                    </tbody>
+                </table>
+            </div>    
+        </nb-card-body>        
+    </nb-card>    
+  
+    <div class="row" >
+        <div class="col-sm-4">  
+            <!-- <button nbButton 
+                (click)="back()"
+                style="margin-right: 5px;"              
+                status="primary">
+                <nb-icon icon="funnel-outline"></nb-icon>                
+                    Филтър
+            </button> -->
+
+
+            <button nbButton 
+                    (click)="exportexcel()"
+                    status="primary">
+                    <i class="far fa-file-excel" 
+                        style="font-size:16px;color:white;margin-right:3px;">
+                    </i>
+                    Експорт
+            </button>
+
+        </div>
+        <div class="col-sm-8" >  
+            <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="items.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+            </ngb-pagination>
+        </div>
+    </div>
+
+  

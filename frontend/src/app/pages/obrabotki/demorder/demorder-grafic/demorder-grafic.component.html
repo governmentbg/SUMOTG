@@ -1,0 +1,49 @@
+<div class="div-container">
+    <table  class="page1">
+        <colgroup>
+            <col span="1" style="width: 2%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 10%;">
+        </colgroup>
+    
+        <thead>
+            <tr>
+                <th> №</th>    
+                <th> Ид. № по ОПОС</th>    
+                <th> ЕИК на изпълнител </th>    
+                <th> Имена</th>    
+                <th> Уред</th>    
+                <th> Брой</th>    
+                <th> Планиран за дата</th>    
+                <th> От час</th>    
+                <th> До час</th>    
+                <th> Забележка</th>    
+                <th> Статус график</th>    
+            </tr>
+        </thead>        
+    
+        <tbody>
+            <tr *ngFor="let item of porychkaitems?.controls; let i = index;">
+                <td> {{i+1}}</td>
+                <td> {{item.get('unom').value}}</td>
+                <td> {{item.get('ident').value}}</td>
+                <td> {{item.get('ime').value}}</td>
+                <td> {{item.get('uredname').value}}</td>                                    
+                <td> {{item.get('broi').value}}</td>
+                <td> {{item.get('dodata').value | dateFormatPipe}}</td>
+                <td> {{item.get('otchas').value}}</td>
+                <td> {{item.get('dochas').value}}</td>
+                <td> {{item.get('note').value}}</td>
+                <td> {{getStatusGrafikName(item.get('status_g').value)}}</td>
+            </tr>
+        </tbody>  
+    </table>
+</div>   

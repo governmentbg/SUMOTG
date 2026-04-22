@@ -1,0 +1,227 @@
+
+<table  class="page1">
+  <colgroup>
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 40%;">
+    <col span="1" style="width: 55%;">
+  </colgroup>
+
+  <tbody>
+    <tr>
+      <td class="tdcenter"> 1. </td>
+      <td class="tdright">
+            Наименование
+        </td>
+        <td>
+          <ngx-ctltextbox
+             [formGroup]="form" 
+             controlName="ime">
+          </ngx-ctltextbox>
+        </td>
+    </tr>
+<!--
+    <tr>
+      <td class="tdcenter">  </td>
+      <td class="tdright">
+            Правен статус
+        </td>
+        <td>
+          <ngx-ctllist
+            [items] = vlistVidfirma
+            [formGroup]="form" 
+            controlName="vidFirma">
+          </ngx-ctllist>          
+        </td>
+    </tr>
+  -->
+
+    <tr>
+      <td class="tdcenter"> 2. </td>
+      <td class="tdright">
+          ЕИК/БУЛСТАТ
+      </td>
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="form" 
+          controlName="ident"
+          isNumberOnly="true"
+          maxlength="13">
+        </ngx-ctltextbox>            
+     </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 3. </td>
+      <td class="tdright">
+          Код по КИД-2008
+      </td>
+        <td>
+          <ngx-ctltextbox
+            [formGroup]="form" 
+            controlName="kodKID">
+          </ngx-ctltextbox>            
+<!--                
+        <ngx-ctllist
+            [items] = kid
+            [formGroup]="form" 
+            controlName="kodKID">
+        </ngx-ctllist>-->      
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 4. </td>
+      <td class="tdright" colspan="2">
+          Адрес на управление
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 4.1. </td>
+      <td class="tdright">
+          Район
+      </td>
+      <td>
+        <ngx-ctllist
+          [items] = raioni
+          [formGroup]="form" 
+          controlName="admRaion">
+        </ngx-ctllist>
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 4.2. </td>
+      <td class="tdright">
+            Населено място (гр./с.)
+        </td>
+        <td>
+          <ngx-ctllist
+            [items] = nasmesta
+            [formGroup]="form" 
+            controlName="nasMqsto">
+          </ngx-ctllist>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 4.3. </td>
+      <td class="tdright">
+          Квартал/ж.к.
+      </td>
+      <td>
+        <ngx-ctllist
+          [items] = kvartali
+          [formGroup]="form" 
+          controlName="jk">
+        </ngx-ctllist>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 4.4. </td>
+      <td class="tdright">
+          Улица/булевард
+      </td>
+      <td>
+        <ngx-ctllist
+          [items] = ulici
+          [formGroup]="form" 
+          controlName="ulica">
+        </ngx-ctllist>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"> 4.5. </td>
+      <td class="tdright">
+          Номер
+      </td>
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="form" 
+          controlName="nomer">
+        </ngx-ctltextbox>
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 4.6. </td>
+      <td class="tdright">
+          Блок
+      </td>
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="form" 
+          controlName="blok">
+        </ngx-ctltextbox>
+      </td>
+    </tr>      
+
+    <tr>
+      <td class="tdcenter"> 4.7. </td>
+      <td class="tdright">
+          Вход
+      </td>
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="form" 
+          controlName="vhod">
+        </ngx-ctltextbox>
+      </td>
+    </tr>      
+    
+    <tr>
+      <td class="tdcenter"> 4.8. </td>
+      <td class="tdright">
+          Етаж
+      </td>
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="form" 
+          controlName="etaj">
+        </ngx-ctltextbox>
+      </td>
+    </tr>  
+
+    <tr>
+      <td class="tdcenter"> 4.9. </td>
+      <td class="tdright">
+          Апартамент
+      </td>
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="form" 
+          controlName="apart">
+        </ngx-ctltextbox>
+      </td>  
+    </tr>  
+
+    <tr>
+      <td class="tdcenter"> 4.10. </td>
+      <td class="tdright">
+          Пощенски код
+      </td>
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="form" 
+          controlName="postKode">
+        </ngx-ctltextbox>
+      </td>  
+    </tr>  
+
+    <tr>
+      <td class="tdcenter"> 5. </td>
+      <td class="tdright">
+            Вид на предприятието
+        </td>
+        <td>
+          <ngx-ctllist
+            [items] = vlistTipfirma
+            [formGroup]="form" 
+            controlName="tipFirma">
+          </ngx-ctllist>          
+        </td>
+    </tr>    
+  </tbody>  
+</table>

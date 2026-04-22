@@ -1,0 +1,301 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+<div class="form-header-container">
+    <div class="row col-nopadding justify-content-md-center">
+        <div class="col-7 col-nopadding">
+            <h6>{{formname}} </h6>
+        </div>
+        
+
+        <div class="col-1 col-nopadding">
+            <nb-search 
+                type="rotate-layout"
+                hint="За търсене натиснете 'ENTER'"
+                placeholder="Търсене ...">
+            </nb-search>
+        </div>
+
+
+        <div class="col-2">
+            <nb-select
+              #select
+              class="faza"
+              size="small"
+              shape="rectangle"
+              fullWidth
+              placeholder="Изберете..."
+              [(selected)]="selectedPhase"
+              (selectedChange)="changePhaseSelection($event)">
+                <nb-select-label> Фаза: {{ selectedPhase }} </nb-select-label>          
+                <nb-option value="1"> Фаза 1</nb-option>
+                <nb-option value="2"> Фаза 2</nb-option>
+            </nb-select>
+        </div>
+
+        <div class="col-1 col-nopadding">
+            <button nbButton 
+                    status="primary" 
+                    [disabled] = "!canAppend"
+                    (click)="addItem()">
+                <nb-icon 
+                    icon="plus-outline" 
+                    [options]="{ animation: { type: 'zoom' } }">
+                </nb-icon>
+                    Добави
+            </button>
+        </div>
+
+        <div class="col-1 col-nopadding" align="right" >
+            <h3 class="counter">{{countItems}}</h3>
+        </div>        
+    </div>
+</div>
+
+<nb-card class="card-container">
+    <nb-card-body>
+        <ng-container [ngSwitch]="selectTable()">
+            <ng-template ngSwitchCase = "1">                
+                <table  class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 15%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 30%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 3%;">
+                        <col *ngIf = "canDelete" span="1" style="width: 3%;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th> Район </th>    
+                            <th> Уник.рег.№</th>    
+                            <th> ЕГН</th>    
+                            <th> Титуляр</th>    
+                            <th> Телефон</th>    
+                            <th> Статус на лице</th>    
+                            <th> Статус на формуляр</th>    
+                            <th> Статус на договор </th>    
+                            <th> </th>    
+                            <th *ngIf = "canDelete"> </th>    
+                        </tr>
+                    </thead>        
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                            <td class="tdright">
+                                {{item.raion}}
+                            </td>
+                            <td>{{item.unom}}</td>
+                            <td>{{item.ident}}</td>
+                            <td class="link">
+                                <p>
+                                    <a href="javascript:void(0)" 
+                                        class="text-link" 
+                                        (click)="editLice(item)">
+                                            {{item.name}}
+                                    </a>
+                                </p>
+                            </td>
+                            <td>
+                                {{item.telefon}}
+                            </td>
+                            <td>
+                                {{item.stattxt_l}}
+                            </td>
+                            <td>
+                                {{item.stattxt_f}}
+                            </td>
+                            <td>
+                                {{item.stattxt_dl}}
+                            </td>
+                            <td class="tdcenter">
+                                <nb-icon icon="edit-outline" (click)="editItem(item)"></nb-icon>
+                            </td>
+                            <td *ngIf = "canDelete" class="tdcenter">
+                                <nb-icon icon="trash-outline" (click)="removeItem(item)">
+                            </nb-icon></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-template>
+
+            <ng-template ngSwitchCase = "2">
+                <table  class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 30%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 3%;">
+                        <col span="1" style="width: 3%;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th> Район </th>    
+                            <th> Рег.No</th>    
+                            <th> ЕГН</th>    
+                            <th> Представител</th>    
+                            <th> Телефон</th>    
+                            <th> Статус на лице</th>    
+                            <th> Статус на формуляр</th>    
+                            <th> Статус на договор </th>    
+                            <th> </th>    
+                            <th> </th>    
+                        </tr>
+                    </thead>        
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                            <td class="tdright">
+                                {{item.raion}}
+                            </td>
+                            <td>{{item.unom}}</td>
+                            <td>{{item.ident}}</td>
+                            <td class="link">
+                                <p>
+                                    <a href="javascript:void(0)" 
+                                        class="text-link" 
+                                        (click)="editLice(item)">
+                                            {{item.name}}
+                                    </a>
+                                </p>
+                            </td>
+                            <td>{{item.telefon}}</td>
+                            <td>{{item.stattxt_l}}</td>
+                            <td>{{item.stattxt_f}}</td>
+                            <td>{{item.stattxt_dl}}</td>
+                            
+                            <td class="tdcenter">
+                                <nb-icon icon="edit-outline" (click)="editItem(item)"></nb-icon>
+                            </td>
+                            <td class="tdcenter">
+                                <nb-icon icon="trash-outline" (click)="removeItem(item)">
+                            </nb-icon></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-template> 
+
+            <ng-template ngSwitchCase = "3">                
+                <table  class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 15%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 3%;">
+                        <col span="1" style="width: 3%;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th> Район </th>    
+                            <th> Рег.No</th>    
+                            <th> БУЛСТАТ</th>    
+                            <th> Фирма</th>    
+                            <th> ЕГН</th>    
+                            <th> Представител</th>    
+                            <th> Телефон</th>    
+                            <th> Статус на лице</th>    
+                            <th> Статус на формуляр</th>    
+                            <th> Статус на договор </th>    
+                            <th> </th>    
+                            <th> </th>    
+                        </tr>
+                    </thead>        
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                            <td class="tdright">
+                                {{item.raion}}
+                            </td>
+                            <td>{{item.unom}}</td>
+                            <td>{{item.bulstat}}</td>
+                            <td class="link">
+                                <p>
+                                    <a href="javascript:void(0)" 
+                                        class="text-link" 
+                                        (click)="editFirma(item)">
+                                            {{item.firma}}
+                                    </a>
+                                </p>
+                            </td>
+                            <td>{{item.ident}}</td>
+                            <td class="link">
+                                <p class="link">
+                                    <a href="javascript:void(0)" 
+                                        class="text-link" 
+                                        (click)="editLice(item)">
+                                            {{item.name}}
+                                    </a>
+                                </p>
+                            </td>
+                            <td>{{item.telefon}}</td>
+                            <td>{{item.stattxt_l}}</td>
+                            <td>{{item.stattxt_f}}</td>
+                            <td>{{item.stattxt_dl}}</td>
+                            
+                            <td class="tdcenter">
+                                <nb-icon icon="edit-outline" (click)="editItem(item)"></nb-icon>
+                            </td>
+                            <td class="tdcenter">
+                                <nb-icon icon="trash-outline" (click)="removeItem(item)">
+                            </nb-icon></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-template>
+        </ng-container>    
+    </nb-card-body>
+</nb-card>
+
+<div class="row col-nopadding justify-content-md-center">
+    <div class="col-sm-2 col-nopadding" >  
+        <p class="link">
+            <a href="javascript:void(0)" class="text-link" (click)="back()">
+                    Назад
+            </a>
+        </p>
+    </div>      
+    
+    <div class="col-sm-7">
+        <p *ngIf = "filter.txtfilter.length>0" style="line-height: 10px;"><small>Резултат от търсенето за:</small></p> 
+        <div class="row">
+            <div class="col-sm-12">
+                <p style="line-height: 10px;"><small>{{filter.txtfilter}}</small></p>                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-nopadding" align="right">      
+        <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="items.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+        </ngb-pagination>
+    </div>      
+</div>      

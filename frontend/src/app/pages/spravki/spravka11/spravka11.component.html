@@ -1,0 +1,187 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+    <div class="row" style="width: 99%;">
+        <div class="col-sm-5">  
+            <h6>{{filter.descript}}</h6>
+        </div>
+
+        <div class="col-sm-6">
+            <p style="line-height: 10px;"><small>Резултат от търсенето за:</small></p> 
+            <div class="row">
+                <div class="col-sm-12">
+                    <p style="line-height: 10px;"><small>{{filter.txtfilter}}</small></p>                
+                </div>
+            </div>
+        </div>
+
+        <div align="right" class="col-sm-1 counter">
+            <h3 class="counter">{{countItems}}</h3>
+        </div>
+    </div>
+
+
+    <nb-card class="card-container">
+        <nb-card-body style="overflow-x: scroll;">
+            <div class="row" style="width: 2000px;">
+                <table class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 3%;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th> </th>    
+                            <th colspan="6"> ПОРЪЧКА</th>    
+                            <th colspan="5"> ГРАФИК</th>    
+                            <th colspan="3"> ОТЧЕТ</th>    
+                            <th colspan="7"> Кандидат</th>    
+                        </tr>
+                        <tr>
+                            <th> Поръчка №</th>    
+                            <th> Фирма-изпълнител </th>    
+                            <th> Договор</th>    
+                            <th> ОПОС </th>    
+                            <th> Код </th>    
+                            <th> Уред</th>    
+                            <th> Брой </th>    
+                            <th> Дата</th>    
+                            <th> От час</th>    
+                            <th> До час</th>    
+                            <th> Статус</th>    
+                            <th> Заб.</th>    
+                            <th> Дата</th>    
+                            <th> Статус</th>    
+                            <th> Заб.</th>    
+                            <th> Име</th>    
+                            <th> Адрес</th>    
+                            <th> Модел</th>    
+                            <th> Сериен №</th>    
+                            <th> Гар.карта №</th>    
+                            <th> Дата на гар. карта</th>    
+                            <th> Дата на Приемо - пред. протокол</th>    
+                        </tr>
+                    </thead>   
+
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                            <td>
+                                {{item.porychka}}
+                            </td>
+                            <td class="link">
+                                {{item.eik}}
+                            </td>
+                            <td class="link">
+                                {{item.dogovor}}
+                            </td>
+                            <td>
+                                {{item.unomer}}
+                            </td>
+                            <td>
+                                {{item.kodured}}
+                            </td>
+                            <td>
+                                {{item.imeured}}
+                            </td>
+                            <td>
+                                {{item.broi}}
+                            </td>
+                            <td>
+                                {{item.datag}}
+                            </td>
+                            <td>
+                                {{item.otchas}}
+                            </td>
+                            <td>
+                                {{item.dochas}}
+                            </td>
+                            <td>
+                                {{item.statusg}}
+                            </td>
+                            <td>
+                                {{item.note}}
+                            </td>
+                            <td>
+                                {{item.datam}}
+                            </td>
+                            <td>
+                                {{item.statusm}}
+                            </td>
+                            <td>
+                                {{item.note2}}
+                            </td>
+                            <td>
+                                {{item.ime}}
+                            </td>
+                            <td>
+                                {{item.adres}}
+                            </td>
+                            <td>
+                                {{item.model}}
+                            </td>
+                            <td>
+                                {{item.fabrnomer}}
+                            </td>
+                            <td>
+                                {{item.garkarta}}
+                            </td>
+                            <td>
+                                {{item.gardata}}
+                            </td>
+                            <td>
+                                {{item.protdata}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
+        </nb-card-body>        
+    </nb-card>    
+  
+    <div class="row" >
+        <div class="col-sm-4">  
+            <button nbButton 
+                (click)="back()"
+                style="margin-right: 5px;"              
+                status="primary">
+                <nb-icon icon="funnel-outline"></nb-icon>                
+                    Филтър
+            </button>
+
+
+            <button nbButton 
+                    (click)="exportexcel()"
+                    status="primary">
+                    <i class="far fa-file-excel" 
+                        style="font-size:16px;color:white;margin-right:3px;">
+                    </i>
+                    Експорт
+            </button>
+
+        </div>
+        <div class="col-sm-8" >  
+            <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="items.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+            </ngb-pagination>
+        </div>
+    </div>
+
+    <!-- <div id="print-section" [style.display]="'none'"> 
+        <ngx-print-spravka2
+            [items] ="realItems"
+            [descript] = "filter.descript">
+        </ngx-print-spravka2>
+    </div> -->

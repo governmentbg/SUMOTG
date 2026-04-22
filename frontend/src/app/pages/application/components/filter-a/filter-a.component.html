@@ -1,0 +1,410 @@
+<nb-card class="card-container">
+  <nb-card-header> 
+    <div class="row">
+      <label for="select-raion" class="col-sm-6 col-form-label">
+        Филтър - {{settings.title }}
+      </label>
+      
+      <div class="col-sm-4 clear-div-link" align="right">  
+        <p><a href="javascript:void(0)" 
+              class="clear-text-link" 
+              (click)="clearFilter()">
+              Изчисти филтъра
+        </a></p>
+      </div>      
+    </div>      
+  </nb-card-header>
+  
+  <nb-card-body>  
+    <div [formGroup]="userForm" class="container-fluid ">
+
+      <div *ngIf = "settings.filters.raion" 
+            class="row row-height  justify-content-md-center form-group">
+        <label for="select-raion" class="col-sm-3 col-form-label">
+            Район:
+        </label>
+
+        <div class="col-sm-6"> 
+            <ngx-ctllist
+                  [items] = raioni
+                  [formGroup]="userForm" 
+                  [showclear]="canClearRaion()"
+                  controlName="raionid">
+              </ngx-ctllist>
+        </div>
+      </div>
+
+      <div *ngIf = "settings.filters.porychkanom"
+            class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                № поръчка за монтаж
+            </label>           
+
+            <div class="col-sm-6">  
+              <ngx-ctltextbox
+                  [formGroup]="userForm"
+                  controlName="porychkanom"
+                  isNumberOnly="true"
+                  maxlength="10">
+              </ngx-ctltextbox>        
+            </div>        
+        </div>        
+
+        <div *ngIf = "settings.filters.demporychkanom"
+            class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                № поръчка за демонтаж
+            </label>           
+
+            <div class="col-sm-6">  
+              <ngx-ctltextbox
+                  [formGroup]="userForm"
+                  controlName="demporychkanom"
+                  isNumberOnly="true"
+                  maxlength="10">
+              </ngx-ctltextbox>        
+            </div>        
+        </div>        
+
+        <div  *ngIf = "settings.filters.firma"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Фирма изпълнител:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vmonfirmi
+                  [formGroup]="userForm" 
+                  (selectionChanged)="onFirmItemSelected($event)"                  
+                  controlName="firma">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.dogovor"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Договор:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vmonfirmidogovor
+                  [formGroup]="userForm" 
+                  (selectionChanged)="onFirmDogovorItemSelected($event)"                        
+                  controlName="dogovor">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.showporychkanom"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Поръчка:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vmonporychki
+                  [formGroup]="userForm" 
+                  controlName="porychkanom">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.demfirma"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Фирма изпълнител:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vdemfirmi
+                  [formGroup]="userForm" 
+                  (selectionChanged)="onDemFirmItemSelected($event)"                  
+                  controlName="demfirma">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.demdogovor"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Договор:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vdemfirmidogovor
+                  [formGroup]="userForm" 
+                  controlName="demdogovor">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.statusG && settings.filters.vid===1"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус график:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusG
+                  [formGroup]="userForm" 
+                  controlName="statusG">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.statusM && settings.filters.vid===1"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус отчет:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusM
+                  [formGroup]="userForm" 
+                  controlName="statusM">
+              </ngx-ctllist>
+          </div>    
+        </div>
+                
+        <div  *ngIf = "settings.filters.statusG && settings.filters.vid===2"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус график:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusGD
+                  [formGroup]="userForm" 
+                  controlName="statusG">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.statusM && settings.filters.vid===2"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус отчет:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusMD
+                  [formGroup]="userForm" 
+                  controlName="statusM">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.statusPF"
+            class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Статус профилактика:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vliststatusPF
+                  [formGroup]="userForm" 
+                  controlName="statusPF">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.grafikdata"
+              class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                    По график:
+            </label>
+            <div class="col-sm-3">  
+              <ngx-ctldatepicker
+                  [formGroup]="userForm" 
+                  controlName="grafikdataot">
+              </ngx-ctldatepicker>                               
+            </div>    
+            <div class="col-sm-3">  
+              <ngx-ctldatepicker
+                  [formGroup]="userForm" 
+                  controlName="grafikdatado">
+              </ngx-ctldatepicker>                               
+            </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.otchetdata"
+              class="row row-height justify-content-md-center form-group">
+            <label for="input-ident" class="col-sm-3 col-form-label">
+                    По отчет:
+            </label>
+            <div class="col-sm-3">  
+              <ngx-ctldatepicker
+                  [formGroup]="userForm" 
+                  controlName="otchetdataot">
+              </ngx-ctldatepicker>                               
+            </div>    
+            <div class="col-sm-3">  
+              <ngx-ctldatepicker
+                  [formGroup]="userForm" 
+                  controlName="otchetdatado">
+              </ngx-ctldatepicker>                               
+            </div>    
+        </div>
+ 
+        <div *ngIf = "settings.filters.tipuredi" 
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Тип уреди:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vlistvtipuredi
+                  [formGroup]="userForm" 
+                  controlName="tipuredi">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div *ngIf = "settings.filters.uredi" 
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  Уреди за монтаж:
+          </label>
+          <div class="col-sm-6">  
+              <ngx-ctllist
+                  [items] = vlistv43
+                  [formGroup]="userForm" 
+                  controlName="uredi">
+              </ngx-ctllist>
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.unomer"
+              class="row row-height justify-content-md-center form-group">
+              <label for="input-ident" class="col-sm-3 col-form-label">
+                  № по ОПОС (цифрова част)
+              </label>           
+
+              <div class="col-sm-6">  
+                <ngx-ctltextbox
+                    [formGroup]="userForm"
+                    controlName="unomer"
+                    isNumberOnly="true"
+                    maxlength="5">
+                </ngx-ctltextbox>  
+              </div>        
+        </div>        
+        
+        <div  *ngIf = "settings.filters.kymdata"
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  От дата:
+          </label>
+          <div class="col-sm-6">  
+            <ngx-ctldatepicker
+                [formGroup]="userForm" 
+                controlName="curdate"
+                disable="true">
+            </ngx-ctldatepicker>                               
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.kymdata"
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  До дата:
+          </label>
+          <div class="col-sm-6">  
+            <ngx-ctldatepicker
+                [formGroup]="userForm" 
+                controlName="kymdata">
+            </ngx-ctldatepicker>                               
+
+            <div *ngIf="userForm.invalid" >
+              <md-hint *ngIf="f.kymdata.errors" class="alert" align="start">
+                Датата трябва да е след днешната дата!
+              </md-hint>
+            </div>          
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.sleddata"
+              class="row row-height justify-content-md-center form-group"              
+              style="height: 40px;">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  От дата:
+          </label>
+          <div class="col-sm-6">  
+            <ngx-ctldatepicker
+                [formGroup]="userForm" 
+                controlName="sleddata">
+            </ngx-ctldatepicker>                               
+
+            <div *ngIf="userForm.invalid" >
+              <md-hint *ngIf="f.sleddata.errors" class="alert" align="start">
+                Датата трябва да е преди днешната дата!
+              </md-hint>
+            </div>          
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.sleddata"
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  До дата:
+          </label>
+          <div class="col-sm-6">  
+            <ngx-ctldatepicker
+                [formGroup]="userForm" 
+                controlName="curdate"
+                disable="true">
+            </ngx-ctldatepicker>                               
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.fromto"
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  От дата:
+          </label>
+          <div class="col-sm-6">  
+            <ngx-ctldatepicker
+                [formGroup]="userForm" 
+                controlName="otdata">
+            </ngx-ctldatepicker>                               
+          </div>    
+        </div>
+
+        <div  *ngIf = "settings.filters.fromto"
+              class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" class="col-sm-3 col-form-label">
+                  До дата:
+          </label>
+          <div class="col-sm-6">  
+            <ngx-ctldatepicker
+                [formGroup]="userForm" 
+                controlName="dodata">
+            </ngx-ctldatepicker>                               
+          </div>    
+        </div>
+
+      </div>
+  </nb-card-body>
+
+  <nb-card-footer>   
+    <div class="row row-height  justify-content-md-center form-group">      
+      <div  *ngIf = "!(vidfltr===7 || vidfltr===8)" class="col-sm-2" >  
+        <p><a href="javascript:void(0)" 
+              class="text-link" (click)="back()">Назад
+        </a></p>
+      </div>      
+
+      <div class="offset-md-4 col-sm-3 btnSave" align="right">
+        <button nbButton 
+                status="primary"
+                fullWidth = "true"  
+                [disabled]="!userForm.valid"
+                (click)="exec()">
+          Изпълни
+        </button>
+      </div>    
+    </div>      
+  </nb-card-footer>
+</nb-card>
+  

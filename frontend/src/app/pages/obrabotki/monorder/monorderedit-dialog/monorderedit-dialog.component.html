@@ -1,0 +1,128 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+
+<form [formGroup]="EditForm">      
+    <nb-card>
+        <nb-card-header>
+             <div class="row col-nopadding justify-content-md-center">
+<!--                <div class="col-sm-1">
+                        Район:
+                </div>
+
+                <div class="col-sm-5">
+                    <nb-select #select1
+                        id="select-doc"
+                        size="small"
+                        shape="rectangle"
+                        fullWidth="true"
+                        placeholder="Изберете..." 
+                        formControlName="raion">
+                        <nb-option *ngFor="let r of raioni" 
+                                    value="{{r.nkod}}">
+                                {{r.name}}
+                        </nb-option>
+                    </nb-select>        
+                </div>
+                              
+                <div class="col-sm-1">
+                    Фаза:
+                </div>
+
+                <div class="col-sm-4">
+                    <nb-select #select2
+                        id="select-doc"
+                        size="small"
+                        shape="rectangle"
+                        fullWidth="true"
+                        placeholder="Изберете..." 
+                        formControlName="faza">
+                        <nb-option *ngFor="let r of vlistfaza" 
+                                    value="{{r.id}}">
+                                {{r.name}}
+                        </nb-option>
+                    </nb-select>        
+                </div>
+ -->
+                <div class="col-sm-12" align="right">
+                    <nb-search 
+                        type="modal-move"
+                        hint="За търсене натиснете 'ENTER'"
+                        placeholder="Търсене ...">
+                    </nb-search>
+                </div>
+            </div>    
+        </nb-card-header>
+        
+        <nb-card-body>
+            <div class="dialog-container">
+                <div class="row row-distance">
+                    <table  class="page1">
+                        <colgroup>
+                            <col span="1" style="width: 3%;">
+                            <!-- <col span="1" style="width: 7%;"> -->
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 20%;">
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 25%;">
+                            <col span="1" style="width: 25%;">
+                        </colgroup>
+
+                        <thead>
+                            <tr>
+                                <th></th>    
+                                <th> № ОПОС </th>    
+                                <!-- <th> ЕГН </th>     -->
+                                <th> Три имена</th>    
+                                <th> Вид имот</th>    
+                                <th> Уреди за монтиране</th>    
+                                <th> Адрес</th>    
+                            </tr>
+                        </thead>        
+            
+                        <tbody>
+                            <tr *ngFor = "let item of items.controls; let i = index;">
+                                    <td>
+                                        <form [formGroup]="item">
+                                            <nb-checkbox #checkbox 
+                                                status  ="basic" 
+                                                formControlName ="ischeck"
+                                                (change)="onItemClick(item)">
+                                            </nb-checkbox>
+                                        </form>                                        
+                                    </td>
+                                    <td>{{item.get('unom').value}}</td>
+                                    <!-- <td>{{item.get('ident').value}}</td> -->
+                                    <td>{{item.get('ime').value}}</td>
+                                    <td>{{item.get('vidimot').value}}</td>
+                                    <td>{{item.get('uredname').value}}</td>
+                                    <td>{{item.get('adres').value}}</td>
+                            </tr>
+                        </tbody>
+                    </table>                
+                </div>
+            </div>
+        </nb-card-body>
+    
+        <nb-card-footer>
+            <div  align="end">
+                <button nbButton 
+                        type="button"
+                        status="primary"  
+                        [disabled]="!EditForm.valid"
+                        (click) = "save()">
+                    Добави
+                </button>
+                <button nbButton class="btn-close" status="info" (click)="dismiss()" hero>
+                    Затвори
+                </button>
+            </div>
+        </nb-card-footer>    
+    </nb-card>
+</form>

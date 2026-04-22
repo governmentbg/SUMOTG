@@ -1,0 +1,13 @@
+@import 'src/app/@theme/styles/my.accordion.tables';
+
+//next/prev butoni
+.btn-container p {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.btn-container .btn-holder {
+  justify-content: flex-end;
+  display: flex;
+}

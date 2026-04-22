@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+        <input  nbInput 
+                NgxNumbersOnly                
+                class ="rightinpput"
+                type="text" 
+                fieldSize="small"
+                fullWidth ="true" 
+                [maxlength]="maxlength"            
+                [allowDecimals]="allowDecimals"
+                [formControl]="control"
+                [placeholder]="placeHolder"
+                (change)="onSelectionChange($event)"
+                onClick="this.select();">
+</form>

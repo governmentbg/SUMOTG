@@ -1,0 +1,155 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+
+<div class="row"  style="width: 99%;">
+    <div class="col-sm-8">  
+        <h6>{{filter.descript}}</h6>
+    </div>
+    <div class="col-sm-3">
+        <p style="line-height: 10px;">
+            <small>Резултат от търсенето за:</small>
+        </p> 
+        <div class="row">
+            <div class="col-sm-12">
+                <p style="line-height: 10px;">
+                    <small>{{filter.txtfilter}}</small>
+                </p>                
+            </div>
+        </div>
+    </div>
+
+    <div align="right" class="col-sm-1 counter">
+        <h1 class="counter">{{countItems}}</h1>
+    </div>
+</div>
+
+<nb-card class="card-container">
+    <nb-card-body>
+        <table class="page1">
+            <colgroup>
+                <col span="1" style="width: 3%;">
+                <col span="1" style="width: 10%;">
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 3%;">
+                <col span="1" style="width: 3%;">
+                <col span="1" style="width: 3%;">
+                <col span="1" style="width: 3%;">
+                <col span="1" style="width: 3%;">
+                <col span="1" style="width: 3%;">
+                <col span="1" style="width: 3%;">
+                <col span="1" style="width: 3%;">
+                <col span="1" style="width: 10%;">
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th> No </th>    
+                    <th> Рег.№</th>    
+                    <th> Имена</th>    
+                    <th> Пок.1</th>    
+                    <th> Пок.2</th>    
+                    <th> Пок.3</th>    
+                    <th> Пок.4</th>    
+                    <th> Пок.5</th>    
+                    <th> Пок.6</th>    
+                    <th> Пок.7</th>    
+                    <th> Общо </th>    
+                    <th> Статус</th>    
+                </tr>
+            </thead>   
+
+            <tbody>
+                <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                    <td class="tdright">
+                        {{(i+1)+(page-1)*pageSize }}
+                    </td>
+                    <td>{{item.unom}}</td>
+                    <td class="link">
+                        <p>
+                            <a href="javascript:void(0)" 
+                                class="text-link" 
+                                (click)="editLice(item)">
+                                    {{item.ime}}
+                            </a>
+                        </p>
+                    </td>
+                    <td class="cellright">
+                        {{item.tochki1}}
+                    </td>
+                    <td class="cellright">
+                        {{item.tochki2}}
+                    </td>
+                    <td class="cellright">
+                        {{item.tochki3}}
+                    </td>
+                    <td class="cellright">
+                        {{item.tochki4}}
+                    </td>
+                    <td class="cellright">
+                        {{item.tochki5}}
+                    </td>
+                    <td class="cellright">
+                        {{item.tochki6}}
+                    </td>
+                    <td class="cellright">
+                        {{item.tochki7}}
+                    </td>
+                    <td class="cellright">
+                        {{item.tochki1+item.tochki2+item.tochki3+item.tochki4+item.tochki5+item.tochki6+item.tochki7}}
+                    </td>
+                    <td>
+                        {{item.status}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-card-body>        
+</nb-card>    
+
+<div class="row" >
+    <div class="col-sm-4">  
+        <button nbButton 
+                (click)="back()"
+                style="margin-right: 5px;"              
+                status="primary">
+                <nb-icon icon="funnel-outline"></nb-icon>                
+                    Филтър
+        </button>
+
+        <button nbButton 
+                (click)="exportexcel()"
+                status="primary">
+                <i class="far fa-file-excel" 
+                    style="font-size:16px;color:white;margin-right:3px;">
+                </i>
+                    Експорт
+        </button>
+
+    </div>
+    <div class="col-sm-8" >  
+        <ngb-pagination 
+            class="d-flex justify-content-end ngb-pagination-custom" 
+            [collectionSize]="items.length" 
+            [(page)]="page" 
+            [pageSize]="pageSize"
+            [maxSize]="5" 
+            [rotate]="true" 
+            [ellipses]="false" 
+            [boundaryLinks]="true">
+        </ngb-pagination>
+    </div>
+</div>
+
+    <!-- <div id="print-section" [style.display]="'none'"> 
+        <ngx-print-spravka1 
+            [items] ="realItems"
+            [descript] = "filter.descript">
+        </ngx-print-spravka1>
+    </div> -->

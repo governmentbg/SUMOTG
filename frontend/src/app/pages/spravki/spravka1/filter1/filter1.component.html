@@ -1,0 +1,112 @@
+<nb-card >
+    <nb-card-header> 
+      <div class="row">
+        <label for="select-raion" class="col-sm-8 col-form-label">
+          Филтър - {{descript}}
+        </label>
+        
+        <div class="col-sm-4" >  
+          <p><a href="javascript:void(0)" 
+                class="clear-text-link" 
+                (click)="clearFilter()">
+                Изчисти филтъра
+          </a></p>
+        </div>      
+      </div>      
+    </nb-card-header>
+    
+    <nb-card-body>  
+      <div [formGroup]="userForm" class="container-fluid ">
+
+        <div class="row row-height  justify-content-md-center form-group">
+            <label for="select-raion" class="col-sm-2 col-form-label">
+                Район:
+            </label>
+
+            <div class="col-sm-6"> 
+                <ngx-ctllist
+                      [items] = raioni
+                      [formGroup]="userForm" 
+                      controlName="raionid">
+                  </ngx-ctllist>
+              </div>
+          </div>
+  
+        <div class="row row-height justify-content-md-center form-group">
+          <label for="input-ident" 
+                class="col-sm-2 col-form-label">
+                  ЕГН/ЛНЧ:
+          </label>
+          <div class="col-sm-6">  
+            <input  nbInput
+                    fullWidth
+                    id="input-ident"
+                    formControlName="ident"
+                    type="text" 
+            >
+          </div>    
+        </div>
+      
+        <div class="row row-height  justify-content-md-center form-group">
+          <label for="input-name" class="col-sm-2 col-form-label">Име:</label>
+          <div class="col-sm-6">  
+            <input  nbInput
+                    fullWidth
+                    id="input-name"
+                    formControlName="name"
+                    type="text" 
+            >
+          </div>
+        </div>
+  
+  
+        <div class="row row-height  justify-content-md-center form-group">
+            <label for="input-unom" class="col-sm-2 col-form-label">Рег. номер:</label>
+            <div class="col-sm-6">  
+              <input  nbInput
+                      fullWidth        
+                      id="input-unom"
+                      formControlName="unom"
+                      type="text" 
+              >
+            </div>
+        </div>
+                     
+        <div class="row row-height  justify-content-md-center form-group">
+            <label for="input-tochki" class="col-sm-2 col-form-label">Общо точки > от:</label>
+            <div class="col-sm-6">  
+              <input  nbInput
+                      id="input-tochki"
+                      NgxNumbersOnly     
+                      class ="rightinpput"
+                      formControlName="tochki"
+                      type="text" 
+              >
+            </div>
+        </div>
+
+    </div>
+    </nb-card-body>
+  
+    <nb-card-footer>   
+      <div class="row row-height  justify-content-md-center form-group">
+        <div class="col-sm-2" align="left">  
+          <p><a href="javascript:void(0)" 
+                class="text-link" (click)="back()">Назад
+          </a></p>
+        </div>      
+
+        <div class="offset-md-4 col-sm-2 offset-md-4 btnSave" align="right">
+          <button nbButton 
+                  status="primary"
+                  fullWidth = "true"  
+                  [disabled]="!userForm.valid"
+                  (click)="exec()">
+            Изпълни
+          </button>
+        </div>    
+      </div>      
+    </nb-card-footer>
+  </nb-card>
+    
+ 

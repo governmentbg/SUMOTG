@@ -1,0 +1,22 @@
+<nb-card size="tiny"        
+    class = "card-container">
+    <nb-card-header>
+      <nb-icon icon="pie-chart-outline"></nb-icon>
+      Справка {{nkod}}
+    </nb-card-header>
+
+    <nb-card-body>
+      <div style="line-height: 15px;">
+        <span style="font: normal 9pt Arial;"> {{descript}}</span>
+      </div>      
+    </nb-card-body>
+    
+    <nb-card-footer>
+      <div card-actions align="end">
+        <button nbButton  status="basic" (click)="doReport()">
+          <nb-icon icon="printer-outline"></nb-icon>
+          Изпълни
+        </button>
+      </div>        
+    </nb-card-footer>
+</nb-card>

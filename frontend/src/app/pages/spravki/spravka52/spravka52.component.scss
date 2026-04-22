@@ -1,0 +1,72 @@
+@import 'src/app/@theme/styles/my.tables';
+@import 'src/app/@theme/styles/my.host';
+
+
+nb-card {
+  background-color: #1b1b38;
+} 
+
+nb-card-body {
+  padding: 0px;
+} 
+
+.container-52 {
+  height: 41vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+}    
+
+.container-53 {
+  height: 40vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+}    
+
+.cellright {
+    text-align: right;
+}
+
+.link p {
+   margin-bottom: 2px !important; 
+}
+
+p {
+    margin-bottom: 2px !important; 
+}
+
+/* width */
+.container-52 ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.container-52 ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.container-52 ::-webkit-scrollbar-thumb {
+  background: rgb(137, 99, 202);
+  border-radius: 10px;
+}
+
+  /* width */
+.container-53 ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+.container-53 ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.container-53 ::-webkit-scrollbar-thumb {
+  background: rgb(137, 99, 202);
+  border-radius: 10px;
+}
+
+  

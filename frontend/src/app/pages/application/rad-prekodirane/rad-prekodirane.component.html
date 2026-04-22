@@ -1,0 +1,118 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+<div class="form-header-container">
+    <div class="row p-0 m-0 justify-content-md-center">
+        <div class="col-8 p-0 m-0">
+            <h6> Прекодиране на радиатори </h6>
+        </div>       
+
+        <div class="col-1 p-0 m-0">
+            <nb-search 
+                type="rotate-layout"
+                hint="За търсене натиснете 'ENTER'"
+                placeholder="Търсене ...">
+            </nb-search>
+        </div>
+
+        <div class="col-2 p-0 m-0">
+            <button nbButton 
+                    status="primary" 
+                    (click)="prekodirane()">
+                    Изпълни
+            </button>
+        </div>
+
+        <div class="col-1 p-0 m-0" align="right" >
+            <h3 class="counter">{{countItems}}</h3>
+        </div>        
+    </div>
+</div>
+
+<nb-card>    
+    <nb-card-body>
+        <div class="dialog-container">
+            <div class="row row-distance">
+                <table  class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 3%;">
+                        <!-- <col span="1" style="width: 7%;"> -->
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 25%;">
+                        <col span="1" style="width: 25%;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th></th>    
+                            <th> № ОПОС </th>    
+                            <!-- <th> ЕГН </th>     -->
+                            <th> Три имена</th>    
+                            <th> Статус на договора</th>    
+                            <th> Уреди за монтиране</th>    
+                            <th> Адрес</th>    
+                        </tr>
+                    </thead>        
+        
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                            <td>
+                                <nb-checkbox
+                                    status  ="basic" 
+                                    [(ngModel)]="item.isSelected"
+                                    (checkedChange) ="onItemClick(item, $event)">
+                                </nb-checkbox>
+                            </td>
+                            <td>{{item.unom}}</td>
+                            <!-- <td>{{item.get('ident').value}}</td> -->
+                            <td>{{item.ime}}</td>
+                            <td>{{item.txtStatusDL}}</td>
+                            <td>{{item.uredname}}</td>
+                            <td>{{item.adres}}</td>
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>
+        </div>
+    </nb-card-body>    
+</nb-card>
+
+<div class="row col-nopadding justify-content-md-center">
+    <div class="col-sm-2 col-nopadding" >  
+        <p class="link">
+            <a href="javascript:void(0)" class="text-link" (click)="back()">
+                    Назад
+            </a>
+        </p>
+    </div>      
+    
+    <div class="col-sm-7">
+        <p *ngIf = "filter.txtfilter.length>0" style="line-height: 10px;"><small>Резултат от търсенето за:</small></p> 
+        <div class="row">
+            <div class="col-sm-12">
+                <p style="line-height: 10px;"><small>{{filter.txtfilter}}</small></p>                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-nopadding" align="right">      
+        <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="items.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+        </ngb-pagination>
+    </div>      
+</div>      

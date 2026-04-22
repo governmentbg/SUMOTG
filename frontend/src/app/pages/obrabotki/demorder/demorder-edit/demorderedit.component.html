@@ -1,0 +1,246 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+<h6 class="content">Поръчка {{idporychka}} - {{name}} [{{ getDogovorNomer()}}]</h6>
+
+<div class="row status">
+  <div class="col-sm-2">               
+      <label  for="input-name" style="margin-top:5px">
+            Статус поръчка:
+    </label>
+  </div>
+  <div class="col-sm-3">               
+      <ngx-ctllist
+          [items] = vliststatus
+          [formGroup]="mainForm" 
+          controlName="status_pm">
+      </ngx-ctllist>
+    </div>
+
+    <div class="col-sm-7" align = "right">
+        <div fxFlex="100" fxLayoutAlign="end center">
+            <button nbButton 
+                [disabled]="click"
+                (click)="save()">
+                Запис
+            </button>
+            <button nbButton 
+                  class="button-next" 
+                  (click)="back()">
+                Назад
+            </button>
+        </div>                  
+    </div>   
+</div>
+
+<nb-card class="card-container" style="height: 95%;">
+  <nb-card-body>
+      <form [formGroup]="mainForm">
+          <nb-tabset>
+              <nb-tab tabTitle="Параметри">
+                  <div class="step-container">
+                      <table  class="page1">
+                          <colgroup>
+                              <col span="1" style="width: 50%;">
+                              <col span="1" style="width: 50%;">
+                          </colgroup>
+
+                          <tbody>
+                              <tr>
+                                  <td class="tdright">
+                                      Номер на поръчката
+                                  </td>
+                                  <td>
+                                      <ngx-ctltextbox
+                                          [formGroup]="mainForm" 
+                                          controlName="idporychkamain"
+                                          isNumberOnly="true"
+                                          [disable] ="true"
+                                          maxlength="13">
+                                      </ngx-ctltextbox>            
+                                  </td>
+                              </tr>    
+
+                              <tr>
+                                  <td class="tdright">
+                                      Дата на поръчката
+                                  </td>
+                                  <td>
+                                      <ngx-ctldatepicker
+                                          [formGroup]="mainForm" 
+                                          controlName="data">
+                                      </ngx-ctldatepicker>                               
+                                  </td>
+                              </tr>    
+
+                              <tr>
+                                  <td class="tdright">
+                                      Фирма изпълнител
+                                  </td>
+                                  <td>
+                                      <ngx-ctllist
+                                          [items] = vmonfirmi
+                                          [formGroup]="mainForm" 
+                                          (selectionChanged)="onFirmItemSelected($event)"
+                                          controlName="idfirma">
+                                      </ngx-ctllist>
+                                  </td>
+                              </tr>
+                  
+                              <tr>
+                                  <td class="tdright">
+                                      Договор
+                                  </td>
+                                  <td>
+                                      <ngx-ctllist
+                                          [items] = vmonfirmidogovor
+                                          [formGroup]="mainForm" 
+                                          (selectionChanged)="onDogovorItemSelected($event)"
+                                          controlName="iddogovorfirma">
+                                      </ngx-ctllist>
+                                  </td>
+                              </tr>                
+
+                              <tr>
+                                <td class="tdright">
+                                    Към Поръчка за монтаж №
+                                </td>
+                                <td>
+                                    <ngx-ctllist
+                                        [items] = vmonporychki
+                                        [formGroup]="mainForm" 
+                                        controlName="idmonporychka">
+                                    </ngx-ctllist>
+                                </td>
+                              </tr>
+
+                              <!-- <tr>
+                                  <td class="tdright">
+                                      Район
+                                  </td>
+                                  <td>
+                                      <ngx-ctllist
+                                          [items] = raioni
+                                          [formGroup]="mainForm" 
+                                          controlName="raion">
+                                      </ngx-ctllist>
+                                  </td>
+                              </tr>         -->
+                              
+                              <tr>
+                                  <td class="tdright">
+                                      Начална дата
+                                  </td>
+                                  <td>
+                                      <ngx-ctldatepicker
+                                          [formGroup]="mainForm" 
+                                          controlName="startdata">
+                                      </ngx-ctldatepicker>                               
+                                  </td>
+                              </tr>    
+
+                              <tr>
+                                  <td class="tdright">
+                                      Крайна дата
+                                  </td>
+                                  <td>
+                                      <ngx-ctldatepicker
+                                          [formGroup]="mainForm" 
+                                          controlName="enddata">
+                                      </ngx-ctldatepicker>                               
+                                  </td>
+                              </tr>    
+
+                              <tr>
+                                <td class="tdright">
+                                    Забележка
+                                </td>
+                                <td>
+                                    <ngx-ctltextarea
+                                        [formGroup]="mainForm" 
+                                        [disable] ="disable"
+                                        rows = "3" 
+                                        controlName="note">
+                                    </ngx-ctltextarea>        
+                                </td>
+                            </tr>                                       
+                                                          
+                          </tbody>  
+                      </table>
+                  </div>                  
+              </nb-tab>
+
+          <nb-tab tabTitle="Поръчка">
+              <div class="step-container-1">                    
+                  <ngx-demorder-order 
+                      [formGroup] = "mainForm" 
+                      [uredi] = vdoguredi
+                      [iddogovorfirma] = "mainForm.get('iddogovorfirma').value"
+                      (statusChanged)="statusChange($event)" >                      
+                  </ngx-demorder-order>                
+
+              </div>                  
+              
+              <div align="right"  style="margin-top: 10px;">                    
+                  <button nbButton outline
+                      status ="primary"
+                      (click) = "exportexcel()">
+                      <i class="far fa-file-excel" 
+                          style="font-size:16px;color:white;margin-right:3px;">
+                      </i>
+                          Експорт
+                  </button>    
+              </div>    
+          </nb-tab>
+
+          <nb-tab tabTitle="График" [disabled]="mainForm.get('status_pm').value < 2">
+              <div class="step-container">
+                  <ngx-demorder-grafic 
+                      [vliststatusg] = "vliststatusg"
+                      [formGroup] = "mainForm">
+                  </ngx-demorder-grafic>      
+              </div>   
+
+              <div align="right"  style="margin-top: 10px;">                    
+                  <input nbInput outline  status="primary"
+                      id="uploadBtn"
+                      type = "file" 
+                      style="margin-top: 5px;"
+                      [disabled] ="mainForm.get('status_pm').value >= 3"    
+                      (change)="importexcel($event)" required >
+              </div>   
+          </nb-tab>
+
+          <nb-tab tabTitle="Демонтаж" [disabled]="mainForm.get('status_pm').value < 3">
+              <div class="step-container">
+                  <ngx-demorder-montaj 
+                      [vliststatusm] = "vliststatusm"
+                      [formGroup] = "mainForm">
+                  </ngx-demorder-montaj>      
+              </div>   
+
+              <div align="right"  style="margin-top: 10px;">                    
+                  <input nbInput outline  status="primary"
+                      id="uploadBtn"
+                      type = "file" 
+                      style="margin-top: 5px;"
+                      [disabled] ="mainForm.get('status_pm').value > 3"    
+                      (change)="importexcel2($event)" required >
+              </div>   
+          </nb-tab>
+        </nb-tabset>
+      </form>                    
+  </nb-card-body>
+</nb-card> 
+      
+<div id="print-section" [style.display]="'none'"> 
+  <ngx-monorder-excel 
+      [formGroup]= "mainForm">
+  </ngx-monorder-excel>
+</div>

@@ -1,0 +1,37 @@
+.card-actions {
+    // ...
+    &[align='end'] {
+      justify-content: flex-end;
+    }
+  
+    &[align='center'] {
+      justify-content: center;
+    }
+  }
+
+  //razmer na step conteinera
+/* For Tablets */
+@media screen and (max-width: 780px) {
+  .card-container {
+    width: 150px;  
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1300px) {
+  .card-container {
+    width: 200px;  
+  }
+}
+
+
+@media screen and (min-width: 1300px) and (max-width: 1700px) {
+  .card-container {
+    width: 220px;  
+  }
+}
+
+@media (min-width: 1700px) {
+  .card-container {
+    width: 280px;  
+  }
+}

@@ -1,0 +1,81 @@
+
+::ng-deep {
+    .ng-select  {
+        .ng-select-container  {            
+            min-height: 33px;
+            border:1px;
+            border-color:black ;
+            background-color: #252547 !important;
+            border-radius: 2;
+            height: auto !important;
+    
+            .ng-value-container {
+                background-color: #252547;
+                color:  white;
+    
+                .ng-value {
+                    white-space: normal !important;
+                    font-family: Open Sans, sans-serif;
+                    font-size: 0.8rem;
+                    font-weight: 500;          
+                }
+
+                .ng-placeholder {
+                    color:rgb(187, 204, 226) !important;
+                }
+            }
+        }
+    }
+
+    .ng-option {
+        border:1px;
+        border-color:black !important ;
+        background-color: #252547 !important;
+        border-radius: 2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        font-family: Open Sans, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    div, .ng-select input {
+        color: white!important; 
+    }
+
+    div, .ng-select span {
+        color: white!important;
+    }
+
+    .ng-option-marked   {            
+        background-color:rgb(137, 99, 202) !important;
+        color: rgb(228, 235, 129) !important;
+    }
+
+     // scrollbar style
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: rgb(137, 99, 202);
+        border-radius: 10px;
+    }
+}
+
+.rightinpput {
+    text-align: right;
+    float: right;
+    width: 120px;
+}

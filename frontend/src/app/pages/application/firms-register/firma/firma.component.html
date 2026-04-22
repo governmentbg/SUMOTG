@@ -1,0 +1,274 @@
+<h6 class="content">{{name}}</h6>
+
+<div class="row status">
+  <!-- <label  for="input-name" 
+          class="col-sm-1" style="margin-top:5px">
+          Статус лице:
+  </label>
+  <div class="col-sm-3">               
+    <ngx-ctllist
+        [items] = vliststatus
+        [formGroup]="mainForm" 
+        controlName="statusL">
+    </ngx-ctllist>
+  </div> -->
+
+  <div class="col-sm-12" align = "right">
+      <div fxFlex="100" fxLayoutAlign="end center">
+          <button nbButton 
+            [disabled]="click"
+            (click)="save()">
+              Запис
+          </button>
+
+          <button nbButton class="button-next" (click)="back()">
+              Назад
+          </button>
+      </div>                  
+  </div>   
+</div>
+
+<nb-card>
+  <nb-card-body>
+    <div [formGroup]="mainForm">
+      <nb-tabset>
+        <nb-tab tabTitle="Данни за ЮЛ">
+          <div class="step-container-1">
+            <table  class="page1">
+                <colgroup>
+                  <col span="1" style="width: 40%;">
+                  <col span="1" style="width: 60%;">
+                </colgroup>
+
+                <tbody>                
+                  <tr>
+                      <td class="tdright">
+                            Наименование
+                      </td>
+                      <td>
+                        <ngx-ctltextbox
+                          [formGroup]="mainForm" 
+                          controlName="ime">
+                        </ngx-ctltextbox>
+                      </td>
+                  </tr>
+  <!--
+                    <tr>
+                      <td class="tdright">
+                            Правен статус
+                        </td>
+                        <td>
+                          <ngx-ctllist
+                            [items] = vlistVidfirma
+                            [formGroup]="mainForm" 
+                            controlName="vidFirma">
+                          </ngx-ctllist>          
+                        </td>
+                    </tr>
+  -->                            
+                  <tr>
+                      <td class="tdright">
+                          ЕИК/БУЛСТАТ
+                      </td>
+                      <td>
+                        <ngx-ctltextbox
+                          [formGroup]="mainForm" 
+                          controlName="ident"
+                          isNumberOnly="true"
+                          maxlength="13">
+                        </ngx-ctltextbox>            
+                      </td>
+                  </tr>      
+                    
+                  <tr>
+                      <td class="tdright">
+                          Код по КИД-2008
+                      </td>
+                      <td>
+                        <ngx-ctltextbox
+                            [formGroup]="mainForm" 
+                            controlName="kodKID">
+                        </ngx-ctltextbox>   
+
+                        <!-- <ngx-ctllist
+                            [items] = kid
+                            [formGroup]="mainForm" 
+                            controlName="kodKID">
+                        </ngx-ctllist> -->
+                      </td>
+                  </tr>                
+                </tbody>  
+              </table>
+            </div>  
+
+            <div align="right" class="btn-container" style="margin-top: 5px;">
+              <button nbButton status="primary" (click)="editFormuliar()">
+                  Формуляр
+              </button>
+            </div>    
+
+      </nb-tab>
+
+      <nb-tab tabTitle="Адрес на ЮЛ">
+        <div class="step-container">
+          <table  class="page1">
+              <colgroup>
+                <col span="1" style="width: 40%;">
+                <col span="1" style="width: 60%;">
+              </colgroup>
+
+              <tbody>
+                <tr>
+                  <td class="tdright">
+                      Район
+                  </td>
+                  <td>
+                    <ngx-ctllist
+                      [items] = raioni
+                      [formGroup]="mainForm" 
+                      controlName="admRaion">
+                    </ngx-ctllist>
+                  </td>
+                </tr>      
+                
+                <tr>
+                  <td class="tdright">
+                        Населено място (гр./с.)
+                    </td>
+                    <td>
+                      <ngx-ctllist
+                        [items] = nasmesta
+                        [formGroup]="mainForm" 
+                        controlName="nasMqsto">
+                      </ngx-ctllist>
+                  </td>
+                </tr>
+          
+                <tr>
+                  <td class="tdright">
+                      Квартал/ж.к.
+                  </td>
+                  <td>
+                    <ngx-ctllist
+                      [items] = kvartali
+                      [formGroup]="mainForm" 
+                      controlName="kvartal">
+                    </ngx-ctllist>
+                  </td>
+                </tr>
+          
+                <tr>
+                  <td class="tdright">
+                      Улица/булевард
+                  </td>
+                  <td>
+                    <ngx-ctllist
+                      [items] = ulici
+                      [formGroup]="mainForm" 
+                      controlName="ulica">
+                    </ngx-ctllist>
+                </tr>
+          
+                <tr>
+                  <td class="tdright">
+                      Номер
+                  </td>
+                  <td>
+                    <ngx-ctltextbox
+                      [formGroup]="mainForm" 
+                      controlName="nomer">
+                    </ngx-ctltextbox>
+                  </td>
+                </tr>      
+                
+                <tr>
+                  <td class="tdright">
+                      Блок
+                  </td>
+                  <td>
+                    <ngx-ctltextbox
+                      [formGroup]="mainForm" 
+                      controlName="blok">
+                    </ngx-ctltextbox>
+                  </td>
+                </tr>      
+          
+                <tr>
+                  <td class="tdright">
+                      Вход
+                  </td>
+                  <td>
+                    <ngx-ctltextbox
+                      [formGroup]="mainForm" 
+                      controlName="vhod">
+                    </ngx-ctltextbox>
+                  </td>
+                </tr>      
+                
+                <tr>
+                  <td class="tdright">
+                      Етаж
+                  </td>
+                  <td>
+                    <ngx-ctltextbox
+                      [formGroup]="mainForm" 
+                      controlName="etaj">
+                    </ngx-ctltextbox>
+                  </td>
+                </tr>  
+          
+                <tr>
+                  <td class="tdright">
+                      Апартамент
+                  </td>
+                  <td>
+                    <ngx-ctltextbox
+                      [formGroup]="mainForm" 
+                      controlName="apart">
+                    </ngx-ctltextbox>
+                  </td>  
+                </tr>  
+          
+                <tr>
+                  <td class="tdright">
+                      Пощенски код
+                  </td>
+                  <td>
+                    <ngx-ctltextbox
+                      [formGroup]="mainForm" 
+                      controlName="postKode">
+                    </ngx-ctltextbox>
+                  </td>  
+                </tr>  
+          
+                <!-- <tr>
+                  <td class="tdright">
+                      Електронен адрес (email)
+                  </td>
+                  <td>
+                    <ngx-ctltextbox
+                      [formGroup]="mainForm" 
+                      controlName="email">
+                    </ngx-ctltextbox>
+                  </td>  
+                </tr>  
+          
+                <tr>
+                  <td class="tdright">
+                      Телефон
+                  </td>
+                  <td>
+                    <ngx-ctltextbox
+                      [formGroup]="mainForm" 
+                      controlName="telefon">
+                    </ngx-ctltextbox>
+                  </td>  
+                </tr>   -->
+              </tbody>  
+            </table>             
+          </div>
+        </nb-tab>
+      </nb-tabset>
+    </div>    
+  </nb-card-body>
+</nb-card>

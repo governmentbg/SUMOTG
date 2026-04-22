@@ -1,0 +1,248 @@
+<div class="row status">
+  <div class="col-sm-2">               
+      <div *ngIf="form.get('statusL').value > 2">
+        <button nbButton 
+              status="basic" 
+              (click)="addTitulqr()">
+            <nb-icon 
+                icon="person-add-outline" 
+                [options]="{ animation: { type: 'zoom' } }">
+            </nb-icon>
+            Добави заменящ
+        </button>
+    </div>
+  </div>
+
+  <div class="col-sm-10">               
+    <div class="row status">
+      <label  align="right" for="input-name" 
+            class="offset-md-4 col-sm-4" style="margin-top:5px">
+            Статус лице:
+      </label>
+      <div class="col-sm-4 status-lice">               
+        <ngx-ctllist
+            [items] = vliststatus
+            [formGroup]="form" 
+            controlName="statusL">
+        </ngx-ctllist>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="page1">
+  <colgroup>
+    <col span="1" style="width: 5%" />
+    <col span="1" style="width: 55%" />
+    <col span="1" style="width: 40%" />
+  </colgroup>
+
+  <tbody>
+    <tr>
+      <td class="tdcenter">1.</td>
+      <td class="tdright">Трите имена</td>
+      <td>
+        <ngx-ctltextbox [formGroup]="form" controlName="ime"> </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">2.</td>
+      <td class="tdright">
+        <ngx-ctllist
+          [items]="vidIdent"
+          [formGroup]="form"
+          placeholder="ЕГН/ЛНЧ"
+          controlName="vidIdent"
+          (selectionChanged)="onIdentifierSelectionChange($event)"
+          onClick="this.select();">
+        </ngx-ctllist>
+      </td>
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="form"
+          controlName="ident"
+          isNumberOnly="true"
+          maxlength="10"
+        >
+        </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">3.</td>
+      <td class="tdright">Номер на лична карта</td>
+      <td>
+        <ngx-ctltextbox
+          [formGroup]="form"
+          controlName="nomLk"
+          isNumberOnly="true"
+          maxlength="9">
+        </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter"></td>
+      <td class="tdright">
+          Дата на издаване
+      </td>
+      <td>
+          <ngx-ctldatepicker
+              [formGroup]="form" 
+              controlName="dataIzdavane">
+          </ngx-ctldatepicker>                               
+      </td>
+    </tr>           
+
+    <tr>
+      <td class="tdcenter">4.</td>
+      <td class="tdright" colspan="2">
+        Адрес на имота (по документ за собственост)
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.1.</td>
+      <td class="tdright">Район</td>
+      <td>
+        <ngx-ctllist [items]="raioni" [formGroup]="form" controlName="admRaion">
+        </ngx-ctllist>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.2.</td>
+      <td class="tdright">Населено място (гр./с.)</td>
+      <td>
+        <ngx-ctllist
+          [items]="nasmesta"
+          [formGroup]="form"
+          controlName="nasMqsto">
+        </ngx-ctllist>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.3.</td>
+      <td class="tdright">Квартал/ж.к.</td>
+      <td>
+        <ngx-ctllist
+          [items]="kvartali"
+          [formGroup]="form"
+          controlName="jk"
+        >
+        </ngx-ctllist>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.4.</td>
+      <td class="tdright">Улица/булевард</td>
+      <td>
+        <ngx-ctllist [items]="ulici" [formGroup]="form" controlName="ulica">
+        </ngx-ctllist>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.5.</td>
+      <td class="tdright">Номер</td>
+      <td>
+        <ngx-ctltextbox [formGroup]="form" controlName="nomer">
+        </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.6.</td>
+      <td class="tdright">Блок</td>
+      <td>
+        <ngx-ctltextbox [formGroup]="form" controlName="blok"> </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.7.</td>
+      <td class="tdright">Вход</td>
+      <td>
+        <ngx-ctltextbox [formGroup]="form" controlName="vhod"> </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.8.</td>
+      <td class="tdright">Етаж</td>
+      <td>
+        <ngx-ctltextbox [formGroup]="form" controlName="etaj"> </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.9.</td>
+      <td class="tdright">Апартамент</td>
+      <td>
+        <ngx-ctltextbox [formGroup]="form" controlName="apart">
+        </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">4.10.</td>
+      <td class="tdright">Пощенски код</td>
+      <td>
+        <ngx-ctltextbox [formGroup]="form" controlName="postKode">
+        </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">5.</td>
+      <td class="tdright">Електронен адрес (email)</td>
+      <td>
+        <ngx-ctltextbox [formGroup]="form" controlName="email">
+        </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">6.</td>
+      <td class="tdright">Телефон</td>
+      <td>
+        <ngx-ctltextbox [formGroup]="form" controlName="telefon">
+        </ngx-ctltextbox>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">7.</td>
+      <td class="tdright">
+        Предпочитана алтернативна форма на отопление, посочена в предварителното
+        заявление за намерение
+        <p class="txtitalic">
+          Забележка: Попълва се, само ако е подадено предварително заявление за
+          намерение
+        </p>
+      </td>
+      <td>
+        <!--
+        <ngx-ctltextbox
+          [formGroup]="form" 
+          controlName="v7">
+        </ngx-ctltextbox>
+-->
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tdcenter">8.</td>
+      <td class="tdright">
+        Кандидатствам за подмяна на отоплително устройство на дърва/въглища:
+      </td>
+      <td>
+        <ngx-ctllist [items]="vlistv8" [formGroup]="form" controlName="nv8">
+        </ngx-ctllist>
+      </td>
+    </tr>
+  </tbody>
+</table>

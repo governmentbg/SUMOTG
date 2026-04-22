@@ -1,0 +1,107 @@
+<ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.6)"
+    size  = "medium" 
+    color = "#fff" 
+    type  = "timer"
+    [fullScreen]="true">
+    <p style="color: white" >Моля изчакайте .....</p>
+</ngx-spinner>
+
+    <div class="row" style="width: 99%;">
+        <div class="col-sm-5">  
+            <h6>{{filter.descript}}</h6>
+        </div>
+    </div>
+
+
+    <nb-card class="card-container">
+        <nb-card-body>
+            <div class="row">
+                <table class="page1">
+                    <colgroup>
+                        <col span="1" style="width: 40%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                    </colgroup>
+                    
+                    <thead>
+                        <tr>
+                            <th> Уреди</th>    
+                            <th> Средна ед.цена в евро</th>    
+                            <th> Брой монтирани уреди</th>    
+                            <th> Планиран Бюджет в евро</th>    
+                            <th> Изчислен Бюджет в евро</th>    
+                            <th> % на изчислен бюджет</th>    
+                        </tr>
+                    </thead>   
+
+                    <tbody>
+                        <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+                            <td >
+                                {{item.ured}}
+                            </td>
+                            <td class="tdright">
+                                {{item.price| number:'0.2-2'}}
+                            </td>
+                            <td class="tdright">
+                                {{item.broi}}
+                            </td>
+                            <td class="tdright">
+                                {{item.budget| number:'0.2-2'}}
+                            </td>
+                            <td class="tdright">
+                                {{item.calcbudget| number:'0.2-2'}}
+                            </td>
+                            <td class="tdright" [style.color]="getColor(item)">
+                                {{item.procbudget}}
+                            </td>
+                    </tbody>
+                </table>
+            </div>    
+        </nb-card-body>        
+    </nb-card>    
+  
+    <div class="row" >
+        <div class="col-sm-4">  
+            <button nbButton 
+                (click)="back()"
+                style="margin-right: 5px;"              
+                status="primary">
+                <nb-icon icon="funnel-outline"></nb-icon>                
+                    Филтър
+            </button>
+
+
+            <button nbButton 
+                    (click)="exportexcel()"
+                    status="primary">
+                    <i class="far fa-file-excel" 
+                        style="font-size:16px;color:white;margin-right:3px;">
+                    </i>
+                    Експорт
+            </button>
+
+        </div>
+        <div class="col-sm-8" >  
+            <ngb-pagination 
+                class="d-flex justify-content-end ngb-pagination-custom" 
+                [collectionSize]="items.length" 
+                [(page)]="page" 
+                [pageSize]="pageSize"
+                [maxSize]="5" 
+                [rotate]="true" 
+                [ellipses]="false" 
+                [boundaryLinks]="true">
+            </ngb-pagination>
+        </div>
+    </div>
+
+    <!-- <div id="print-section" [style.display]="'none'"> 
+        <ngx-print-spravka2
+            [items] ="realItems"
+            [descript] = "filter.descript">
+        </ngx-print-spravka2>
+    </div> -->

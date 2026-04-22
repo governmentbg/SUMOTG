@@ -1,0 +1,75 @@
+<nb-card>
+  <nb-card-header>
+    <span >{{isnewItem ? "Добавяне" : "Редактиране"}}</span>        
+  </nb-card-header>
+  
+  <nb-card-body>
+    <form [formGroup]="EditForm" class="container">      
+      <div class="form-group rowItems">
+        <label for="code">Код</label>
+        <input id ="code"
+              type="text" 
+              class="form-control codecontainer"
+              formControlName = "nkod"
+              fieldSize="small"
+              fullWidth ="false"
+              NgxNumbersOnly   
+              maxlength="5"
+              nbInput placeholder="">
+
+        <span class="help-block" *ngIf="!EditForm.get('nkod')?.valid && EditForm.get('nkod')?.touched">
+          <span *ngIf = "EditForm.get('nkod')?.hasError('required')" class="errorTxt">полето е задължително</span>
+        </span>
+     </div>
+
+     <div class="form-group rowItems">
+        <label for="name">Наименование:</label>
+        <input id="name"
+          type="text" 
+          class="form-control"
+          formControlName = "nime"
+          fieldSize="small"
+          fullWidth ="true"
+          nbInput placeholder="Въведете стойност">
+
+        <span class="help-block" *ngIf="!EditForm.get('nime')?.valid && EditForm.get('nime')?.touched">
+          <span *ngIf = "EditForm.get('nime')?.hasError('required')" class="errorTxt">полето е задължително</span>
+        </span>              
+      </div>
+
+      <div class="form-group rowItems">
+        <label for="name">Населено място:</label>
+        <ngx-ctllist
+          [items]="nasmesta"
+          [formGroup]="EditForm"
+          controlName="wnasm_nkod">
+        </ngx-ctllist>
+
+        <span class="help-block" *ngIf="!EditForm.get('wnasm_nkod')?.valid && EditForm.get('wnasm_nkod')?.touched">
+          <span *ngIf = "EditForm.get('wnasm_nkod')?.hasError('required')" class="errorTxt">полето е задължително</span>
+        </span>              
+      </div>
+    
+      <div align="right" class="form-group rowItems">
+        <nb-toggle labelPosition="start" formControlName="status">Активен</nb-toggle>
+      </div>      
+       
+    </form>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <div  align="end">
+      <button nbButton 
+              type="submit"
+              status="primary"  
+              [disabled]="!EditForm.valid"
+              (click) = "save()">
+          Запис
+      </button>
+      <button nbButton class="btn-close" status="info" (click)="dismiss()" hero>
+          Затвори
+      </button>
+    </div>
+</nb-card-footer>
+
+</nb-card>

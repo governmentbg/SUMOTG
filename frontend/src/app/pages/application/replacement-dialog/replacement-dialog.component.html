@@ -1,0 +1,245 @@
+<form [formGroup]="EditForm">      
+    <nb-card>
+        <nb-card-header>
+            <h4>Добавяне на титуляр</h4>
+        </nb-card-header>
+        
+        <nb-card-body>
+            <div class="dialog-container">
+                <div class="row row-distance">
+                   
+                    <table class="page1">
+                        <colgroup>
+                        <col span="1" style="width: 5%" />
+                        <col span="1" style="width: 55%" />
+                        <col span="1" style="width: 40%" />
+                        </colgroup>
+                    
+                        <tbody>
+                            <tr>
+                                <td class="tdcenter">1.</td>
+                                <td class="tdright">Трите имена</td>
+                                <td>
+                                    <ngx-ctltextbox 
+                                        [formGroup]="EditForm" 
+                                        controlName="ime"> 
+                                    </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">2.</td>
+                                <td class="tdright">
+                                <ngx-ctllist
+                                    [items]="vidIdent"
+                                    [formGroup]="EditForm"
+                                    placeholder="ЕГН/ЛНЧ"
+                                    controlName="vidIdent"
+                                    (selectionChanged)="onIdentifierSelectionChange($event)"
+                                    onClick="this.select();"
+                                >
+                                </ngx-ctllist>
+                                </td>
+                                <td>
+                                <ngx-ctltextbox
+                                    [formGroup]="EditForm"
+                                    controlName="ident"
+                                    isNumberOnly="true"
+                                    maxlength="10">
+                                </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">3.</td>
+                                <td class="tdright">Номер на лична карта</td>
+                                <td>
+                                <ngx-ctltextbox
+                                    [formGroup]="EditForm"
+                                    controlName="nomLk"
+                                    isNumberOnly="true"
+                                    maxlength="9">
+                                </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter"></td>
+                                <td class="tdright">
+                                    Дата на издаване
+                                </td>
+                                <td>
+                                    <ngx-ctldatepicker
+                                        [formGroup]="EditForm" 
+                                        controlName="dataIzdavane">
+                                    </ngx-ctldatepicker>                               
+                                </td>
+                            </tr>           
+                        
+                            <tr>
+                                <td class="tdcenter">4.</td>
+                                <td class="tdright" colspan="2">
+                                Адрес на имота (по документ за собственост)
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.1.</td>
+                                <td class="tdright">Район</td>
+                                <td>
+                                    <ngx-ctllist 
+                                        [items]="raioni" 
+                                        [formGroup]="EditForm" 
+                                        controlName="admRaion">
+                                    </ngx-ctllist>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.2.</td>
+                                <td class="tdright">Населено място (гр./с.)</td>
+                                <td>
+                                    <ngx-ctllist
+                                        [items]="nasmesta"
+                                        [formGroup]="EditForm"
+                                        controlName="nasMqsto">
+                                    </ngx-ctllist>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.3.</td>
+                                <td class="tdright">Квартал/ж.к.</td>
+                                <td>
+                                    <ngx-ctllist
+                                        [items]="kvartali"
+                                        [formGroup]="EditForm"
+                                        controlName="jk"
+                                    >
+                                    </ngx-ctllist>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.4.</td>
+                                <td class="tdright">Улица/булевард</td>
+                                <td>
+                                    <ngx-ctllist 
+                                        [items]="ulici" 
+                                        [formGroup]="EditForm" 
+                                        controlName="ulica">
+                                    </ngx-ctllist>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.5.</td>
+                                <td class="tdright">Номер</td>
+                                <td>
+                                    <ngx-ctltextbox 
+                                        [formGroup]="EditForm" 
+                                        controlName="nomer">
+                                    </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.6.</td>
+                                <td class="tdright">Блок</td>
+                                <td>
+                                    <ngx-ctltextbox 
+                                        [formGroup]="EditForm" 
+                                        controlName="blok"> 
+                                    </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.7.</td>
+                                <td class="tdright">Вход</td>
+                                <td>
+                                    <ngx-ctltextbox 
+                                        [formGroup]="EditForm" 
+                                        controlName="vhod"> 
+                                    </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.8.</td>
+                                <td class="tdright">Етаж</td>
+                                <td>
+                                    <ngx-ctltextbox 
+                                        [formGroup]="EditForm" 
+                                        controlName="etaj"> 
+                                    </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.9.</td>
+                                <td class="tdright">Апартамент</td>
+                                <td>
+                                    <ngx-ctltextbox 
+                                        [formGroup]="EditForm" 
+                                        controlName="apart">
+                                    </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">4.10.</td>
+                                <td class="tdright">Пощенски код</td>
+                                <td>
+                                    <ngx-ctltextbox 
+                                        [formGroup]="EditForm" 
+                                        controlName="postKode">
+                                    </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">5.</td>
+                                <td class="tdright">Електронен адрес (email)</td>
+                                <td>
+                                    <ngx-ctltextbox 
+                                        [formGroup]="EditForm" 
+                                        controlName="email">
+                                    </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="tdcenter">6.</td>
+                                <td class="tdright">Телефон</td>
+                                <td>
+                                    <ngx-ctltextbox 
+                                        [formGroup]="EditForm" 
+                                        controlName="telefon">
+                                    </ngx-ctltextbox>
+                                </td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>           
+                </div>
+            </div>
+        </nb-card-body>
+    
+        <nb-card-footer>
+            <div  align="end">
+                <button nbButton 
+                        type="button"
+                        status="primary"  
+                        (click) = "save()">
+                    Добави
+                </button>
+                        <!-- [disabled]="!EditForm.valid" -->
+
+                <button nbButton class="btn-close" status="info" (click)="dismiss()" hero>
+                    Затвори
+                </button>
+            </div>
+        </nb-card-footer>    
+    </nb-card>
+</form>

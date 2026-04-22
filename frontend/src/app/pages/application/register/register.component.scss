@@ -1,0 +1,28 @@
+@import 'src/app/@theme/styles/my.tables';
+@import 'src/app/@theme/styles/my.host';
+
+.link p {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.col-nopadding {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+
+.faza {
+    margin-right: 10px;
+    height: 40px !important;
+}
+
+.header {
+    padding-bottom: 5px;
+    margin-right: 0px !important;
+}
+
+::ng-deep .nb-theme-cosmic nb-select.appearance-outline.size-small .select-button {
+    padding: 0.1875rem 1rem;
+    height: 100% !important;
+}

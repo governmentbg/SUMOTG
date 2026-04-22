@@ -1,0 +1,17 @@
+.customTable {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px !important;
+    border-collapse: collapse;
+    width: 50%;
+  }
+
+  .customTable td, .customTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .customTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
